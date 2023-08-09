@@ -1,6 +1,6 @@
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import home from './Screens/home';
+import Habits from './Screens/Habits';
 import Dashboard from './Screens/Dashboard';
 import fullscreentest from './Screens/fullscreentest';
 
@@ -10,7 +10,7 @@ const navigator = createStackNavigator(
       screen : Dashboard
     },
     SecondScreen : {
-      screen : home
+      screen : Habits
     },
     FullScreen : {
       screen : fullscreentest

@@ -13,7 +13,7 @@ export default function MainButton({text, onPress}) {
 
 const styles = StyleSheet.create({
     button : {
-        borderRadius : 10,
+        borderRadius : 50,
         backgroundColor : '#D9DDDC',
         paddingVertical : 40,
         // paddingHorizontal : 80,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         textTransform : 'uppercase',
         fontSize : 32,
         textAlign : 'center',
-        fontFamily : 'Calibri',
+        
     
     }
 });

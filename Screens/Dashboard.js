@@ -36,14 +36,13 @@ const Dashboard = (poses) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#48494B',
+        backgroundColor: '#3c4b54',
         alignItems: 'center',
         // justifyContent: 'center',
     },
     text: {
         fontSize: 50,
         color: 'white',
-        fontFamily: 'Arial',
         textTransform: 'uppercase',
         fontWeight: 'bold',
     }
