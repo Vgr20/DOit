@@ -3,6 +3,12 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Habits from './Screens/Habits';
 import Dashboard from './Screens/Dashboard';
 import fullscreentest from './Screens/fullscreentest';
+import NewHabits from './Screens/NewHabits';
+import SelectGoals from './Screens/SelectGoals';
+import TimerGoal from './Screens/TimerGoal';
+import SignInScreen from './Screens/SignInScreen';
+import Stats from './Screens/Stats';
+import TrendingHabits from './Screens/TrendingHabits';
 
 const navigator = createStackNavigator(
   {
@@ -12,12 +18,30 @@ const navigator = createStackNavigator(
     HabitScreen : {
       screen : Habits
     },
+    NewHabitsScreen : {
+      screen : NewHabits
+    },
+    SignInScreen : {
+      screen : SignInScreen
+    },
+    StatsScreen : {
+      screen : Stats
+    },
+    SelectGoalsScreen : {
+      screen : SelectGoals
+    },
+    TimerGoalScreen : {
+      screen : TimerGoal
+    },
+    TrendingHabitsScreen : {
+      screen : TrendingHabits
+    },
     FullScreen : {
       screen : fullscreentest
     }
   },
   {
-    initialRouteName : 'HomeScreen',
+    initialRouteName : 'SignInScreen',
     defaultNavigationOption : { 
       title : 'App'
     }  

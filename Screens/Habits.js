@@ -10,7 +10,7 @@ const Habits = (poses) => {
         <SubButton 
             text="Trending Habits"
             subtext="Most popular habits this week."
-            onPress={() => poses.navigation.navigate('FullScreen')}
+            onPress={() => poses.navigation.navigate('TrendingHabitsScreen')}
             />
 
         <SubButton
@@ -30,7 +30,7 @@ const Habits = (poses) => {
             />
         <SubButton2 
             text="+ Create your own Habit."
-            onPress={() => poses.navigation.navigate('HomeScreen')}
+            onPress={() => poses.navigation.navigate('NewHabitsScreen')}
             />
         
         </SafeAreaView>

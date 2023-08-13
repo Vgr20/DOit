@@ -11,7 +11,7 @@ const Dashboard = (poses) => {
             <Text style = {styles.text}>{texts}</Text>
             <MainButton 
             text="Overall Stats"
-            onPress={() => poses.navigation.navigate('SecondScreen')}
+            onPress={() => poses.navigation.navigate('StatsScreen')}
             />  
 
             <MainButton 
@@ -20,12 +20,12 @@ const Dashboard = (poses) => {
             />
 
             <MainButton 
-            text="Streaks"
+            text="Task Scheduling"
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
 
             <MainButton 
-            text="Score"
+            text="Focus Mode"
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         </SafeAreaView>
@@ -36,7 +36,7 @@ const Dashboard = (poses) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#3c4b54',
+        backgroundColor: '#2f4f4f',
         alignItems: 'center',
         // justifyContent: 'center',
     },
