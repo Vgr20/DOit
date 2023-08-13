@@ -16,7 +16,7 @@ const Dashboard = (poses) => {
 
             <MainButton 
             text="Habits"
-            onPress={() => poses.navigation.navigate('FullScreen')}
+            onPress={() => poses.navigation.navigate('HabitScreen')}
             />
 
             <MainButton 

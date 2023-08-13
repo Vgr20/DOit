@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
-export default function MainButton({text, onPress}) {
+export default function SubButton2({text, onPress}) {
     return (
         <TouchableOpacity onPress = {onPress}>
             <View style = {styles.button}>
@@ -14,17 +14,17 @@ export default function MainButton({text, onPress}) {
 const styles = StyleSheet.create({
     button : {
         borderRadius : 40,
-        backgroundColor : '#D9DDDC',
-        paddingVertical : 40,
+        backgroundColor : '#ff6200',
+        paddingVertical : 15,
         // paddingHorizontal : 80,
-        width : 350,
-        marginVertical : 20,
+        width : 375,
+        marginVertical : 15,
     },
     buttonText : {
-        color : '#363636',
+        color : '#E1E5E5',
         fontWeight : 'bold',
         textTransform : 'uppercase',
-        fontSize : 32,
+        fontSize : 25,
         textAlign : 'center',
         
     

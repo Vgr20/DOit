@@ -9,7 +9,7 @@ const navigator = createStackNavigator(
     HomeScreen : {
       screen : Dashboard
     },
-    SecondScreen : {
+    HabitScreen : {
       screen : Habits
     },
     FullScreen : {
