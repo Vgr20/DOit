@@ -43,6 +43,12 @@ const navigator = createStackNavigator(
     },
     NavigationBarScreen : {
       screen : NavigationBar
+    },
+    FocusMode : {
+      screen : FocusMode
+    },
+    CountdownPage : {
+      screen : CountdownPage
     }
   },
   {
