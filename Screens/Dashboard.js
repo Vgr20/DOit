@@ -26,7 +26,7 @@ const Dashboard = (poses) => {
 
             <MainButton 
             text="Focus Mode"
-            onPress={() => poses.navigation.navigate('FullScreen')}
+            onPress={() => poses.navigation.navigate('FocusMode')}
             />
         </SafeAreaView>
     );

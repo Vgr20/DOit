@@ -10,7 +10,8 @@ import SignInScreen from './Screens/SignInScreen';
 import Stats from './Screens/Stats';
 import TrendingHabits from './Screens/TrendingHabits';
 import NavigationBar from './Screens/NavigationBar';
-
+import FocusMode from './Screens/FocusMode';
+import CountdownPage from './Screens/CountDownPage';
 const navigator = createStackNavigator(
   {
     HomeScreen : {
@@ -40,7 +41,7 @@ const navigator = createStackNavigator(
     FullScreen : {
       screen : fullscreentest
     },
-    NavigationBarScreen: {
+    NavigationBarScreen : {
       screen : NavigationBar
     }
   },
