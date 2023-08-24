@@ -9,6 +9,7 @@ import TimerGoal from './Screens/TimerGoal';
 import SignInScreen from './Screens/SignInScreen';
 import Stats from './Screens/Stats';
 import TrendingHabits from './Screens/TrendingHabits';
+import NavigationBar from './Screens/NavigationBar';
 
 const navigator = createStackNavigator(
   {
@@ -38,6 +39,9 @@ const navigator = createStackNavigator(
     },
     FullScreen : {
       screen : fullscreentest
+    },
+    NavigationBarScreen: {
+      screen : NavigationBar
     }
   },
   {

@@ -21,7 +21,7 @@ const Dashboard = (poses) => {
 
             <MainButton 
             text="Task Scheduling"
-            onPress={() => poses.navigation.navigate('FullScreen')}
+            onPress={() => poses.navigation.navigate('NavigationBarScreen')}
             />
 
             <MainButton 
