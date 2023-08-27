@@ -71,7 +71,10 @@ class SignIn extends React.Component {
                     this.props.navigation.navigate('HomeScreen');
                     } else {
                     // Handle incorrect credentials, show an error message, etc.
-                    this.props.navigation.navigate('PassError');
+                    // Create an alert box here.
+                    alert("Invalid Username or Password", "Please try again.", )
+
+                    // this.props.navigation.navigate('PassError');
                     }
                 }}
                 />

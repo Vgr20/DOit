@@ -9,7 +9,7 @@ import TimerGoal from './Screens/TimerGoal';
 import SignInScreen from './Screens/SignInScreen';
 import Stats from './Screens/Stats';
 import TrendingHabits from './Screens/TrendingHabits';
-import passerror from './Screens/PassError';
+// import passerror from './Screens/PassError';
 
 import NavigationBar from './Screens/NavigationBar';
 import FocusMode from './Screens/FocusMode';
@@ -57,9 +57,9 @@ const navigator = createStackNavigator(
       screen : CountdownPage
 
     },
-    PassError : {
-      screen : PassError
-    }
+    // PassError : {
+    //   screen : PassError
+    // }
   },
   {
     initialRouteName : 'SignInScreen',

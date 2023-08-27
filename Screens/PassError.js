@@ -52,3 +52,7 @@ const styles = StyleSheet.create({
 });
 
 export default passerror;
+
+
+
+// Implement this as a alert function in the sign in page.
