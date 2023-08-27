@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textTransform: 'uppercase',
         fontWeight: 'bold',
+        marginVertical: 20,
     }
 });
 
