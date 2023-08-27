@@ -37,9 +37,6 @@ class SignIn extends React.Component {
                 placeholder="Username"
                 onChangeText={(text) => this.setState({name : text})}
                 onEndEditing={() => {console.log("Typed Value:", this.state.name);}}
-
-                onEndEditing={() => {console.log("Typed Value:", this.state.name);}}
-
                 style={{width : 370,
                     backgroundColor : '#fff',
                     padding : 15,
