@@ -19,13 +19,13 @@ const Habits = (poses) => {
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         <SubButton
-            text="Must-Have Habits"
-            subtext={"Habits that everyone should have."}
+            text="Staying at Home"
+            subtext={"Habits to keep you busy at home."}
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         <SubButton
-            text="Staying at Home"
-            subtext={"Habits to keep you busy at home."}
+            text="Your Habits"
+            subtext={"Keep track with your habits."}
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         <SubButton2 
