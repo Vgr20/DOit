@@ -33,6 +33,8 @@ class SignIn extends React.Component {
                 <TextInput
                 placeholder="Username"
                 onChangeText={(text) => this.setState({name : text})}
+                onEndEditing={() => {console.log("Typed Value:", this.state.name);}}
+
                 style={{width : 370,
                     backgroundColor : '#fff',
                     padding : 15,
@@ -40,13 +42,13 @@ class SignIn extends React.Component {
                     marginHorizontal : 20,
                     marginVertical : 20,
                     borderRadius : 10}}
-                    
                 />
 
             <TextInput
                 placeholder="Password"
                 secureTextEntry={true}
                 onChangeText={(text) => this.setState({password : text})}
+                onEndEditing={() => {console.log("Typed Value:", this.state.password);}}
                 style={{width : 370,
                     backgroundColor : '#fff',
                     padding : 15,
@@ -57,9 +59,21 @@ class SignIn extends React.Component {
                 />
                 
                 {/* Make this button navigate to the home screen  iff username = admin and password =*/}
+                {/* <SubButton2
+                text="Sign In"
+                 onPress={() => this.props.navigation.navigate('HomeScreen')}
+                /> */}
+
                 <SubButton2
                 text="Sign In"
-                onPress={() => this.props.navigation.navigate('HomeScreen')}
+                onPress={() => {
+                    if (this.state.name === "admin" && this.state.password === "admin") {
+                    this.props.navigation.navigate('HomeScreen');
+                    } else {
+                    // Handle incorrect credentials, show an error message, etc.
+                    this.props.navigation.navigate('PassError');
+                    }
+                }}
                 />
 
                 <Text style = {{
