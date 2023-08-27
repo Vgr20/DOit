@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View} from "react-native";
 
-export default function SubButton2({text, onPress}) {
+export default function SubButton2({text, onPress,img}) {
     return (
         <TouchableOpacity onPress = {onPress}>
             <View style = {styles.button}>
-                <Image source={require('../assets/signin3.png')} 
+                <Image source={img} 
                         style={{width: 40, 
                                 height: 40, 
                                 position: "absolute", 

@@ -68,23 +68,15 @@ class SignIn extends React.Component {
 
                 <SubButton2
                 text="Sign In"
+                img = {require('../assets/signin3.png')}
                 onPress={() => {
                     if (this.state.name === "admin" && this.state.password === "admin") {
-                    {
-                    if (this.state.name === "admin" && this.state.password === "admin") {
-                    this.props.navigation.navigate('HomeScreen');
+                    this.props.navigation.navigate('HomeScreen');   
                     } else {
-                    // Handle incorrect credentials, show an error message, etc.
-                    this.props.navigation.navigate('PassError');
-                    }
-                };
-                    } else {
-                    // Handle incorrect credentials, show an error message, etc.
-                    // Create an alert box here.
                     alert("Invalid Username or Password", "Please try again.", )
-
                     // this.props.navigation.navigate('PassError');
                     }
+                
                 }}
                 />
 
@@ -105,6 +97,7 @@ class SignIn extends React.Component {
                 <SubButton2
                 text="Sign Up"
                 onPress={() => this.props.navigation.navigate('HabitScreen')}
+                img = {require('../assets/signin2.png')}
                 />
 
             </View>
