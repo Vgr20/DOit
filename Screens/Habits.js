@@ -6,7 +6,7 @@ import SubButton2 from "../Components/SubButton2";
 const Habits = (poses) => {
     return (
         <SafeAreaView style={styles.container}>
-        <Text style={styles.text}>Pick a new Habit.</Text>
+        <Text style={styles.text}>PICK A NEW HABIT...</Text>
         <SubButton 
             text="Trending Habits"
             subtext="Most popular habits this week."
@@ -19,13 +19,13 @@ const Habits = (poses) => {
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         <SubButton
-            text="Must-Have Habits"
-            subtext={"Habits that everyone should have."}
+            text="Staying at Home"
+            subtext={"Habits to keep you busy at home."}
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         <SubButton
-            text="Staying at Home"
-            subtext={"Habits to keep you busy at home."}
+            text="Your Habits"
+            subtext={"Keep track with your habits."}
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         <SubButton2 
@@ -42,12 +42,14 @@ const styles = StyleSheet.create({
         flex : 1,
         backgroundColor : '#2f4f4f',
         alignItems : 'center',
+       
     },
     text : {
         fontSize : 40,
         fontWeight : 'bold',
-        marginVertical:5,
+        marginVertical:10,
         color : '#EAEAEA',
+
     }
 });
 
