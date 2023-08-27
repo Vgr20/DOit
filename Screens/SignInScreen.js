@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View , SafeAreaView} from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View , SafeAreaView, Image} from "react-native";
 import {Picker} from '@react-native-picker/picker'
 import { TextInput } from "react-native-gesture-handler";
 import Slider from "@react-native-community/slider";
@@ -28,11 +28,16 @@ class SignIn extends React.Component {
                     marginHorizontal : 20,
                     
                 }}>
-                    GO... GET... ON...!!
+                    GO... GET... ON!
                 </Text>
+
+                
+
                 <TextInput
                 placeholder="Username"
                 onChangeText={(text) => this.setState({name : text})}
+                onEndEditing={() => {console.log("Typed Value:", this.state.name);}}
+
                 onEndEditing={() => {console.log("Typed Value:", this.state.name);}}
 
                 style={{width : 370,
@@ -68,7 +73,14 @@ class SignIn extends React.Component {
                 text="Sign In"
                 onPress={() => {
                     if (this.state.name === "admin" && this.state.password === "admin") {
+                    {
+                    if (this.state.name === "admin" && this.state.password === "admin") {
                     this.props.navigation.navigate('HomeScreen');
+                    } else {
+                    // Handle incorrect credentials, show an error message, etc.
+                    this.props.navigation.navigate('PassError');
+                    }
+                };
                     } else {
                     // Handle incorrect credentials, show an error message, etc.
                     // Create an alert box here.

@@ -1,10 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, Image, View} from "react-native";
 
 export default function SubButton2({text, onPress}) {
     return (
         <TouchableOpacity onPress = {onPress}>
             <View style = {styles.button}>
+                <Image source={require('../assets/signin3.png')} 
+                        style={{width: 40, 
+                                height: 40, 
+                                position: "absolute", 
+                                right: 85, 
+                                top: 8}}/>
                 <Text style = {styles.buttonText}>{text}</Text>
             </View>
         </TouchableOpacity>
@@ -26,7 +32,8 @@ const styles = StyleSheet.create({
         fontWeight : 'bold',
         textTransform : 'uppercase',
         fontSize : 25,
-        textAlign : 'center',
+        textAlign : 'left',
+        marginHorizontal : 80,
         
     
     }
