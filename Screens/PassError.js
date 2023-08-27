@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, SafeAreaView, StyleSheet, Text} from "react-native";
-import SubButton3 from "../Components/SubButton3";
 import SubButton2 from "../Components/SubButton2";
 
 const passerror = (poses) => {
@@ -51,4 +50,10 @@ const styles = StyleSheet.create({
 
 });
 
+
 export default passerror;
+
+
+
+// Implement this as a alert function in the sign in page.
+
