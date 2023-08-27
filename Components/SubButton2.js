@@ -10,7 +10,7 @@ export default function SubButton2({text, onPress}) {
                                 height: 40, 
                                 position: "absolute", 
                                 right: 85, 
-                                top: 7}}/>
+                                top: 8}}/>
                 <Text style = {styles.buttonText}>{text}</Text>
             </View>
         </TouchableOpacity>
