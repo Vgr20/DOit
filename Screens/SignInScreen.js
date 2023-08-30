@@ -20,7 +20,7 @@ class SignIn extends React.Component {
             <View style = {styles.container}>
                 <Text style = {{
                     color : '#E1E5E5',
-                    fontWeight : 'semibold',
+                    fontWeight : 'bold',
                     fontSize : 45,
                     textAlign : 'left',
                     marginVertical : 10,
@@ -83,7 +83,7 @@ class SignIn extends React.Component {
                 <Text style = {{
                     color : '#E1E5E5',
                     fontWeight : 'semibold',
-                    fontSize : 25,
+                    fontSize : 18,
                     textAlign : 'left',
                     marginVertical : 10,
                     marginHorizontal : 20,
@@ -97,7 +97,7 @@ class SignIn extends React.Component {
                 <SubButton2
                 text="Sign Up"
                 onPress={() => this.props.navigation.navigate('HabitScreen')}
-                img = {require('../assets/signin2.png')}
+                img = {require('../assets/signup.png')}
                 />
 
             </View>

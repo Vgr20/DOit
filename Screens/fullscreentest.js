@@ -1,13 +1,19 @@
 import React from "react";
-import { Button, SafeAreaView, StyleSheet, Text} from "react-native";
+import { Button, SafeAreaView, StyleSheet, Text, Image} from "react-native";
 import SubButton3 from "../Components/SubButton3";
 import SubButton2 from "../Components/SubButton2";
 
 const fullscreentest = (poses) => {
     return (
         <SafeAreaView style={styles.container}>
-        <Text style={styles.text}>CONGRATS !!</Text>
-        <Text style={styles.text2}>You have set your habit.</Text>
+        <Image  source={require('../assets/celebrate2.png')} 
+                style={{width: 150, 
+                        height: 150, 
+                        position: "center", 
+                        left: 10, 
+                        top: 100}}/>
+        <Text style={styles.text}>CONGRATULATIONS!</Text>
+        <Text style={styles.text2}>You have set a new habit!</Text>
         
         
 
@@ -39,7 +45,7 @@ const styles = StyleSheet.create({
         marginVertical:5,
         color : '#EAEAEA',
         alignContent : 'center',
-        paddingTop : 200,
+        paddingTop : 150,
     },
     text2 : {
         fontSize : 30,
