@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, SafeAreaView, StyleSheet, Text} from "react-native";
+import { ScrollView, SafeAreaView, StyleSheet, Text} from "react-native";
 import SubButton3 from "../Components/SubButton3";
 import SubButton2 from "../Components/SubButton2";
 
 const SelectGoals = (poses) => {
     return (
-        <SafeAreaView style={styles.container}>
+        <ScrollView style = {styles.container}>
+            <SafeAreaView style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 30}}>
         <Text style={styles.text}>Set Goals!!</Text>
         <SubButton3 
             text="Units"
@@ -30,6 +31,7 @@ const SelectGoals = (poses) => {
             />
         
         </SafeAreaView>
+        </ScrollView>
     );
 };
 
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         backgroundColor : '#2f4f4f',
-        alignItems : 'center',
+        // alignItems : 'center',
     },
     text : {
         fontSize : 40,

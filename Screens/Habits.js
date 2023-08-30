@@ -29,7 +29,7 @@ const Habits = (poses) => {
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         <SubButton2 
-            text="+ Create your own Habit."
+            text="+ Add New Habit"
             onPress={() => poses.navigation.navigate('NewHabitsScreen')}
             />
         
