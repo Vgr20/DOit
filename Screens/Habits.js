@@ -40,7 +40,7 @@ const Habits = (poses) => {
             />
         
         <SubButton2 
-            text="+ Create your own Habit."
+            text="+ Add New Habit"
             onPress={() => poses.navigation.navigate('NewHabitsScreen')}
             />
         

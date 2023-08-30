@@ -140,8 +140,8 @@ class NewHabits extends React.Component {
 
                     <SubButton2
                     style = {{marginVertical : 5, marginHorizontal : 25}}
-                    text="Next"
-                    onPress={() => this.props.navigation.navigate('SelectGoalsScreen')}
+                    text="Continue"
+                    onPress={() => this.props.navigation.navigate('SelectGoals2')}
                     />
 
                     <SubButton2
