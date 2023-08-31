@@ -1,107 +1,101 @@
-import React from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View , SafeAreaView} from "react-native";
-import {Picker} from '@react-native-picker/picker'
-import { TextInput } from "react-native-gesture-handler";
-import Slider from "@react-native-community/slider";
+import React, { useState } from "react";
+import { View, StyleSheet, Text } from "react-native";
+import client from "../api/client";
+import { isValidEmail, isValidObjField, updateError } from "../utils/methods";
+import FormContainer from "../Form/FormContainer";
+import FormInput from "../Form/FormInput";
+import FormSubmitButton from "../Form/FormSubmitButton";
 import SubButton2 from "../Components/SubButton2";
+import { withNavigation } from "react-navigation";
 
-class SignIn extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            name : "",
-            password : "",    
-        };
+const SignInScreen = ({ navigation }) => {
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
 
+  const [error, setError] = useState("");
+
+  const { email, password } = userInfo;
+
+  const handleOnChangeText = (value, fieldName) => {
+    setUserInfo({ ...userInfo, [fieldName]: value });
+  };
+
+  const isValidForm = () => {
+    if (!isValidObjField(userInfo))
+      return updateError("Required all fields!", setError);
+
+    if (!isValidEmail(email)) return updateError("Invalid email!", setError);
+
+    if (!password.trim() || password.length < 8)
+      return updateError("Password is too short!", setError);
+
+    return true;
+  };
+
+  const submitForm = async () => {
+    if (isValidForm()) {
+      try {
+        const res = await client.post("/api/login", { ...userInfo });
+
+        if (res.data.message === "Login Succesful!") {
+          setUserInfo({ email: "", password: "" });
+          navigation.navigate("HomeScreen");
+          // No need to setProfile and setIsLoggedIn here
+        }
+
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
-    
-    render(){    
-        return (
-            <View style = {styles.container}>
-                <Text style = {{
-                    color : '#E1E5E5',
-                    fontWeight : 'semibold',
-                    fontSize : 45,
-                    textAlign : 'left',
-                    marginVertical : 10,
-                    paddingVertical : 125,
-                    marginHorizontal : 20,
-                    
-                }}>
-                    GO... GET... ON...!!
-                </Text>
-                <TextInput
-                placeholder="Username"
-                onChangeText={(text) => this.setState({name : text})}
-                style={{width : 370,
-                    backgroundColor : '#fff',
-                    padding : 15,
-                    marginBottom : 10,
-                    marginHorizontal : 20,
-                    marginVertical : 20,
-                    borderRadius : 10}}
-                    
-                />
+  };
 
-            <TextInput
-                placeholder="Password"
-                secureTextEntry={true}
-                onChangeText={(text) => this.setState({password : text})}
-                style={{width : 370,
-                    backgroundColor : '#fff',
-                    padding : 15,
-                    marginBottom : 10,
-                    marginHorizontal : 20,
-                    marginVertical : 5,
-                    borderRadius : 10}}
-                />
-                
-                {/* Make this button navigate to the home screen  iff username = admin and password =*/}
-                <SubButton2
-                text="Sign In"
-                onPress={() => this.props.navigation.navigate('HomeScreen')}
-                />
-
-                <Text style = {{
-                    color : '#E1E5E5',
-                    fontWeight : 'semibold',
-                    fontSize : 25,
-                    textAlign : 'left',
-                    marginVertical : 10,
-                    marginHorizontal : 20,
-
-                }}>
-                    Don't have an account?
-                </Text>
-
-                {/* Make this button navigate to the sign up screen */}
-
-                <SubButton2
-                text="Sign Up"
-                onPress={() => this.props.navigation.navigate('HabitScreen')}
-                />
-
-            </View>
-        );
-    };
-
-}
+  return (
+    <FormContainer>
+      {error ? (
+        <Text style={{ color: "red", fontSize: 18, textAlign: "center" }}>
+          {error}
+        </Text>
+      ) : null}
+      <FormInput
+        value={email}
+        onChangeText={(value) => handleOnChangeText(value, "email")}
+        label="Email"
+        placeholder="example@email.com"
+        autoCapitalize="none"
+      />
+      <FormInput
+        value={password}
+        onChangeText={(value) => handleOnChangeText(value, "password")}
+        label="Password"
+        placeholder="********"
+        autoCapitalize="none"
+        secureTextEntry
+      />
+      <FormSubmitButton onPress={submitForm} title="Login" />
+      <SubButton2
+        text="Sign Up"
+        onPress={() => navigation.navigate("RegisterScreen")}
+      />
+    </FormContainer>
+  );
+};
 
 const styles = StyleSheet.create({
-    container : {
-        flex : 1,
-        backgroundColor : '#2f4f4f',
-        alignItems : 'center',
-        // justifyContent : 'center',
-    },
-    input : {
-        width : 200,
-        backgroundColor : '#fff',
-        padding : 15,
-        marginBottom : 10,
-        borderRadius : 20,
-        alignItems : 'flex-start',
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#2f4f4f",
+    alignItems: "center",
+    // justifyContent: 'center',
+  },
+  text: {
+    fontSize: 50,
+    color: "white",
+    textTransform: "uppercase",
+    fontWeight: "bold",
+  },
 });
 
-export default SignIn;
+export default withNavigation(SignInScreen); // Wrap the component with withNavigation
