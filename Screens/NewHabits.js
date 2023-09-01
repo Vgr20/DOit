@@ -39,7 +39,7 @@ class NewHabits extends React.Component {
                     backgroundColor : '#fff',
                     padding : 15,
                     marginBottom : 10,
-                    marginHorizontal : 20,
+                    marginHorizontal : 10,
                     marginVertical : 25,
                     borderRadius : 10}}
                 />
@@ -51,10 +51,10 @@ class NewHabits extends React.Component {
                     height : 150,
                     verticalAlign : 'top',
                     backgroundColor : '#fff',
-                    padding : 15,
+                    padding : 15, 
                     marginBottom : 10,
-                    marginHorizontal : 20,
-                    marginVertical : 20,
+                    marginHorizontal : 10,
+                    marginVertical : 15,
                     borderRadius : 10}}
                 />
 
@@ -80,7 +80,7 @@ class NewHabits extends React.Component {
                         borderRadius : 20,
                         marginVertical : 10,
                         // alignContent : 'right',
-                        marginHorizontal : 25}}>
+                        marginHorizontal : 15}}>
                     <Picker.Item label = "Daily" value = "Daily"/>
                     <Picker.Item label = "Weekly" value = "Weekly"/>
                     <Picker.Item label = "Monthly" value = "Monthly"/>

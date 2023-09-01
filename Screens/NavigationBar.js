@@ -1,5 +1,5 @@
 import React from "react";
-import {View, StyleSheet, SafeAreaView, Text, Button} from 'react-native'
+import {View, StyleSheet, SafeAreaView, Text, Button, Image} from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Icon from "react-native-vector-icons//FontAwesome";

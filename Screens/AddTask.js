@@ -1,6 +1,6 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
 import React from "react";
-import {Animated,Easing, SafeAreaView, View, Text, StatusBar, StyleSheet, Button ,TextInput, ScrollView, TouchableHighlight, TouchableOpacity,} from "react-native";
+import {Animated,Easing, SafeAreaView, View, Text, StatusBar, StyleSheet, Button ,TextInput, ScrollView, TouchableHighlight, TouchableOpacity, Image} from "react-native";
 import Icon from "react-native-vector-icons//FontAwesome";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/native';
@@ -144,6 +144,12 @@ const AddTask = ()=>{
       <SafeAreaView style={styles.container}>
       <ScrollView>
         <Text> </Text>
+        <Image  source={require('../assets/celebrate2.png')} 
+                style={{width: 50, 
+                        height: 50, 
+                        position: "absolute", 
+                        left: 10, 
+                        top: 100}}/>
         {/* Task Name */}
         <View style={styles.box}>
             <Text style={styles.font}>TASK GROUP</Text>
