@@ -87,20 +87,3 @@ export default function App() {
   }, []);
   return <AppContainer />;
 }
-
-// export default function App() {
-
-//     HomeScreen : {
-//       screen : Dashboard
-//     }
-//     SecondScreen : {
-//       screen : home
-//     }
-//     FullScreen : {
-//       screen : fullscreentest
-//     }
-
-//   return (
-//     <Dashboard />
-//   );
-// }
