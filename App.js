@@ -13,6 +13,7 @@ import RegisterScreen from "./Screens/RegisterScreen";
 import NavigationBar from "./Screens/NavigationBar";
 import FocusMode from "./Screens/FocusMode";
 import CountdownPage from "./Screens/CountDownPage";
+import SelectGoals2 from "./Screens/SelectGoals_drop";
 
 //connecting backend
 import axios from "axios";
@@ -60,6 +61,12 @@ const navigator = createStackNavigator(
     },
     CountdownPage: {
       screen: CountdownPage,
+    },
+    CountdownPage: {
+      screen: CountdownPage,
+    },
+    SelectGoals2: {
+      screen: SelectGoals2,
     },
   },
   {

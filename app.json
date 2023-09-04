@@ -3,7 +3,7 @@
     "name": "DOit",
     "slug": "DOit",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "potrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import client from "../api/client";
 import { isValidEmail, isValidObjField, updateError } from "../utils/methods";
 import FormContainer from "../Form/FormContainer";

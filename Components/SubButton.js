@@ -1,10 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Image} from "react-native";
 
-export default function SubButton({text,subtext, onPress}) {
+export default function SubButton({text,subtext, onPress, img}) {
     return (
         <TouchableOpacity onPress = {onPress}>
             <View style = {styles.button}>
+            <Image source={img} 
+                        style={{width: 90, 
+                                height: 90, 
+                                position: "absolute", 
+                                right: 10, 
+                                top: 13}}/>
                 <Text style = {styles.buttonText}>{text}</Text>
                 <Text style = {styles.subText}>{subtext}</Text>
             </View>        
@@ -26,7 +32,7 @@ const styles = StyleSheet.create({
     buttonText : {
         color : '#E1E5E5',
         fontWeight : 'semibold',
-        textTransform : 'uppercase',
+        textTransform : 'capitalize',
         fontSize : 30,
         textAlign : 'left',
         paddingLeft : 15,
@@ -34,7 +40,7 @@ const styles = StyleSheet.create({
     },
     subText : {
         color : '#a9c0c0',
-        fontSize : 20,
+        fontSize : 17,
         textAlign : 'left',
         paddingLeft : 15,
         paddingTop : 7,

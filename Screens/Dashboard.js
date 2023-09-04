@@ -11,21 +11,25 @@ const Dashboard = (poses) => {
             <Text style = {styles.text}>{texts}</Text>
             <MainButton 
             text="Overall Stats"
+            img = {require('../assets/overallstats.png')}
             onPress={() => poses.navigation.navigate('StatsScreen')}
             />  
 
             <MainButton 
             text="Habits"
+            img = {require('../assets/habits.png')}
             onPress={() => poses.navigation.navigate('HabitScreen')}
             />
 
             <MainButton 
             text="Task Scheduling"
+            img = {require('../assets/scheduling.png')}
             onPress={() => poses.navigation.navigate('NavigationBarScreen')}
             />
 
             <MainButton 
             text="Focus Mode"
+            img = {require('../assets/focused.png')}
             onPress={() => poses.navigation.navigate('FocusMode')}
             />
         </SafeAreaView>
@@ -45,6 +49,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textTransform: 'uppercase',
         fontWeight: 'bold',
+        marginVertical: 20,
     }
 });
 
