@@ -36,7 +36,24 @@ const AddTask = () => {
   const [rating, setRating] = React.useState(0);
 
   const handleStarPress = (starNumber) => {
+    let text;
+
+    switch (starNumber) {
+      case 1:
+        text = "Low";
+        break;
+      case 2:
+        text = "Medium";
+        break;
+      case 3:
+        text = "High";
+        break;
+      default:
+        text = "";
+    }
+
     setRating(starNumber);
+    setTextValue(text);
   };
 
   const handleAddButtonPress = async () => {
