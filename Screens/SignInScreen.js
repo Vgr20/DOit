@@ -18,18 +18,23 @@ class SignIn extends React.Component {
     render(){    
         return (
             <View style = {styles.container}>
-                <Text style = {{
+                {/* <Text style = {{
                     color : '#E1E5E5',
                     fontWeight : 'bold',
                     fontSize : 45,
                     textAlign : 'left',
                     marginVertical : 10,
-                    paddingVertical : 125,
-                    marginHorizontal : 20,
+                    paddingVertical : 40,
+                    // marginHorizontal : 20,
                     
                 }}>
                     GO... GET... ON!
-                </Text>
+                </Text> */}
+
+                <Image
+                source={require('../assets/GGOFINAL.png')}
+                style={{width: 270, height: 270, marginVertical : 40}}
+                />
 
                 
 

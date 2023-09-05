@@ -136,10 +136,9 @@ class NewHabits extends React.Component {
 
                 </View>
 
-                <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 25}}>
+                <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 8}}>
 
                     <SubButton2
-                    style = {{marginVertical : 5, marginHorizontal : 25}}
                     text="Continue"
                     onPress={() => this.props.navigation.navigate('SelectGoals2')}
                     />

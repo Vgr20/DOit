@@ -10,6 +10,7 @@ import SignInScreen from './Screens/SignInScreen';
 import Stats from './Screens/Stats';
 import TrendingHabits from './Screens/TrendingHabits';
 import SelectGoals2 from './Screens/SelectGoals_drop';
+import PastReflections from './Screens/PastReflections';
 
 import NavigationBar from './Screens/NavigationBar';
 import FocusMode from './Screens/FocusMode';
@@ -59,6 +60,10 @@ const navigator = createStackNavigator(
     },
     SelectGoals2 : {
       screen : SelectGoals2
+    },
+
+    PastReflections : {
+      screen : PastReflections
     }
 
   },

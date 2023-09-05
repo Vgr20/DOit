@@ -11,6 +11,13 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "fonts": [ 
+      {
+        "name": "Satisfy-Regular",
+        "asset": "./assets/fonts/Satisfy-Regular.ttf"
+      }
+    ],
+
     "assetBundlePatterns": [
       "**/*"
     ],

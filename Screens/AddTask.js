@@ -144,12 +144,12 @@ const AddTask = ()=>{
       <SafeAreaView style={styles.container}>
       <ScrollView>
         <Text> </Text>
-        <Image  source={require('../assets/celebrate2.png')} 
+        {/*<Image  source={require('../assets/celebrate2.png')} 
                 style={{width: 50, 
                         height: 50, 
-                        position: "absolute", 
+                        position: "relative", 
                         left: 10, 
-                        top: 100}}/>
+                top: 100}}/>*/}
         {/* Task Name */}
         <View style={styles.box}>
             <Text style={styles.font}>TASK GROUP</Text>
