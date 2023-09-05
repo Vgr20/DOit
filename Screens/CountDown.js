@@ -10,10 +10,10 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime);
     const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(false);
-    const [num_minutes, setNum_minutes] = useState(5)
+    const [break_mins, setbreak_mins] = useState(5)
     const startTime = targetTime;
     const resetNumMinutes = () => {
-        setNum_minutes(5);
+        setbreak_mins(5);
     }
     
 
@@ -22,24 +22,24 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
           setTimeRemaining((prevTime) => {
             if (prevTime > 0) {
                 // console.log(prevTime);
-                if ((prevTime) % breakInterval === 0) {
+                if ((prevTime) % breakInterval === 0 && prevTime !== startTime) {
                     console.log("Break")
                     setIsBreak(true);
                     const incrementNumMinutes = () => {
-                        setNum_minutes(prevTime => prevTime - 1);
+                        setbreak_mins(prevTime => prevTime - 1);
                     }
                     
                     incrementNumMinutes();
-                    if (num_minutes > 0){
+                    if (break_mins > 0){
                         console.log("Within Break")
-                        console.log(num_minutes)
+                        console.log(break_mins)
                         setIsBreak(false);
                     } else {
-                        // num_minutes = 5;,
-                        console.log(num_minutes);
+                        // break_mins = 5;,
+                        console.log(break_mins);
                         console.log("Reset")
                         resetNumMinutes();
-                        console.log(num_minutes);
+                        console.log(break_mins);
                         setIsBreak(false);
                         return prevTime - 1;
                     }
@@ -54,8 +54,8 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
               return 0;
             }
           });
-        // }, 60000); // Update every 1 minute
-        }, 1000); // Update every 1 second
+        }, 60000); // Update every 1 minute
+        // }, 1000); // Update every 1 second
         
         return () => {
             clearInterval(interval);
@@ -105,6 +105,15 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
 
               megatext: {
                 fontSize: 135,
+                color: 'orange',
+                // fontFamily: 'AppleSDGothicNeo-Bold',
+                textTransform: 'uppercase',
+                fontWeight: 'bold',
+                textAlign: 'center'
+              },
+
+              midmegatext: {
+                fontSize: 105,
                 color: 'white',
                 // fontFamily: 'AppleSDGothicNeo-Bold',
                 textTransform: 'uppercase',
@@ -116,33 +125,37 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
     // Convert remaining time to minutes and seconds
     const num_breaks = Math.floor(timeRemaining / worktime)
 
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = timeRemaining % 60;
+    const hour = Math.floor(timeRemaining / 60);
+    const minutes = timeRemaining % 60;
+    const millis = 0;
 
     return (
         <View style={styles.text}>
             {(timeRemaining) > 0 ? (
                 
                 <>
-                {(timeRemaining) % breakInterval === 0 ? (
+                {(timeRemaining) % breakInterval === 0  && timeRemaining !== startTime ? (
                     <>
                     <Text style={styles.titletext}>
                     Break Time
                     </Text>
 
                     <View style={styles.text}>
-                        <BreakTimer key={Date.now()} targetTime={num_minutes} />
+                        <BreakTimer key={Date.now()} targetTime={break_mins} />
                     </View>
 
                     <Text style={styles.titletext}>
-                    Paused
+                    Relax before Working
                     </Text>
                     
                     </>
                 ) : (
                     <>
                     <Text style={styles.titletext}>
-                    Time to Work
+                    Time to Get It On!
+                    </Text>
+                    <Text style={styles.titletext}>
+                    Eyes on the Clock 
                     </Text>
                     </>
 
@@ -161,8 +174,8 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
                     </Text>
                 )} */}
 
-                <Text style={styles.megatext}>
-                    {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
+                <Text style={styles.midmegatext}>
+                    {hour.toString().padStart(2, '0')}:{minutes.toString().padStart(2, '0')}
                 </Text>
                 <MainButton
                     style = {{bottom : 1000}}

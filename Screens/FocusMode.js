@@ -87,18 +87,29 @@ function FocusMode(props) {
                 </Text> */}
 
                 <Text style={styles.smalltext}>
-                    Enter Focus Mode Duration in Minutes
+                    Enter Focus Mode 
                 </Text>
-
+                <Text style={styles.smalltext}>
+                Duration in Minutes
+                </Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={onChangeText1}
                     value={worktime}
                 />
     
-                <Text style={styles.smalltext}>
+                {/* <Text style={styles.smalltext}>
                     After how many minutes do you want a 5-minute break?
+                </Text> */}
+
+                <Text style={styles.smalltext}>
+                    How often you want 
                 </Text>
+                <Text style={styles.smalltext} >
+                     your 5-minute break?
+                </Text>
+
+
                 <TextInput
                     style={styles.input}
                     onChangeText={onChangeText2}
@@ -219,11 +230,11 @@ const styles = StyleSheet.create({
 
     },
     input: {
-        height: 41,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        fontSize:20,
+        height: 60,
+        margin: 15,
+        borderWidth: 4,
+        padding: 12,
+        fontSize:30,
       },
 });
 

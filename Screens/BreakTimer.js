@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationContainer } from "@react-navigation/native";
 
 const BreakTimer = ({ targetTime }) => {
-    const [timeRemaining, setTimeRemaining] = useState(targetTime);
+    const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     // const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(true);
 
@@ -72,6 +72,15 @@ const BreakTimer = ({ targetTime }) => {
                 textAlign: 'center'
               },
 
+              midmegatext: {
+                fontSize: 80,
+                color: 'yellow',
+                // fontFamily: 'AppleSDGothicNeo-Bold',
+                textTransform: 'uppercase',
+                fontWeight: 'bold',
+                textAlign: 'center'
+              },
+
               megatext: {
                 fontSize: 135,
                 color: 'white',
@@ -102,8 +111,15 @@ const BreakTimer = ({ targetTime }) => {
                     </Text>
                 )} */}
 
-                <Text style={styles.megatext}>
-                    {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
+                <Text style={styles.midmegatext}>
+                    {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')} 
+                </Text>
+                <Text style={styles.titletext}>
+                     minutes left
+                </Text>
+
+                <Text style={styles.titletext}>
+                     
                 </Text>
                 {/* <MainButton
                     style = {{bottom : 1000}}
@@ -121,7 +137,9 @@ const BreakTimer = ({ targetTime }) => {
                 </>
                 
             ) : (
+                
                 <>
+                <Text style={styles.text}> Over! </Text>
                 <Text style={styles.text}> Back to Work! </Text>
 
                 {/* <Text style={styles.smallertext}> Were you able to complete your task? </Text>
