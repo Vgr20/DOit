@@ -78,7 +78,7 @@ const navigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: "HomeScreen",
+    initialRouteName: "SignInScreen",
     defaultNavigationOption: {
       title: "App",
     },
