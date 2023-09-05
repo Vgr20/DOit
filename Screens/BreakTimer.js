@@ -4,51 +4,18 @@ import { StyleSheet } from 'react-native';
 import MainButton from '../Components/MainButton';
 import { useNavigation } from "@react-navigation/native";
 import { NavigationContainer } from "@react-navigation/native";
-import BreakTimer from './BreakTimer';
 
-const CountDown = ({ targetTime , breakInterval}, poses) => {
+const BreakTimer = ({ targetTime }) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime);
-    const [worktime, setWorktime] = useState(300)
-    const [isBreak, setIsBreak] = useState(false);
-    const [num_minutes, setNum_minutes] = useState(5)
-    const startTime = targetTime;
-    const resetNumMinutes = () => {
-        setNum_minutes(5);
-    }
-    
+    // const [worktime, setWorktime] = useState(300)
+    const [isBreak, setIsBreak] = useState(true);
 
     useEffect(() => {
         const interval = setInterval(() => {
           setTimeRemaining((prevTime) => {
             if (prevTime > 0) {
-                // console.log(prevTime);
-                if ((prevTime) % breakInterval === 0) {
-                    console.log("Break")
-                    setIsBreak(true);
-                    const incrementNumMinutes = () => {
-                        setNum_minutes(prevTime => prevTime - 1);
-                    }
-                    
-                    incrementNumMinutes();
-                    if (num_minutes > 0){
-                        console.log("Within Break")
-                        console.log(num_minutes)
-                        setIsBreak(false);
-                    } else {
-                        // num_minutes = 5;,
-                        console.log(num_minutes);
-                        resetNumMinutes();
-                        console.log(num_minutes);
-                        setIsBreak(false);
-                        return prevTime - 1;
-                    }
-                    return prevTime;
-                } else {
-                    console.log(prevTime);
-                    return prevTime - 1;
-                }
+              return prevTime - 1;
             } else {
-              console.log('Done')
               clearInterval(interval);
               return 0;
             }
@@ -60,6 +27,9 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
             clearInterval(interval);
           };
     }, [timeRemaining, isBreak]);
+      
+
+
         const styles = StyleSheet.create({
             container: {
                 flex: 1,
@@ -113,43 +83,15 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
         });
 
     // Convert remaining time to minutes and seconds
-    const num_breaks = Math.floor(timeRemaining / worktime)
 
     const minutes = Math.floor(timeRemaining / 60);
     const seconds = timeRemaining % 60;
 
     return (
         <View style={styles.text}>
-            {(timeRemaining) > 0 ? (
+            {(minutes*60 + seconds) > 0 ? (
                 
                 <>
-                {(timeRemaining) % breakInterval === 0 ? (
-                    <>
-                    <Text style={styles.titletext}>
-                    Break Time
-                    </Text>
-
-                    <View style={styles.text}>
-                        <BreakTimer key={Date.now()} targetTime={num_minutes} />
-                    </View>
-
-                    <Text style={styles.titletext}>
-                    Paused
-                    </Text>
-                    
-                    </>
-                ) : (
-                    <>
-                    <Text style={styles.titletext}>
-                    Time to Work
-                    </Text>
-                    </>
-
-                    // <Text style={styles.titletext}>
-                    //     Run
-                    // </Text>
-                )}
-
                 {/* {(isBreak) ? (
                     <Text style={styles.titletext}>
                     Break Time
@@ -163,7 +105,7 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
                 <Text style={styles.megatext}>
                     {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
                 </Text>
-                <MainButton
+                {/* <MainButton
                     style = {{bottom : 1000}}
                     text="Stop"
                     onPress={() => 
@@ -174,7 +116,7 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
                             {text: "No", onPress: () => console.log("Cancel")},
                           ])
                         }
-                />
+                /> */}
                 
                 </>
                 
@@ -201,4 +143,4 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
     );
 }
 
-export default CountDown;
+export default BreakTimer;

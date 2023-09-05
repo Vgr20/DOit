@@ -4,6 +4,7 @@ import { Button, View , StyleSheet , Text, Alert, TextInput} from 'react-native'
 import MainButton from '../Components/MainButton';
 import CountDown from './CountDown';
 import CheckBoxWithText from '../Components/CheckBoxWithText';
+import SubButton from '../Components/SubButton';
 
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
@@ -17,7 +18,7 @@ function FocusMode(props) {
     return (
         <SafeAreaView style={styles.container}>
 
-            <Text style={styles.titletext}>
+            {/* <Text style={styles.titletext}>
                 Focus Mode
             </Text>
 
@@ -42,12 +43,48 @@ function FocusMode(props) {
                 style={styles.input}
                 onChangeText={onChangeText2}
                 value={breaktime}
-            />
+            /> */}
 
             {!startCounter ? (
                 <>
 
+                {/* <MainButton 
+                text="Focus Mode"
+                img = {require('../assets/focused.png')}
+                // onPress={() => poses.navigation.navigate('FocusMode')}
+                /> */}
+
+                <SubButton
+                    text="Focus Mode"
+                    img = {require('../assets/focused.png')}
+                    subtext={"With Pomodoro technique"}
+                    // onPress={() => poses.navigation.navigate('FullScreen')}
+                />
+
+                {/* <Text style={styles.smalltext}>
+                    Together with Pomodoro technique
+                </Text> */}
+
                 <Text style={styles.smalltext}>
+                    Enter Focus Mode Duration in Minutes
+                </Text>
+
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeText1}
+                    value={worktime}
+                />
+    
+                <Text style={styles.smalltext}>
+                    After how many minutes do you want a 5-minute break?
+                </Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeText2}
+                    value={breaktime}
+                />
+
+                {/* <Text style={styles.smalltext}>
                     Select the Apps to Block during Focus Mode
 
                 </Text>
@@ -74,7 +111,7 @@ function FocusMode(props) {
                     label="Phone"
                     initialValue={true}
                     onChange={handleCheckBoxChange}
-                />
+                /> */}
 
 
                 <MainButton 
@@ -97,11 +134,22 @@ function FocusMode(props) {
                     <></>
                 )
             }
-           
+
             {showCountdown && (
+                <>
+                <MainButton 
+                text="Focus Mode"
+                img = {require('../assets/focused.png')}
+                // onPress={() => poses.navigation.navigate('FocusMode')}
+                />
+                {/* <Text style={styles.titletext}>
+                    Focus Mode
+                </Text>    */}
+
                 <View style={styles.text}>
-                    <CountDown key={Date.now()} targetTime={worktime} />
+                    <CountDown key={Date.now()} targetTime={worktime} breakInterval={breaktime}/>
                 </View>
+                </>
             )}
 
         </SafeAreaView> 
