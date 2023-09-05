@@ -6,6 +6,7 @@ import CountDown from './CountDown';
 import CheckBoxWithText from '../Components/CheckBoxWithText';
 import SubButton from '../Components/SubButton';
 import { useFocusEffect } from '@react-navigation/native';
+import SubButton2 from '../Components/SubButton2';
 
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
@@ -145,8 +146,20 @@ function FocusMode(props) {
                     onChange={handleCheckBoxChange}
                 /> */}
 
+                <SubButton2 
+                    text="Start Now"
+                    onPress={() => 
+                        Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
+                            {text: "Yes", onPress: () =>  
+                                [setShowCountdown(true),
+                                setStartCounter(true)]
+                            },
+                            {text: "No", onPress: () => console.log(startCounter)},
+                        ])
+                    }
+                />
 
-                <MainButton 
+                {/* <MainButton 
                 style = {{bottom : 1000}}
                 text="Start Now"
                 onPress={() => 
@@ -158,7 +171,7 @@ function FocusMode(props) {
                         {text: "No", onPress: () => console.log(startCounter)},
                     ])
                     }
-                /> 
+                />  */}
                 
 
                 </>

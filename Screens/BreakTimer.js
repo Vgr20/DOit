@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationContainer } from "@react-navigation/native";
 
 const BreakTimer = ({ targetTime }) => {
-    const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
+    const [timeRemaining, setTimeRemaining] = useState(targetTime);
     // const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(true);
 
@@ -21,7 +21,8 @@ const BreakTimer = ({ targetTime }) => {
             }
           });
         // }, 60000); // Update every 1 minute
-        }, 1000); // Update every 1 second
+        }, 999); // Update every 1 second
+        // }, 100); // For debugging  
         
         return () => {
             clearInterval(interval);
