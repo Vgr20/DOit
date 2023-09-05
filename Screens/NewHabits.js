@@ -4,7 +4,7 @@ import {Picker} from '@react-native-picker/picker'
 import { TextInput } from "react-native-gesture-handler";
 import Slider from "@react-native-community/slider";
 import SubButton2 from "../Components/SubButton2";
-
+import habitStore from "./habitstore";
 class NewHabits extends React.Component {
     constructor() {
         super();
@@ -12,6 +12,7 @@ class NewHabits extends React.Component {
             nameOfHabit : "",
             description : "",
             useState : "",
+            repeatInterval : "",
         };
 
         };
@@ -27,6 +28,29 @@ class NewHabits extends React.Component {
         }
 
         
+          addHabit = () => {
+            const { nameOfHabit, description, repeatInterval, sliderValue } = this.state;
+        
+            if (nameOfHabit && description && repeatInterval !== "") {
+              const newHabit = {
+                nameOfHabit,
+                description,
+                repeatInterval,
+                sliderValue,
+              };
+        
+              habitStore.habits.push(newHabit);
+
+              this.setState({
+                nameOfHabit: "",
+                description: "",
+                repeatInterval: "",
+                sliderValue: 0,
+              });
+            }
+          };
+
+     
     
     render(){
         
@@ -35,18 +59,32 @@ class NewHabits extends React.Component {
                 <TextInput
                 placeholder="Name of Habit"
                 onChangeText={(text) => this.setState({name : text})}
+                onEndEditing={(text) => {
+                    // console.log("Name of Habit:", this.state.name); 
+                    habitStore.nameOfHabit = this.state.name;
+                    }
+                }
                 style={{width : 370,
                     backgroundColor : '#fff',
                     padding : 15,
+                    flexDirection : 'column',
+                    flex : 1,
                     marginBottom : 10,
                     marginHorizontal : 10,
                     marginVertical : 25,
                     borderRadius : 10}}
+                    
                 />
+                
 
             <TextInput
                 placeholder="Description"
                 onChangeText={(text) => this.setState({description : text})}
+                onEndEditing={(text) => {
+                    // console.log("Name of Habit:", this.state.description); 
+                    habitStore.description = this.state.description;
+                    }
+                }
                 style={{width : 370,
                     height : 150,
                     verticalAlign : 'top',
@@ -72,7 +110,14 @@ class NewHabits extends React.Component {
                 </Text>
 
 
-                <Picker selectedValue = {this.state.user} onValueChange = {this.updateUser}
+                <Picker selectedValue = {this.state.user}
+                onValueChange={(itemValue) => {
+                    this.updateUser(itemValue);
+                    // console.log("Selected Interval:", itemValue);
+                    habitStore.repeatInterval = itemValue;
+                }}
+
+
                 style = {{
                         // height : 200,
                         width : 360,
@@ -99,21 +144,6 @@ class NewHabits extends React.Component {
                     Select Priority Level
                 </Text>
 
-                {/* <Text style = {{
-                    color : '#E1E5E5',
-                    fontWeight : 'bold',
-                    fontSize : 20,
-                    textTransform : 'uppercase',
-                    textAlign : 'left',
-                    marginVertical : 2,
-                    marginHorizontal : 20,
-                    paddingHorizontal : 16,
-                    paddingVertical : 15,
-                    borderRadius : 30,
-                    backgroundColor : '#162626',
-                }}>
-                    Low                                                  High 
-                </Text> */}
 
                 <Slider
                 style = {{width : 350, height : 40, marginVertical : 5, marginHorizontal : 25}}
@@ -122,7 +152,15 @@ class NewHabits extends React.Component {
                 minimumTrackTintColor = "tomato"
                 maximumTrackTintColor = "#000000"
                 thumbTintColor="tomato"
-                onValueChange = {this.updateSlider}
+                // onValueChange = {this.updateSlider}
+                onValueChange={(sliderValue) => {
+                    this.setState({ sliderValue: sliderValue });
+                }}
+                onSlidingComplete={() => {
+                    // console.log("Slider Value (Completed):", this.state.sliderValue);
+                    habitStore.sliderValue = this.state.sliderValue;
+                }}
+                
                 />
 
                 <View style = {{flexDirection : 'row', justifyContent : 'space-between', marginHorizontal : 25}}>

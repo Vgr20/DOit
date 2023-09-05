@@ -14,6 +14,8 @@ import NavigationBar from "./Screens/NavigationBar";
 import FocusMode from "./Screens/FocusMode";
 import CountdownPage from "./Screens/CountDownPage";
 import SelectGoals2 from "./Screens/SelectGoals_drop";
+import MorningRoutine from "./Screens/MorningRoutine";
+import yourHabits from "./Screens/yourHabits";
 
 //connecting backend
 import axios from "axios";
@@ -65,12 +67,18 @@ const navigator = createStackNavigator(
     CountdownPage: {
       screen: CountdownPage,
     },
+    MorningRoutine: {
+      screen: MorningRoutine,
+    },
+    yourHabits: {
+      screen: yourHabits,
+    },
     SelectGoals2: {
       screen: SelectGoals2,
     },
   },
   {
-    initialRouteName: "SignInScreen",
+    initialRouteName: "HomeScreen",
     defaultNavigationOption: {
       title: "App",
     },
@@ -82,7 +90,7 @@ const AppContainer = createAppContainer(navigator);
 export default function App() {
   const fetchApi = async () => {
     try {
-      const res = await axios.get("http://192.168.1.36:4000/");
+      const res = await axios.get("http://192.168.1.100:4000/");
       console.log(res.data);
     } catch (error) {
       console.log(error.message);

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View,ScrollView } from 'react-native';
+import { StyleSheet, Text, View,ScrollView,TextInput } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import SubButton2 from '../Components/SubButton2';
+import habitStore from './habitstore';
 const data = [
     { label: 'Units', value: '1' },
     { label: 'Timer', value: '2' },
@@ -14,7 +15,7 @@ const units = [
   { label: '5', value: '13' },
   { label: '10', value: '14' },
   { label: '20', value: '15' },
-  { label: '50', value: '16' },
+  { label: 'Custom', value: '16' },
 ];
 
 const timer = [
@@ -25,15 +26,15 @@ const timer = [
     { label: '45 minutes', value: '25' },
     { label: '1 hour', value: '26' },
     { label: '2 hour', value: '27' },
-    { label: '5 Hour', value: '28' },
+    { label: 'Custom', value: '16' },
   ];
 
 
 const SelectGoals2 = (poses) => {
-//   const [data, setData] = useState(data);
-//   const [data1, setData1] = useState(data1);
-//   const [data2, setData2] = useState(data2);
-//   const [data3, setData3] = useState(data3);
+
+  const [isTextInputVisible, setIsTextInputVisible] = useState(false);
+  const [textInputValue, setTextInputValue] = useState('');
+
   const [value1, setValue1] = useState(null);
   const [value2, setValue2] = useState(null);
   const [isFocus1, setIsFocus1] = useState(false);
@@ -76,13 +77,14 @@ const SelectGoals2 = (poses) => {
                     setValue2(null); // Reset second dropdown value when changing the first dropdown
                     setIsFocus1(false);
                     setIsFocus2(false);
+                    // console.log("Selected Interval:", item.label);
+                    habitStore.method = item.label;
+
                 }}
-    
             />
             </View>
 
             <View style={styles.dropdownContainer}>
-            {/* {renderLabel()} */}
             <Dropdown
                 style={[styles.dropdown, isFocus2 && { borderColor: 'blue' }]}
                 placeholderStyle={styles.placeholderStyle}
@@ -102,10 +104,27 @@ const SelectGoals2 = (poses) => {
                 onChange={item => {
                     setValue2(item.value);
                     setIsFocus2(false);
+                    // console.log("Selected Interval:", item.label);
+                    habitStore.value = item.label;
+                    setIsTextInputVisible(item.value === '16');
                 }}
    
             />
             </View>
+
+
+            {isTextInputVisible && (
+            <View style={styles.textInputContainer}>
+              <TextInput
+                style={styles.textInput}
+                placeholder="Enter Custom Value"
+                value={textInputValue}
+                onChangeText={(text) => setTextInputValue(text)}
+              />
+            </View>
+            )}
+
+
 
             <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 5}}>
 
@@ -180,6 +199,22 @@ const styles = StyleSheet.create({
         borderRadius:20,
         marginVertical:20,
 
+  },
+
+  textInputContainer: {
+    backgroundColor: '#d9dddc',
+    padding: 10,
+    borderRadius: 20,
+    marginVertical: 20,
+  },
+  textInput: {
+    height: 40,
+    fontSize: 16,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    marginBottom: 20,
   },
     scrollContainer: {
         flex: 1,

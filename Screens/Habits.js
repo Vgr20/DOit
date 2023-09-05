@@ -14,7 +14,7 @@ const Habits = (poses) => {
             text="Your Habits"
             img = {require('../assets/habits.png')}
             subtext={"Keep track of your habits."}
-            onPress={() => poses.navigation.navigate('FullScreen')}
+            onPress={() => poses.navigation.navigate('yourHabits')}
             />
 
         <Text style={styles.text}>Our suggestions:</Text>
@@ -25,17 +25,43 @@ const Habits = (poses) => {
             subtext="Build better habits, one at a time."
             onPress={() => poses.navigation.navigate('TrendingHabitsScreen')}
             />
+        <SubButton 
+            text="Make your Bed"
+            img = {require('../assets/sleeping.png')}
+            subtext="Start your day right"
+            onPress={() => poses.navigation.navigate('TrendingHabitsScreen')}
+            />
 
         <SubButton
-            text="Morning Routine"
-            img = {require('../assets/moringroutine.png')}
-            subtext={"Start your day right."}
+            text="Drink Water"
+            img = {require('../assets/drinkwater.png')}
+            subtext={"Make sure you drink enough."}
+            onPress={() => poses.navigation.navigate('MorningRoutine')}
+            />
+        <SubButton
+            text="Go For a Walk"
+            img = {require('../assets/walk2.png')}
+            subtext={"Feel the Environment."}
+            onPress={() => poses.navigation.navigate('FullScreen')}
+            />
+
+        <SubButton
+            text="Meditate"
+            img = {require('../assets/stayathome2.png')}
+            subtext={"Make your mind Focus."}
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         <SubButton
-            text="Staying at Home"
-            img = {require('../assets/stayathome2.png')}
-            subtext={"Find joy in every corner of home."}
+            text="Exercise"
+            img = {require('../assets/excercise.png')}
+            subtext={"Get ready you body."}
+            onPress={() => poses.navigation.navigate('FullScreen')}
+            />
+
+        <SubButton
+            text="Journalling"
+            img = {require('../assets/journaling2.png')}
+            subtext={"Write evry memory."}
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         
