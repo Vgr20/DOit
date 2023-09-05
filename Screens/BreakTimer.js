@@ -119,6 +119,10 @@ const BreakTimer = ({ targetTime }) => {
                      minutes left
                 </Text>
 
+                <Text style={styles.smallertext}>
+                    MM:SS
+                </Text>
+
                 <Text style={styles.titletext}>
                      
                 </Text>

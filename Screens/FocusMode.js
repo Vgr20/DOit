@@ -11,6 +11,7 @@ import SubButton2 from '../Components/SubButton2';
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
     const [breaktime, onChangeText2] = React.useState('30');
+    const [breakinterval, onChangeText3] = React.useState('5');
     const [showCountdown, setShowCountdown] = React.useState(false);
     const [startCounter, setStartCounter] = React.useState(false);
     const handleCheckBoxChange = (isChecked) => {
@@ -107,15 +108,26 @@ function FocusMode(props) {
                     How often you want 
                 </Text>
                 <Text style={styles.smalltext} >
-                     your 5-minute break?
+                     your break?
                 </Text>
-
-
                 <TextInput
                     style={styles.input}
                     onChangeText={onChangeText2}
                     value={breaktime}
                 />
+
+                <Text style={styles.smalltext}>
+                    How long do you
+                </Text>
+                <Text style={styles.smalltext} >
+                     want your break?
+                </Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeText3}
+                    value={breakinterval}
+                />
+
 
                 {/* <Text style={styles.smalltext}>
                     Select the Apps to Block during Focus Mode
@@ -198,7 +210,7 @@ function FocusMode(props) {
                 </Text>    */}
 
                 <View style={styles.text}>
-                    <CountDown key={Date.now()} targetTime={worktime} breakInterval={breaktime} poses={props}/>
+                    <CountDown key={Date.now()} targetTime={worktime} breakInterval={breaktime} breakDuration = {breakinterval} poses={props}/>
                 </View>
                 </>
             )}
@@ -243,7 +255,7 @@ const styles = StyleSheet.create({
 
     },
     input: {
-        height: 60,
+        height: 55,
         margin: 15,
         borderWidth: 4,
         padding: 12,

@@ -7,15 +7,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import BreakTimer from './BreakTimer';
 import SubButton2 from '../Components/SubButton2';
 
-const CountDown = ({ targetTime , breakInterval, poses} ) => {
+const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(false);
-    const break_len = 5;
-    const [break_mins, setbreak_mins] = useState(break_len*60)
+    // const break_len = 5;
+    const [break_mins, setbreak_mins] = useState(breakDuration*60)
     const startTime = targetTime*60;
     const resetNumMinutes = () => {
-        setbreak_mins(break_len*60);
+        setbreak_mins(breakDuration*60);
     }
     
 
@@ -176,12 +176,17 @@ const CountDown = ({ targetTime , breakInterval, poses} ) => {
                 )} */}
 
                 <Text style={styles.midmegatext}>
-                    {hour.toString().padStart(2, '0')}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
+                    {hour.toString()}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
                 </Text>
 
                 <Text style={styles.titletext}>
                     Hours to go    
                 </Text>
+
+                <Text style={styles.smallertext}>
+                    H:MM:SS
+                </Text>
+
                 {/* <MainButton
                     style = {{bottom : 1000}}
                     text="Stop"
