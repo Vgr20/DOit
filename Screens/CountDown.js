@@ -11,10 +11,11 @@ const CountDown = ({ targetTime , breakInterval, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(false);
-    const [break_mins, setbreak_mins] = useState(5*60)
+    const break_len = 5;
+    const [break_mins, setbreak_mins] = useState(break_len*60)
     const startTime = targetTime*60;
     const resetNumMinutes = () => {
-        setbreak_mins(5);
+        setbreak_mins(break_len*60);
     }
     
 
@@ -23,7 +24,7 @@ const CountDown = ({ targetTime , breakInterval, poses} ) => {
           setTimeRemaining((prevTime) => {
             if (prevTime > 0) {
                 // console.log(prevTime);
-                if ((prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
+                if ((startTime - prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
                     console.log("Break")
                     setIsBreak(true);
                     const incrementNumMinutes = () => {
@@ -134,7 +135,7 @@ const CountDown = ({ targetTime , breakInterval, poses} ) => {
             {(timeRemaining) > 0 ? (
                 
                 <>
-                {(timeRemaining) % (breakInterval*60) === 0  && timeRemaining !== startTime ? (
+                {(startTime - timeRemaining) % (breakInterval*60) === 0  && timeRemaining !== startTime ? (
                     <>
                     <Text style={styles.titletext}>
                     Break Time

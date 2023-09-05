@@ -21,8 +21,8 @@ const BreakTimer = ({ targetTime }) => {
             }
           });
         // }, 60000); // Update every 1 minute
-        }, 999); // Update every 1 second
-        // }, 100); // For debugging  
+        }, 999.9); // Update every 1 second
+        // }, 99.99); // For debugging  
         
         return () => {
             clearInterval(interval);
