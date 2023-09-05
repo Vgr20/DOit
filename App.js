@@ -14,6 +14,7 @@ import NavigationBar from "./Screens/NavigationBar";
 import FocusMode from "./Screens/FocusMode";
 import CountdownPage from "./Screens/CountDownPage";
 import SelectGoals2 from "./Screens/SelectGoals_drop";
+import PastReflections from "./Screens/PastReflections";
 
 //connecting backend
 import axios from "axios";
@@ -68,6 +69,13 @@ const navigator = createStackNavigator(
     SelectGoals2: {
       screen: SelectGoals2,
     },
+    SelectGoals2: {
+      screen: SelectGoals2,
+    },
+
+    PastReflections: {
+      screen: PastReflections,
+    },
   },
   {
     initialRouteName: "SignInScreen",
@@ -82,7 +90,7 @@ const AppContainer = createAppContainer(navigator);
 export default function App() {
   const fetchApi = async () => {
     try {
-      const res = await axios.get("http://199.36.158.100:4000/");
+      const res = await axios.get("http://192.168.1.36:4000/");
       console.log(res.data);
     } catch (error) {
       console.log(error.message);

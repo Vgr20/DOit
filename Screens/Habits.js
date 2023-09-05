@@ -5,7 +5,7 @@ import SubButton2 from "../Components/SubButton2";
 
 const Habits = (poses) => {
     return (
-        <ScrollView  style = {{flex: -1}}> 
+        <ScrollView  contentContainerStyle={styles.container}> 
         {/* this downward scroll is to be fixed */}
             <SafeAreaView style={styles.container}>
         <Text style={styles.text}>Begin your habit!</Text>
