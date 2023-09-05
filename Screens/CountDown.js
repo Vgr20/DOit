@@ -37,6 +37,7 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
                     } else {
                         // num_minutes = 5;,
                         console.log(num_minutes);
+                        console.log("Reset")
                         resetNumMinutes();
                         console.log(num_minutes);
                         setIsBreak(false);

@@ -122,9 +122,9 @@ const BreakTimer = ({ targetTime }) => {
                 
             ) : (
                 <>
-                <Text style={styles.text}> CountDown Over! </Text>
+                <Text style={styles.text}> Back to Work! </Text>
 
-                <Text style={styles.smallertext}> Were you able to complete your task? </Text>
+                {/* <Text style={styles.smallertext}> Were you able to complete your task? </Text>
 
                 <MainButton
                     style = {{bottom : 1000}}
@@ -135,7 +135,7 @@ const BreakTimer = ({ targetTime }) => {
                     style = {{bottom : 1000}}
                     text = "Yes, I am all good :)"
                     onPress={() => poses.navigation.navigate('Dashboard')}
-                />    
+                />     */}
                 </>
             )}
             
