@@ -82,7 +82,7 @@ const AppContainer = createAppContainer(navigator);
 export default function App() {
   const fetchApi = async () => {
     try {
-      const res = await axios.get("http://192.168.1.36:4000/");
+      const res = await axios.get("http://199.36.158.100:4000/");
       console.log(res.data);
     } catch (error) {
       console.log(error.message);
