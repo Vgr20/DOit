@@ -59,6 +59,12 @@ function FocusMode(props) {
                     img = {require('../assets/focused.png')}
                     subtext={"With Pomodoro technique"}
                     // onPress={() => poses.navigation.navigate('FullScreen')}
+                    onPress={() => 
+                        Alert.alert("Focus Mode", "Let's Get Focused!", [
+                            {text: "Yippeee!", onPress: () =>  
+                            console.log("Yippeee!")
+                            } ])
+                        }
                 />
 
                 {/* <Text style={styles.smalltext}>
@@ -141,6 +147,12 @@ function FocusMode(props) {
                 text="Focus Mode"
                 img = {require('../assets/focused.png')}
                 // onPress={() => poses.navigation.navigate('FocusMode')}
+                onPress={() => 
+                    Alert.alert("Focus Mode", "Let's Get it On!", [
+                        {text: "Yesssss!", onPress: () =>  
+                        console.log("Yessss!")
+                        } ])
+                    }
                 />
                 {/* <Text style={styles.titletext}>
                     Focus Mode
