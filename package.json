@@ -18,6 +18,7 @@
     "@react-navigation/stack": "^6.3.17",
     "axios": "^1.5.0",
     "expo": "~49.0.5",
+    "expo-font": "^11.4.0",
     "expo-status-bar": "~1.6.0",
     "formik": "^2.4.3",
     "react": "18.2.0",
@@ -29,15 +30,19 @@
     "react-native-paper": "^5.10.3",
     "react-native-progress": "^5.0.0",
     "react-native-reanimated": "~3.3.0",
+    "react-native-redash": "^18.1.0",
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
     "react-native-select-list": "^1.0.5",
+    "react-native-svg": "13.9.0",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.22.15",
+    "@babel/preset-env": "^7.22.15",
+    "@babel/preset-react": "^7.22.15"
   },
   "private": true
 }

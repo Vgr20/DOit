@@ -16,6 +16,8 @@ import CountdownPage from "./Screens/CountDownPage";
 import SelectGoals2 from "./Screens/SelectGoals_drop";
 import MorningRoutine from "./Screens/MorningRoutine";
 import yourHabits from "./Screens/yourHabits";
+import PastReflections from "./Screens/PastReflections";
+
 
 //connecting backend
 import axios from "axios";
@@ -75,6 +77,13 @@ const navigator = createStackNavigator(
     },
     SelectGoals2: {
       screen: SelectGoals2,
+    },
+    SelectGoals2: {
+      screen: SelectGoals2,
+    },
+
+    PastReflections: {
+      screen: PastReflections,
     },
   },
   {

@@ -11,9 +11,14 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
+    "fonts": [
+      {
+        "name": "Satisfy-Regular",
+        "asset": "./assets/fonts/Satisfy-Regular.ttf"
+      }
     ],
+
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
