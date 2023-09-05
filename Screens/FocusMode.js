@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { Button, View , StyleSheet , Text, Alert, TextInput} from 'react-native';
 import MainButton from '../Components/MainButton';
 import CountDown from './CountDown';
 import CheckBoxWithText from '../Components/CheckBoxWithText';
 import SubButton from '../Components/SubButton';
+import { useFocusEffect } from '@react-navigation/native';
 
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
@@ -14,8 +15,22 @@ function FocusMode(props) {
     const handleCheckBoxChange = (isChecked) => {
         console.log('Checkbox checked:', isChecked);
     };
+    const [isFocused, setIsFocused] = useState(true);
+
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //         setIsFocused(true);
+    //         console.log("In Focus");
+    //         return () => {
+    //             setIsFocused(false);
+    //             console.log("In Focus");
+    //         };
+    //     },[])
+    // );
+
 
     return (
+
         <SafeAreaView style={styles.container}>
 
             {/* <Text style={styles.titletext}>
