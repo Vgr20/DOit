@@ -185,7 +185,7 @@ function FocusMode(props) {
                 </Text>    */}
 
                 <View style={styles.text}>
-                    <CountDown key={Date.now()} targetTime={worktime} breakInterval={breaktime}/>
+                    <CountDown key={Date.now()} targetTime={worktime} breakInterval={breaktime} poses={props}/>
                 </View>
                 </>
             )}

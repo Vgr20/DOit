@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationContainer } from "@react-navigation/native";
 import BreakTimer from './BreakTimer';
 
-const CountDown = ({ targetTime , breakInterval}, poses) => {
+const CountDown = ({ targetTime , breakInterval, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime);
     const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(false);
@@ -127,7 +127,7 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
 
     const hour = Math.floor(timeRemaining / 60);
     const minutes = timeRemaining % 60;
-    const millis = 0;
+    // const millis = 0;
 
     return (
         <View style={styles.text}>
@@ -201,12 +201,12 @@ const CountDown = ({ targetTime , breakInterval}, poses) => {
                 <MainButton
                     style = {{bottom : 1000}}
                     text = "No, I need to reschedule :("
-                    onPress={() => poses.navigation.navigate('AddTask')}
+                    onPress={() => poses.navigation.navigate('NavigationBarScreen')}
                 />
                 <MainButton
                     style = {{bottom : 1000}}
                     text = "Yes, I am all good :)"
-                    onPress={() => poses.navigation.navigate('Dashboard')}
+                    onPress={() => poses.navigation.navigate('HomeScreen')}
                 />    
                 </>
             )}
