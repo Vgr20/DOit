@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "DOit",
-    "slug": "DOit",
+    "name": "GoGetOn",
+    "slug": "GoGetOn",
     "version": "1.0.0",
-    "orientation": "potrait",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -11,14 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "fonts": [
-      {
-        "name": "Satisfy-Regular",
-        "asset": "./assets/fonts/Satisfy-Regular.ttf"
-      }
+    "assetBundlePatterns": [
+      "**/*"
     ],
-
-    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -26,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.app.GoGetOn"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6954a022-e7c6-4ee4-8cd0-acb61fbb07cd"
+      }
     }
   }
 }

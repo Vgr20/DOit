@@ -1,4 +1,4 @@
-# DOit
+# GoGetOn
 
 In a world where productivity is a constant challenge, meet GoGetOn, your ultimate productivity companion.
 'GoGetOn' isn't just a mobile app; it's a lifestyle. It's the future of productivity at your fingertips. Stay tuned to join us on this journey.
