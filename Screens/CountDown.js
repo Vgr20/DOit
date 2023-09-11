@@ -1,69 +1,117 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text , Alert} from 'react-native';
 import { StyleSheet } from 'react-native';
-import MainButton from '../Components/MainButton';
-import { useNavigation } from "@react-navigation/native";
-import { NavigationContainer } from "@react-navigation/native";
 import BreakTimer from './BreakTimer';
 import SubButton2 from '../Components/SubButton2';
+import BackgroundTimer from 'react-native-background-timer';
 
 const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(false);
-    // const break_len = 5;
     const [break_mins, setbreak_mins] = useState(breakDuration*60)
     const startTime = targetTime*60;
     const resetNumMinutes = () => {
         setbreak_mins(breakDuration*60);
     }
     
-
     useEffect(() => {
-        const interval = setInterval(() => {
-          setTimeRemaining((prevTime) => {
-            if (prevTime > 0) {
-                // console.log(prevTime);
-                if ((startTime - prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
-                    console.log("Break")
-                    setIsBreak(true);
-                    const incrementNumMinutes = () => {
-                        setbreak_mins(prevTime => prevTime - 1);
-                    }
-                    
-                    incrementNumMinutes();
-                    if (break_mins > 1){
-                        console.log("Within Break")
-                        console.log(break_mins)
-                        setIsBreak(false);
+        const timerId = BackgroundTimer.setInterval(() => {
+          // Your timer logic here
+          useEffect(() => {
+            const interval = setInterval(() => {
+              setTimeRemaining((prevTime) => {
+                if (prevTime > 0) {
+                    if ((startTime - prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
+                        console.log("Break")
+                        setIsBreak(true);
+                        const incrementNumMinutes = () => {
+                            setbreak_mins(prevTime => prevTime - 1);
+                        }
+                        
+                        incrementNumMinutes();
+                        if (break_mins > 1){
+                            console.log("Within Break")
+                            console.log(break_mins)
+                            setIsBreak(false);
+                        } else {
+                            console.log(break_mins);
+                            console.log("Reset")
+                            resetNumMinutes();
+                            console.log(break_mins);
+                            setIsBreak(false);
+                            return prevTime - 1;
+                        }
+                        return prevTime;
                     } else {
-                        // break_mins = 5;
-                        console.log(break_mins);
-                        console.log("Reset")
-                        resetNumMinutes();
-                        console.log(break_mins);
-                        setIsBreak(false);
+                        console.log(prevTime);
                         return prevTime - 1;
                     }
-                    return prevTime;
                 } else {
-                    console.log(prevTime);
-                    return prevTime - 1;
+                  console.log('Done')
+                  clearInterval(interval);
+                  return 0;
                 }
-            } else {
-              console.log('Done')
-              clearInterval(interval);
-              return 0;
-            }
-          });
-        // }, 60000); // Update every 1 minute
-        }, 1000); // Update every 1 second
-        // }, 100); // For debugging   
-        
+              });
+            // }, 60000); // Update every 1 minute
+            }, 1000); // Update every 1 second
+            // }, 100); // For debugging   
+            
+            return () => {
+                clearInterval(interval);
+              };
+        }, [timeRemaining, isBreak]);
+        }, 1000); // 1000 milliseconds = 1 second
+      
         return () => {
-            clearInterval(interval);
-          };
-    }, [timeRemaining, isBreak]);
+          // Clear the timer when the component unmounts
+          BackgroundTimer.clearInterval(timerId);
+        };
+      }, []);
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //       setTimeRemaining((prevTime) => {
+    //         if (prevTime > 0) {
+    //             if ((startTime - prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
+    //                 console.log("Break")
+    //                 setIsBreak(true);
+    //                 const incrementNumMinutes = () => {
+    //                     setbreak_mins(prevTime => prevTime - 1);
+    //                 }
+                    
+    //                 incrementNumMinutes();
+    //                 if (break_mins > 1){
+    //                     console.log("Within Break")
+    //                     console.log(break_mins)
+    //                     setIsBreak(false);
+    //                 } else {
+    //                     console.log(break_mins);
+    //                     console.log("Reset")
+    //                     resetNumMinutes();
+    //                     console.log(break_mins);
+    //                     setIsBreak(false);
+    //                     return prevTime - 1;
+    //                 }
+    //                 return prevTime;
+    //             } else {
+    //                 console.log(prevTime);
+    //                 return prevTime - 1;
+    //             }
+    //         } else {
+    //           console.log('Done')
+    //           clearInterval(interval);
+    //           return 0;
+    //         }
+    //       });
+    //     // }, 60000); // Update every 1 minute
+    //     }, 1000); // Update every 1 second
+    //     // }, 100); // For debugging   
+        
+    //     return () => {
+    //         clearInterval(interval);
+    //       };
+    // }, [timeRemaining, isBreak]);
         const styles = StyleSheet.create({
             container: {
                 flex: 1,
@@ -160,20 +208,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     </Text>
                     </>
 
-                    // <Text style={styles.titletext}>
-                    //     Run
-                    // </Text>
                 )}
-
-                {/* {(isBreak) ? (
-                    <Text style={styles.titletext}>
-                    Break Time
-                    </Text>
-                ) : (
-                    <Text style={styles.titletext}>
-                    Time to Work
-                    </Text>
-                )} */}
 
                 <Text style={styles.midmegatext}>
                     {hour.toString()}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
@@ -187,18 +222,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     H:MM:SS
                 </Text>
 
-                {/* <MainButton
-                    style = {{bottom : 1000}}
-                    text="Stop"
-                    onPress={() => 
-                        Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
-                            {text: "Yes", onPress: () =>     
-                                setTimeRemaining(0)
-                            },
-                            {text: "No", onPress: () => console.log("Cancel")},
-                          ])
-                        }
-                /> */}
+        
                 <SubButton2 
                     text="Stop"
                     onPress={() => Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
@@ -220,17 +244,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
 
                 
-                {/* <MainButton
-                    style = {{bottom : 1000}}
-                    text = "No, I need to reschedule :("
-                    onPress={() => poses.navigation.navigate('NavigationBarScreen')}
-                />
-                <MainButton
-                    style = {{bottom : 1000}}
-                    text = "Yes, I am all good :)"
-                    onPress={() => poses.navigation.navigate('HomeScreen')}
-                />     */}
-
+        
                 <SubButton2 
                     text="No, I need to reschedule"
                     onPress={() => poses.navigation.navigate('NavigationBarScreen')}
@@ -239,10 +253,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     text="Yes, I am all good !"
                     onPress={() => poses.navigation.navigate('HomeScreen')}
                 />
-                {/* <SubButton2 
-                    text="Another round of Focusing"
-                    onPress={() => poses.navigation.navigate('FocusMode')}
-                /> */}
+
                 </>
             )}
             

@@ -102,15 +102,6 @@ const BreakTimer = ({ targetTime }) => {
             {(minutes*60 + seconds) > 0 ? (
                 
                 <>
-                {/* {(isBreak) ? (
-                    <Text style={styles.titletext}>
-                    Break Time
-                    </Text>
-                ) : (
-                    <Text style={styles.titletext}>
-                    Time to Work
-                    </Text>
-                )} */}
 
                 <Text style={styles.midmegatext}>
                     {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')} 
@@ -126,18 +117,6 @@ const BreakTimer = ({ targetTime }) => {
                 <Text style={styles.titletext}>
                      
                 </Text>
-                {/* <MainButton
-                    style = {{bottom : 1000}}
-                    text="Stop"
-                    onPress={() => 
-                        Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
-                            {text: "Yes", onPress: () =>     
-                                setTimeRemaining(0)
-                            },
-                            {text: "No", onPress: () => console.log("Cancel")},
-                          ])
-                        }
-                /> */}
                 
                 </>
                 
@@ -147,18 +126,6 @@ const BreakTimer = ({ targetTime }) => {
                 <Text style={styles.text}> Over! </Text>
                 <Text style={styles.text}> Back to Work! </Text>
 
-                {/* <Text style={styles.smallertext}> Were you able to complete your task? </Text>
-
-                <MainButton
-                    style = {{bottom : 1000}}
-                    text = "No, I need to reschedule :("
-                    onPress={() => poses.navigation.navigate('AddTask')}
-                />
-                <MainButton
-                    style = {{bottom : 1000}}
-                    text = "Yes, I am all good :)"
-                    onPress={() => poses.navigation.navigate('Dashboard')}
-                />     */}
                 </>
             )}
             
