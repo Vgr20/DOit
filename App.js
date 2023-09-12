@@ -18,7 +18,6 @@ import MorningRoutine from "./Screens/MorningRoutine";
 import yourHabits from "./Screens/yourHabits";
 import PastReflections from "./Screens/PastReflections";
 
-
 //connecting backend
 import axios from "axios";
 import { useEffect } from "react";
@@ -99,7 +98,7 @@ const AppContainer = createAppContainer(navigator);
 export default function App() {
   const fetchApi = async () => {
     try {
-      const res = await axios.get("http://192.168.1.100:4000/");
+      const res = await axios.get("http://10.10.23.145:4000/");
       console.log(res.data);
     } catch (error) {
       console.log(error.message);
