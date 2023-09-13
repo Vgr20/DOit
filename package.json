@@ -23,6 +23,7 @@
     "formik": "^2.4.3",
     "react": "18.2.0",
     "react-native": "0.72.4",
+    "react-native-background-timer": "^2.4.1",
     "react-native-calendars": "^1.1300.0",
     "react-native-dropdown-select-list": "^2.0.4",
     "react-native-element-dropdown": "^2.10.0",

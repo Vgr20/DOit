@@ -1,22 +1,86 @@
-import React , {useState} from "react";
+import React , {useEffect, useState} from "react";
 import { SafeAreaView } from "react-native";
 import SubButton from "../Components/SubButton";
 import { StyleSheet, View, Alert, Text, TextInput, ScrollView } from "react-native";
 import SubButton2 from "../Components/SubButton2";
+import MainButton from "../Components/MainButton";
+import _BackgroundTimer from "react-native-background-timer";
+import { setIn } from "formik";
+
 
 const FocusModeV2 = (poses) => {
-    const [totaltime, onChangeTotalTime] = React.useState('60');
-    const [worktime, onChangeWorkTime] = React.useState('30');
-    const [breaktime, onChangeBreakTime] = React.useState('5');
+    const [totaltimeInput, onChangeTotalTimeInput] = React.useState('60');
+    const [worktimeInput, onChangeWorkTimeInput] = React.useState('30');
+    const [breaktimeInput, onChangeBreakTimeInput] = React.useState('5');
+
+    const totaltime = totaltimeInput*60;
+    const worktime = worktimeInput*60;
+    const breaktime = breaktimeInput*60;
+
     const [timerOn, setTimerOn] = React.useState(false);
     const [breakOn, setBreakOn] = React.useState(false);
     const [activeCounter, setActiveCounter] = React.useState(false);
+    const [startTime, setStartTime] = React.useState(Date.now())
+    var finishTime = 0;
+
+    const clockify = (distance) => {
+
+        let hours = Math.floor(distance / 60 / 60)
+        let mins = Math.floor(distance / 60 % 60)
+        let secs = Math.floor(distance % 60 )
+    
+        let displayHours = hours;
+        let displayMins = mins < 10 ? '0'+mins : mins;
+        let displaySecs = secs < 10 ? '0'+secs : secs;
+    
+        return {
+            displayHours,
+            displayMins,
+            displaySecs,
+        }
+    }
+
+    const dummy = () =>  {
+        console.log("111")
+    };
+
+    const beginTimer = (totaltime) => {
+        setStartTime(Date.now());
+        finishTime = startTime + (totaltime*1000); 
+        console.log(startTime);
+        console.log(finishTime);
+    }
+
+    // useEffect(() => {
+    //     if (timerOn) startTimer();
+    //     else backtimer.stopBackgroundTimer();
+
+    //     return () => {
+    //         backtimer.stopBackgroundTimer();
+    //     }
+    // }, [timerOn])
+
+    var timer = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = Math.floor((finishTime - now)/1000);
+
+        if (distance < 0) {
+            clearInterval(timer);
+        }
+        return distance;
+    }, 1000)
+
+    // useEffect(() => {
+    //     if 
+    // })
 
     return (
-        <ScrollView>
         <SafeAreaView style={styles.container}>
+        <ScrollView>
+        
             {!activeCounter ? (
                 <>
+                <ScrollView>
                 <SubButton
                     text = "Focus Mode"
                     img = {require('../assets/focused.png')}
@@ -38,8 +102,8 @@ const FocusModeV2 = (poses) => {
                 </Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeTotalTime}
-                    value={totaltime}
+                    onChangeText={onChangeTotalTimeInput}
+                    value={totaltimeInput}
                 />
 
                 <Text style={styles.smalltext}>
@@ -50,8 +114,8 @@ const FocusModeV2 = (poses) => {
                 </Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeWorkTime}
-                    value={worktime}
+                    onChangeText={onChangeWorkTimeInput}
+                    value={worktimeInput}
                 />
 
                 <Text style={styles.smalltext}>
@@ -62,8 +126,8 @@ const FocusModeV2 = (poses) => {
                 </Text> */}
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeBreakTime}
-                    value={breaktime}
+                    onChangeText={onChangeBreakTimeInput}
+                    value={breaktimeInput}
                 />
 
                 <SubButton2 
@@ -71,13 +135,15 @@ const FocusModeV2 = (poses) => {
                     onPress={() => 
                         Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
                             {text: "Yes", onPress: () =>  
-                                [activeCounter(true),
-                                timerOn(true)]
+                                [beginTimer(totaltime),
+                                 setActiveCounter(true)
+                                ]
                             },
                             {text: "No", onPress: () => console.log(startCounter)},
                         ])
                     }
                 />
+                </ScrollView>
                 </>
                 ) : (
                     <></>
@@ -86,6 +152,7 @@ const FocusModeV2 = (poses) => {
 
             {activeCounter && (
                 <>
+                <ScrollView>
                 <MainButton 
                 text="Focus Mode"
                 img = {require('../assets/focused.png')}
@@ -99,17 +166,25 @@ const FocusModeV2 = (poses) => {
                 />
 
                 <View style={styles.text}>
-                    {/* <CountDownV2 key={Date.now()} targetTime={worktime} breakInterval={breaktime} breakDuration = {breakinterval} poses={props}/> */}
-                    
+                    <Text style={styles.megatext}>
+                        {clockify().displayHours.toString()}:{clockify().displayMins}:{clockify().displaySecs}
+                    </Text>
+                    <Text style={styles.titletext}>
+                        Get It On!
+                    </Text>
+
+
+
                 
                 </View>
-
+                </ScrollView>
                 </>
             )
 
             }
-        </SafeAreaView>
         </ScrollView>
+        </SafeAreaView>
+       
     )
 }
 
@@ -127,6 +202,7 @@ const styles = StyleSheet.create({
         // fontFamily: 'AppleSDGothicNeo-Bold',
         textTransform: 'uppercase',
         fontWeight: 'bold',
+        textAlign: 'center'
     },
 
     smalltext: {
@@ -151,10 +227,22 @@ const styles = StyleSheet.create({
     input: {
         height: 55,
         margin: 15,
+        textAlign:'center',
         borderWidth: 4,
         padding: 12,
         fontSize:30,
+        width: 75,
+        alignSelf: 'center'
       },
+
+    megatext: {
+        fontSize: 105,
+        color: 'orange',
+        // fontFamily: 'AppleSDGothicNeo-Bold',
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
 });
 
 export default FocusModeV2;
