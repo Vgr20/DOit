@@ -17,6 +17,8 @@ import SelectGoals2 from "./Screens/SelectGoals_drop";
 import MorningRoutine from "./Screens/MorningRoutine";
 import yourHabits from "./Screens/yourHabits";
 import PastReflections from "./Screens/PastReflections";
+import FocusModeV2 from "./Screens/FocusModeV2";
+import CountDownV2 from "./Screens/CountDownV2";
 
 //connecting backend
 import axios from "axios";
@@ -84,9 +86,17 @@ const navigator = createStackNavigator(
     PastReflections: {
       screen: PastReflections,
     },
+
+    CountDownV2: {
+      screen: CountDownV2,
+    },
+
+    FocusModeV2: {
+      screen: FocusModeV2,
+    }
   },
   {
-    initialRouteName: "SignInScreen",
+    initialRouteName: "HomeScreen",
     defaultNavigationOption: {
       title: "App",
     },

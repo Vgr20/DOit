@@ -7,7 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import BreakTimer from './BreakTimer';
 import SubButton2 from '../Components/SubButton2';
 
-const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
+const CountDownV2 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(false);
@@ -250,4 +250,4 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     );
 }
 
-export default CountDown;
+export default CountDownV2;

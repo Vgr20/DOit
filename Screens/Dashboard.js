@@ -30,7 +30,7 @@ const Dashboard = (poses) => {
             <MainButton 
             text="Focus Mode"
             img = {require('../assets/focused.png')}
-            onPress={() => poses.navigation.navigate('FocusMode')}
+            onPress={() => poses.navigation.navigate('FocusModeV2')}
             />
         </SafeAreaView>
     );
