@@ -96,9 +96,6 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     <Text style={styles.titletext}>
                     Time to Get It On!
                     </Text>
-                    <Text style={styles.titletext}>
-                    Eyes on the Clock 
-                    </Text>
 
                     </>
                 )}
@@ -106,6 +103,8 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                 <Text style={styles.midmegatext}>
                     {hour.toString()}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
                 </Text>
+
+                <PercentageBar percentage={Math.round(((startTime - timeRemaining)/ startTime) * 100)}/>
 
                 <Text style={styles.titletext}>
                     Hours to go    
