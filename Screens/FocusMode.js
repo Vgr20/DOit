@@ -8,6 +8,7 @@ import SubButton from '../Components/SubButton';
 import { useFocusEffect } from '@react-navigation/native';
 import SubButton2 from '../Components/SubButton2';
 import { ScrollView } from 'react-native-gesture-handler';
+import CountDownV3 from './CountDownV3';
 
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
@@ -114,7 +115,7 @@ function FocusMode(props) {
                 </Text>    */}
 
                 <View style={styles.text}>
-                    <CountDown key={Date.now()} targetTime={worktime} breakInterval={breaktime} breakDuration = {breakinterval} poses={props}/>
+                    <CountDownV3 key={Date.now()} targetTime={worktime} breakInterval={breaktime} breakDuration = {breakinterval} poses={props}/>
                 </View>
                 </>
             )}
