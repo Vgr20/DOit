@@ -7,6 +7,7 @@ import FormInput from "../Form/FormInput";
 import FormSubmitButton from "../Form/FormSubmitButton";
 import SubButton2 from "../Components/SubButton2";
 import { withNavigation } from "react-navigation";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SignInScreen = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState({
@@ -41,6 +42,7 @@ const SignInScreen = ({ navigation }) => {
 
         if (res.data.message === "Login Succesful!") {
           setUserInfo({ email: "", password: "" });
+          AsyncStorage.setItem("KeepLoggedIn", JSON.stringify(true));
           navigation.navigate("HomeScreen");
           // No need to setProfile and setIsLoggedIn here
         }
