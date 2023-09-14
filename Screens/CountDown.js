@@ -9,15 +9,16 @@ import SubButton2 from '../Components/SubButton2';
 
 const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
-    const [worktime, setWorktime] = useState(300)
+    const [worktime, setWorktime] = useState(breakInterval*60)
     const [isBreak, setIsBreak] = useState(false);
     const [break_mins, setbreak_mins] = useState(breakDuration*60)
     const startTime = targetTime*60;
     const resetNumMinutes = () => {
         setbreak_mins(breakDuration*60);
     }
+    const [num_breaks, setnum_breaks] = useState(Math.ceil((targetTime) / (breakInterval)) - 1);
+    const tot_breaks = Math.ceil((startTime/60) / (breakInterval)) - 1;
     
-
     useEffect(() => {
         const interval = setInterval(() => {
           setTimeRemaining((prevTime) => {
@@ -40,11 +41,13 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                         resetNumMinutes();
                         console.log(break_mins);
                         setIsBreak(false);
+                        setnum_breaks(num_breaks - 1)
                         return prevTime - 1;
                     }
                     return prevTime;
                 } else {
                     console.log(prevTime);
+                    console.log("Start_total:",targetTime, worktime)
                     return prevTime - 1;
                 }
             } else {
@@ -61,66 +64,6 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
             clearInterval(interval);
           };
     }, [timeRemaining, isBreak]);
-        const styles = StyleSheet.create({
-            container: {
-                flex: 1,
-                backgroundColor: '#2f4f4f',
-                alignItems: 'center',
-                justifyContent: 'center',
-            },
-
-            titletext: {
-                fontSize: 30,
-                color: 'white',
-                // fontFamily: 'AppleSDGothicNeo-Bold',
-                textTransform: 'uppercase',
-                fontWeight: 'bold',
-                textAlign: 'center',
-            },
-
-            text: {
-                fontSize: 30,
-                color: 'white',
-                // fontFamily: 'AppleSDGothicNeo-Bold',
-                textTransform: 'uppercase',
-                fontWeight: 'bold',
-                textAlign: 'center',
-            },
-            input: {
-                height: 41,
-                margin: 12,
-                borderWidth: 1,
-                padding: 10,
-                fontSize:20,
-              },
-
-              smallertext: {
-                fontSize: 15,
-                color: 'white',
-                // fontFamily: 'AppleSDGothicNeo-Bold',
-                textTransform: 'uppercase',
-                fontWeight: 'bold',
-                textAlign: 'center'
-              },
-
-              megatext: {
-                fontSize: 135,
-                color: 'orange',
-                // fontFamily: 'AppleSDGothicNeo-Bold',
-                textTransform: 'uppercase',
-                fontWeight: 'bold',
-                textAlign: 'center'
-              },
-
-              midmegatext: {
-                fontSize: 100,
-                color: 'white',
-                // fontFamily: 'AppleSDGothicNeo-Bold',
-                textTransform: 'uppercase',
-                fontWeight: 'bold',
-                textAlign: 'center'
-              },
-        });
 
     // Convert remaining time to hours and minutes
     const hour = Math.floor(timeRemaining / 3600);
@@ -156,6 +99,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     <Text style={styles.titletext}>
                     Eyes on the Clock 
                     </Text>
+
                     </>
                 )}
 
@@ -169,6 +113,15 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
                 <Text style={styles.smallertext}>
                     H:MM:SS
+                </Text>
+
+                <Text style={styles.smallertext}>
+                    
+                </Text>
+
+                <Text style={styles.midsmalltext}>
+                    
+                    You have {num_breaks}/{tot_breaks} breaks left!
                 </Text>
 
                 <SubButton2 
@@ -204,5 +157,75 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#2f4f4f',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    titletext: {
+        fontSize: 30,
+        color: 'white',
+        // fontFamily: 'AppleSDGothicNeo-Bold',
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+
+    text: {
+        fontSize: 30,
+        color: 'white',
+        // fontFamily: 'AppleSDGothicNeo-Bold',
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    input: {
+        height: 41,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        fontSize:20,
+      },
+
+      smallertext: {
+        fontSize: 15,
+        color: 'white',
+        // fontFamily: 'AppleSDGothicNeo-Bold',
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        textAlign: 'center'
+      },
+
+      megatext: {
+        fontSize: 135,
+        color: 'orange',
+        // fontFamily: 'AppleSDGothicNeo-Bold',
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        textAlign: 'center'
+      },
+
+      midmegatext: {
+        fontSize: 100,
+        color: 'white',
+        // fontFamily: 'AppleSDGothicNeo-Bold',
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        textAlign: 'center'
+      },
+
+      midsmalltext: {
+        fontSize: 30,
+        color: 'white',
+        // fontFamily: 'AppleSDGothicNeo-Bold',
+        // textTransform: 'uppercase',
+        // fontWeight: 'bold',
+        textAlign: 'center'
+      },
+});
 
 export default CountDown;

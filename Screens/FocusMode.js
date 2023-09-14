@@ -77,6 +77,19 @@ function FocusMode(props) {
                     value={breakinterval}
                 />
 
+                <SubButton2 
+                    text="Start Now"
+                    onPress={() => 
+                        Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
+                            {text: "Yes", onPress: () =>  
+                                [setShowCountdown(true),
+                                setStartCounter(true)]
+                            },
+                            {text: "No", onPress: () => console.log(startCounter)},
+                        ])
+                    }
+                />
+
                 </>
                 ) : (
                     <></>
@@ -152,6 +165,9 @@ const styles = StyleSheet.create({
         borderWidth: 4,
         padding: 12,
         fontSize:30,
+        width: 60,
+        alignSelf: "center",
+        textAlign: "center"
       },
 });
 
