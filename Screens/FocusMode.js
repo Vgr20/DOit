@@ -7,6 +7,7 @@ import CheckBoxWithText from '../Components/CheckBoxWithText';
 import SubButton from '../Components/SubButton';
 import { useFocusEffect } from '@react-navigation/native';
 import SubButton2 from '../Components/SubButton2';
+import { ScrollView } from 'react-native-gesture-handler';
 
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
@@ -19,63 +20,19 @@ function FocusMode(props) {
     };
     const [isFocused, setIsFocused] = useState(true);
 
-    // useFocusEffect(
-    //     React.useCallback(() => {
-    //         setIsFocused(true);
-    //         console.log("In Focus");
-    //         return () => {
-    //             setIsFocused(false);
-    //             console.log("In Focus");
-    //         };
-    //     },[])
-    // );
-
-
     return (
 
+        
         <SafeAreaView style={styles.container}>
-
-            {/* <Text style={styles.titletext}>
-                Focus Mode
-            </Text>
-
-            <Text style={styles.smalltext}>
-                Together with Pomodoro technique
-            </Text>
-
-            <Text style={styles.smalltext}>
-                Enter Focus Mode Duration in Minutes
-            </Text>
-
-            <TextInput
-                style={styles.input}
-                onChangeText={onChangeText1}
-                value={worktime}
-            />
-  
-            <Text style={styles.smalltext}>
-                After how many minutes do you want a 5-minute break?
-            </Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={onChangeText2}
-                value={breaktime}
-            /> */}
+        <ScrollView>
 
             {!startCounter ? (
                 <>
-
-                {/* <MainButton 
-                text="Focus Mode"
-                img = {require('../assets/focused.png')}
-                // onPress={() => poses.navigation.navigate('FocusMode')}
-                /> */}
 
                 <SubButton
                     text="Focus Mode"
                     img = {require('../assets/focused.png')}
                     subtext={"With Pomodoro technique"}
-                    // onPress={() => poses.navigation.navigate('FullScreen')}
                     onPress={() => 
                         Alert.alert("Focus Mode", "Let's Get Focused!", [
                             {text: "Yippeee!", onPress: () =>  
@@ -84,31 +41,23 @@ function FocusMode(props) {
                         }
                 />
 
-                {/* <Text style={styles.smalltext}>
-                    Together with Pomodoro technique
-                </Text> */}
-
                 <Text style={styles.smalltext}>
                     Enter Focus Mode 
                 </Text>
                 <Text style={styles.smalltext}>
-                Duration in Minutes
+                    Duration in Minutes
                 </Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={onChangeText1}
                     value={worktime}
                 />
-    
-                {/* <Text style={styles.smalltext}>
-                    After how many minutes do you want a 5-minute break?
-                </Text> */}
 
                 <Text style={styles.smalltext}>
                     How often you want 
                 </Text>
                 <Text style={styles.smalltext} >
-                     your break?
+                    your break?
                 </Text>
                 <TextInput
                     style={styles.input}
@@ -120,71 +69,13 @@ function FocusMode(props) {
                     How long do you
                 </Text>
                 <Text style={styles.smalltext} >
-                     want your break?
+                    want your break?
                 </Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={onChangeText3}
                     value={breakinterval}
                 />
-
-
-                {/* <Text style={styles.smalltext}>
-                    Select the Apps to Block during Focus Mode
-
-                </Text>
-
-                <CheckBoxWithText
-                    label="Whatsapp"
-                    initialValue={true}
-                    onChange={handleCheckBoxChange}
-                />
-
-                <CheckBoxWithText
-                    label="Facebook"
-                    initialValue={true}
-                    onChange={handleCheckBoxChange}
-                />
-
-                <CheckBoxWithText
-                    label="Instagram"
-                    initialValue={true}
-                    onChange={handleCheckBoxChange}
-                />
-
-                <CheckBoxWithText
-                    label="Phone"
-                    initialValue={true}
-                    onChange={handleCheckBoxChange}
-                /> */}
-
-                <SubButton2 
-                    text="Start Now"
-                    onPress={() => 
-                        Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
-                            {text: "Yes", onPress: () =>  
-                                [setShowCountdown(true),
-                                setStartCounter(true)]
-                            },
-                            {text: "No", onPress: () => console.log(startCounter)},
-                        ])
-                    }
-                />
-
-                {/* <MainButton 
-                style = {{bottom : 1000}}
-                text="Start Now"
-                onPress={() => 
-                    Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
-                        {text: "Yes", onPress: () =>  
-                            [setShowCountdown(true),
-                            setStartCounter(true)]
-                        },
-                        {text: "No", onPress: () => console.log(startCounter)},
-                    ])
-                    }
-                />  */}
-                
 
                 </>
                 ) : (
@@ -215,6 +106,7 @@ function FocusMode(props) {
                 </>
             )}
 
+        </ScrollView>
         </SafeAreaView> 
     );
 }

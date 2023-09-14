@@ -2,11 +2,13 @@ import React from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View , SafeAreaView} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import MainButton from '../Components/MainButton';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Dashboard = (poses) => {
     
     const texts = "Dashboard";
     return (
+        <ScrollView>
         <SafeAreaView style={styles.container}>
             <Text style = {styles.text}>{texts}</Text>
             <MainButton 
@@ -30,9 +32,10 @@ const Dashboard = (poses) => {
             <MainButton 
             text="Focus Mode"
             img = {require('../assets/focused.png')}
-            onPress={() => poses.navigation.navigate('FocusModeV2')}
+            onPress={() => poses.navigation.navigate('FocusMode')}
             />
         </SafeAreaView>
+        </ScrollView>
     );
 
 }

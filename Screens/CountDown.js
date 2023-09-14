@@ -11,7 +11,6 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(false);
-    // const break_len = 5;
     const [break_mins, setbreak_mins] = useState(breakDuration*60)
     const startTime = targetTime*60;
     const resetNumMinutes = () => {
@@ -23,7 +22,6 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
         const interval = setInterval(() => {
           setTimeRemaining((prevTime) => {
             if (prevTime > 0) {
-                // console.log(prevTime);
                 if ((startTime - prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
                     console.log("Break")
                     setIsBreak(true);
@@ -37,7 +35,6 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                         console.log(break_mins)
                         setIsBreak(false);
                     } else {
-                        // break_mins = 5;
                         console.log(break_mins);
                         console.log("Reset")
                         resetNumMinutes();
@@ -137,6 +134,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                 <>
                 {(startTime - timeRemaining) % (breakInterval*60) === 0  && timeRemaining !== startTime ? (
                     <>
+
                     <Text style={styles.titletext}>
                     Break Time
                     </Text>
@@ -159,21 +157,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     Eyes on the Clock 
                     </Text>
                     </>
-
-                    // <Text style={styles.titletext}>
-                    //     Run
-                    // </Text>
                 )}
-
-                {/* {(isBreak) ? (
-                    <Text style={styles.titletext}>
-                    Break Time
-                    </Text>
-                ) : (
-                    <Text style={styles.titletext}>
-                    Time to Work
-                    </Text>
-                )} */}
 
                 <Text style={styles.midmegatext}>
                     {hour.toString()}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
@@ -187,18 +171,6 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     H:MM:SS
                 </Text>
 
-                {/* <MainButton
-                    style = {{bottom : 1000}}
-                    text="Stop"
-                    onPress={() => 
-                        Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
-                            {text: "Yes", onPress: () =>     
-                                setTimeRemaining(0)
-                            },
-                            {text: "No", onPress: () => console.log("Cancel")},
-                          ])
-                        }
-                /> */}
                 <SubButton2 
                     text="Stop"
                     onPress={() => Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
@@ -218,19 +190,6 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
                 <Text style={styles.smallertext}> Were you able to complete your task? </Text>
 
-
-                
-                {/* <MainButton
-                    style = {{bottom : 1000}}
-                    text = "No, I need to reschedule :("
-                    onPress={() => poses.navigation.navigate('NavigationBarScreen')}
-                />
-                <MainButton
-                    style = {{bottom : 1000}}
-                    text = "Yes, I am all good :)"
-                    onPress={() => poses.navigation.navigate('HomeScreen')}
-                />     */}
-
                 <SubButton2 
                     text="No, I need to reschedule"
                     onPress={() => poses.navigation.navigate('NavigationBarScreen')}
@@ -239,10 +198,6 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     text="Yes, I am all good !"
                     onPress={() => poses.navigation.navigate('HomeScreen')}
                 />
-                {/* <SubButton2 
-                    text="Another round of Focusing"
-                    onPress={() => poses.navigation.navigate('FocusMode')}
-                /> */}
                 </>
             )}
             
