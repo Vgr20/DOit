@@ -96,7 +96,7 @@ class NewHabits extends React.Component {
                     borderRadius : 10}}
                 />
 
-                <Text style = {{
+                {/* <Text style = {{
                     color : '#E1E5E5',
                     fontWeight : 'semibold',
                     fontSize : 22,
@@ -106,11 +106,11 @@ class NewHabits extends React.Component {
                     
                 }}>
                     {/* -----------  Select Repeat Interval  ----------- */}
-                    Select Repeat Interval
-                </Text>
+                    {/* Select Repeat Interval */}
+                {/* </Text> */}
 
 
-                <Picker selectedValue = {this.state.user}
+                {/* <Picker selectedValue = {this.state.user}
                 onValueChange={(itemValue) => {
                     this.updateUser(itemValue);
                     // console.log("Selected Interval:", itemValue);
@@ -129,7 +129,7 @@ class NewHabits extends React.Component {
                     <Picker.Item label = "Daily" value = "Daily"/>
                     <Picker.Item label = "Weekly" value = "Weekly"/>
                     <Picker.Item label = "Monthly" value = "Monthly"/>
-                </Picker>
+                </Picker> */}
 
                 <Text style = {{
                     color : '#E1E5E5',
