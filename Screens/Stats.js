@@ -140,7 +140,7 @@ const Stats = (poses) => {
       >
         
 
-        <Text style={{ fontSize: 20, color: "white", textAlign: "center" }}>
+        <Text style={{ fontSize: 20, color: "white", textAlign: "center"}}>
           Ongoing Tasks: None
         </Text>
 

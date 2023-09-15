@@ -3,6 +3,7 @@ import {
   Button,
   StyleSheet,
   Text,
+  Image,
   TouchableOpacity,
   View,
   SafeAreaView,
@@ -53,12 +54,25 @@ const Dashboard = (poses) => {
     };
   }, [poses.navigation]);
 
-  const texts = "Dashboard";
+  const texts = "Control Center";
 
   return (
     <ScrollView style={styles.scrollviewcontainer}>
       <SafeAreaView style={styles.container}>
         <Text style={styles.text}>{texts}</Text>
+        <Image
+          source={require("../assets/undraw_habits2.png")}
+          style={{ width: 350, height: 300, position: "relative" }}
+        />
+
+        <Text style={{ fontSize: 18, color: "white", textAlign: "center"}}>
+        Go Get On
+        </Text>
+
+        <Text style={{ fontSize: 18, color: "white", textAlign: "center", paddingVertical: 8}}>
+        and Complete Each Section!
+        </Text>
+
         <MainButton
           text="Overall Stats"
           img={require("../assets/overallstats.png")}
@@ -98,7 +112,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 50,
     color: "white",
-    textTransform: "uppercase",
+    textTransform: "capitalize",
     fontWeight: "bold",
     marginVertical: 20,
   },

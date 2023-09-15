@@ -59,10 +59,10 @@ const SignInScreen = ({ navigation }) => {
 
     <Image
       source={require("../assets/GGOFINAL.png")}
-      style={{ width: 300, height: 300, position: "relative", alignSelf: "center", marginTop: 20, marginBottom: 20 }}
+      style={{ width: 300, height: 300, position: "relative", alignSelf: "center", marginTop: 80, marginBottom: 30 }}
     />
 
-    <Text style={{fontFamily: 'Satisfy_400Regular', color: "#E1E5E5", fontWeight : 'normal', marginBottom: 10, fontSize: 30}}>
+    <Text style={{fontFamily: 'Satisfy_400Regular', color: "#E1E5E5", fontWeight : 'normal', marginBottom: 30, fontSize: 30}}>
                 You're almost there!
     </Text>
 

@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   text2: {
     fontSize: 25,
     fontWeight: "normal",
-    marginVertical: 3,
+    marginVertical: 40,
     color: "#EAEAEA",
     top: 10,
     alignContent: "center",
