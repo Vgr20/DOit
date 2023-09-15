@@ -9,7 +9,7 @@ import {
   BackHandler,
   Alert,
 } from "react-native";
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "react-native";
 import MainButton from "../Components/MainButton";
 
 function handleBackPress() {
@@ -35,6 +35,7 @@ function handleBackPress() {
 }
 const Dashboard = (poses) => {
   useEffect(() => {
+    StatusBar.setHidden(true);
     const onBackPress = () => {
       if (poses.navigation.isFocused()) {
         // Only show the alert if the Dashboard is focused
