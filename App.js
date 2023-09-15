@@ -41,7 +41,7 @@ export default function App() {
     Satisfy_400Regular,
   });
 
-  const [initialRoute, setInitialRoute] = useState("HomeScreen");
+  const [initialRoute, setInitialRoute] = useState("SignInScreen");
 
   useEffect(() => {
     const fetchApi = async () => {
