@@ -18,8 +18,10 @@ import MorningRoutine from "./Screens/MorningRoutine";
 import yourHabits from "./Screens/yourHabits";
 import PastReflections from "./Screens/PastReflections";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {  useFonts, Satisfy_400Regular } from '@expo-google-fonts/satisfy';
+import { useFonts, Satisfy_400Regular } from "@expo-google-fonts/satisfy";
 
+import Config from "react-native-config";
+import { APP_API } from "@env";
 //connecting backend
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -36,7 +38,6 @@ const checkUserLoginStatus = async () => {
 };
 
 export default function App() {
-
   const [isFontLoaded] = useFonts({
     Satisfy_400Regular,
   });
@@ -47,9 +48,7 @@ export default function App() {
     const fetchApi = async () => {
       try {
         // const res = await axios.get("http://10.10.23.145:4000/");
-        const res = await axios.get(
-          "https://gogeton-backend-c2510df4ea4b.herokuapp.com/"
-        );
+        const res = await axios.get( APP_API );
         console.log(res.data);
         const userLoginStatus = await checkUserLoginStatus();
         if (userLoginStatus) {
@@ -65,8 +64,7 @@ export default function App() {
 
   if (!isFontLoaded) {
     return null;
-}
-
+  }
 
   const navigator = createStackNavigator(
     {
