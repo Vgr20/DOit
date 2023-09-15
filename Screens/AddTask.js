@@ -33,7 +33,7 @@ const AddTask = () => {
 
   //Star rating
   const [rating, setRating] = React.useState(0);
-
+  const [textValue, setTextValue] = React.useState("");
   const handleStarPress = (starNumber) => {
     let text;
 
@@ -81,7 +81,7 @@ const AddTask = () => {
         startDate: date,
         endTime: date2,
         endDate: date2,
-        priority: rating,
+        priority: textValue,
         deadline: date3,
         // Include other task properties here
       });
