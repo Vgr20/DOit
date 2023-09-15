@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import MainButton from "../Components/MainButton";
+import { ScrollView } from "react-native-gesture-handler";
 
 function handleBackPress() {
   Alert.alert(
@@ -54,32 +55,35 @@ const Dashboard = (poses) => {
   const texts = "Dashboard";
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>{texts}</Text>
-      <MainButton
-        text="Overall Stats"
-        img={require("../assets/overallstats.png")}
-        onPress={() => poses.navigation.navigate("StatsScreen")}
-      />
+    <ScrollView style={styles.scrollviewcontainer}>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.text}>{texts}</Text>
+        <MainButton
+          text="Overall Stats"
+          img={require("../assets/overallstats.png")}
+          onPress={() => poses.navigation.navigate("StatsScreen")}
+        />
 
-      <MainButton
-        text="Habits"
-        img={require("../assets/habits.png")}
-        onPress={() => poses.navigation.navigate("HabitScreen")}
-      />
+        <MainButton
+          text="Habits"
+          img={require("../assets/habits.png")}
+          onPress={() => poses.navigation.navigate("HabitScreen")}
+        />
 
-      <MainButton
-        text="Task Scheduling"
-        img={require("../assets/scheduling.png")}
-        onPress={() => poses.navigation.navigate("NavigationBarScreen")}
-      />
+        <MainButton
+          text="Task Scheduling"
+          img={require("../assets/scheduling.png")}
+          onPress={() => poses.navigation.navigate("NavigationBarScreen")}
+        />
 
-      <MainButton
-        text="Focus Mode"
-        img={require("../assets/focused.png")}
-        onPress={() => poses.navigation.navigate("FocusMode")}
-      />
-    </SafeAreaView>
+        <MainButton
+          text="Focus Mode"
+          img={require("../assets/focused.png")}
+          onPress={() => poses.navigation.navigate("FocusMode")}
+        />
+      </SafeAreaView>
+    </ScrollView>
+    
   );
 };
 
@@ -96,6 +100,10 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontWeight: "bold",
     marginVertical: 20,
+  },
+  scrollviewcontainer: {
+    flex: 1,
+    backgroundColor: "#2f4f4f",
   },
 });
 
