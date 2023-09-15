@@ -11,7 +11,9 @@ import {
 } from "react-native";
 import { StatusBar } from "react-native";
 import MainButton from "../Components/MainButton";
+import MainButton2 from "../Components/MainButton2";
 import { ScrollView } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function handleBackPress() {
   Alert.alert(
@@ -34,6 +36,22 @@ function handleBackPress() {
   );
   return true;
 }
+
+
+
+const signOut = async () => {
+  try {
+    // Clear user-specific data from AsyncStorage
+    await AsyncStorage.removeItem("authToken");
+    await AsyncStorage.removeItem("userData");
+    await AsyncStorage.removeItem("KeepLoggedIn");
+
+  } catch (error) {
+    console.error("Error while signing out:", error);
+  }
+};
+
+
 const Dashboard = (poses) => {
   useEffect(() => {
     StatusBar.setHidden(true);
@@ -81,6 +99,15 @@ const Dashboard = (poses) => {
           text="Focus Mode"
           img={require("../assets/focused.png")}
           onPress={() => poses.navigation.navigate("FocusMode")}
+        />
+
+        <MainButton2
+          text="Sign Out"
+          img={require("../assets/cancel.png")}
+          onPress={() => {
+            signOut();
+            poses.navigation.navigate("SignInScreen");
+          }}
         />
       </SafeAreaView>
     </ScrollView>

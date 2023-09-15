@@ -20,12 +20,6 @@ const Habits = (poses) => {
         <Text style={styles.text}>Our suggestions:</Text>
 
         <SubButton 
-            text="Trending Habits"
-            img = {require('../assets/trendinghabits.png')}
-            subtext="Build better habits, one at a time."
-            onPress={() => poses.navigation.navigate('TrendingHabitsScreen')}
-            />
-        <SubButton 
             text="Make your Bed"
             img = {require('../assets/sleeping.png')}
             subtext="Start your day right"
@@ -38,13 +32,6 @@ const Habits = (poses) => {
             subtext={"Make sure you drink enough."}
             onPress={() => poses.navigation.navigate('MorningRoutine')}
             />
-        <SubButton
-            text="Go For a Walk"
-            img = {require('../assets/walk2.png')}
-            subtext={"Feel the Environment."}
-            onPress={() => poses.navigation.navigate('FullScreen')}
-            />
-
         <SubButton
             text="Meditate"
             img = {require('../assets/stayathome2.png')}
