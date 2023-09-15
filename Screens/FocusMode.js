@@ -12,7 +12,7 @@ import CountDownV3 from './CountDownV3';
 
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
-    const [breaktime, onChangeText2] = React.useState((worktime/2).toString());
+    const [breaktime, onChangeText2] = React.useState('25');
     const [breakinterval, onChangeText3] = React.useState('5');
     const [showCountdown, setShowCountdown] = React.useState(false);
     const [startCounter, setStartCounter] = React.useState(false);
@@ -33,10 +33,12 @@ function FocusMode(props) {
                 <SubButton
                     text="Focus Mode"
                     img = {require('../assets/focused.png')}
-                    subtext={"With Pomodoro technique"}
+                    subtext={"With Pomodoro technique \nLearn more here!"}
                     onPress={() => 
-                        Alert.alert("Focus Mode", "Let's Get Focused!", [
-                            {text: "Yippeee!", onPress: () =>  
+                        Alert.alert("Focus Mode", "Time management method: Work intensely for 25 minutes, "+
+                        "then take a 5-minute break; repeat for focus and productivity."+
+                        " Adjust the timings according to your preference!", [
+                            {text: "Right!", onPress: () =>  
                             console.log("Yippeee!")
                             } ])
                         }

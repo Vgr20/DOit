@@ -65,7 +65,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                 } else {
                     console.log(prevTime);
                     console.log("Start_total:",targetTime, worktime)
-                    console.log(breakList)
+                    // console.log(breakList)
                     return prevTime - 1;
                 }
             } else {

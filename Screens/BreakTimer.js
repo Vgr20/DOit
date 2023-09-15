@@ -4,16 +4,89 @@ import { StyleSheet } from 'react-native';
 import MainButton from '../Components/MainButton';
 import { useNavigation } from "@react-navigation/native";
 import { NavigationContainer } from "@react-navigation/native";
+import SubButton from '../Components/SubButton';
+
+const Habits_list = [
+    <SubButton
+    text="Drink Water"
+    img = {require('../assets/drinkwater.png')}
+    subtext={"Make sure you drink enough."}
+    onPress={() => 
+        Alert.alert("Drinking Water", "Stay hydrated: Sip water throughout the day for optimal energy and vitality.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />, 
+
+    <SubButton
+    text="Go For a Walk"
+    img = {require('../assets/walk2.png')}
+    subtext={"Feel the Environment."}
+    onPress={() => 
+        Alert.alert("Going For A Walk", "Take daily walks: Boost mood and creativity while improving physical health.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />,
+
+    <SubButton
+    text="Meditate"
+    img = {require('../assets/stayathome2.png')}
+    subtext={"Make your mind Focus."}
+    onPress={() => 
+        Alert.alert("Meditating", "Meditate daily: Relieve stress, enhance focus, and find inner peace.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />, 
+
+    <SubButton
+    text="Exercise"
+    img = {require('../assets/excercise.png')}
+    subtext={"Get ready you body."}
+    onPress={() => 
+        Alert.alert("Exercising", "Exercise regularly: Boost energy, stay fit, and improve your mood.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />,
+
+    <SubButton
+    text="Journalling"
+    img = {require('../assets/journaling2.png')}
+    subtext={"Write evry memory."}
+    onPress={() => 
+        Alert.alert("Journalling", "Journal daily: Reflect on your thoughts, feelings, and experiences for mental clarity and self-discovery.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />
+
+]
+
+var randomNum = 2
 
 const BreakTimer = ({ targetTime }) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime);
     // const [worktime, setWorktime] = useState(300)
     const [isBreak, setIsBreak] = useState(true);
 
+    // Generates a random number between 0 and 4
+    console.log("habit no: "+randomNum); // Output a random number between 0 and 4
+
     useEffect(() => {
         const interval = setInterval(() => {
           setTimeRemaining((prevTime) => {
             if (prevTime > 0) {
+                if (prevTime % 60 == 0) {
+                    randomNum = Math.floor(Math.random() * 5);
+                    console.log("New Habit:",randomNum)
+                }
               return prevTime - 1;
             } else {
               clearInterval(interval);
@@ -123,21 +196,16 @@ const BreakTimer = ({ targetTime }) => {
                     MM:SS
                 </Text>
 
-                <Text style={styles.titletext}>
-                     
+                <Text>
+
                 </Text>
-                {/* <MainButton
-                    style = {{bottom : 1000}}
-                    text="Stop"
-                    onPress={() => 
-                        Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
-                            {text: "Yes", onPress: () =>     
-                                setTimeRemaining(0)
-                            },
-                            {text: "No", onPress: () => console.log("Cancel")},
-                          ])
-                        }
-                /> */}
+
+                <Text style={styles.titletext}>
+                    Try out
+                    <View>
+                        {Habits_list[randomNum]}
+                    </View>
+                </Text>
                 
                 </>
                 
@@ -147,18 +215,7 @@ const BreakTimer = ({ targetTime }) => {
                 <Text style={styles.text}> Over! </Text>
                 <Text style={styles.text}> Back to Work! </Text>
 
-                {/* <Text style={styles.smallertext}> Were you able to complete your task? </Text>
-
-                <MainButton
-                    style = {{bottom : 1000}}
-                    text = "No, I need to reschedule :("
-                    onPress={() => poses.navigation.navigate('AddTask')}
-                />
-                <MainButton
-                    style = {{bottom : 1000}}
-                    text = "Yes, I am all good :)"
-                    onPress={() => poses.navigation.navigate('Dashboard')}
-                />     */}
+               
                 </>
             )}
             
