@@ -5,7 +5,10 @@ import { StyleSheet, View, Alert, Text, TextInput, ScrollView } from "react-nati
 import SubButton2 from "../Components/SubButton2";
 import MainButton from "../Components/MainButton";
 import _BackgroundTimer from "react-native-background-timer";
-import { setIn } from "formik";
+// import { setIn } from "formik";
+// import { UseSelector } from "react-redux/es/hooks/useSelector";
+// import Dispatch from "redux";
+// import { useDispatch } from "react-redux";
 
 
 const FocusModeV2 = (poses) => {
@@ -17,11 +20,30 @@ const FocusModeV2 = (poses) => {
     const worktime = worktimeInput*60;
     const breaktime = breaktimeInput*60;
 
+    let numBreaksLeft = Math.ceil(totaltime / worktime) - 1;
+
     const [timerOn, setTimerOn] = React.useState(false);
     const [breakOn, setBreakOn] = React.useState(false);
-    const [activeCounter, setActiveCounter] = React.useState(false);
-    const [startTime, setStartTime] = React.useState(Date.now())
+    // const [activeCounter, setActiveCounter] = React.useState(false);
+    const [startTime, setStartTime] = React.useState(Math.floor(Date.now() / 1000))
     var finishTime = 0;
+    const [distance, setDistance] = React.useState(0);
+
+    let activeCounter = false;
+    let isBreak = false;
+
+    function breakCounter(timeSec) {
+        const breakStart = Math.floor(Date.now() / 1000);
+        const breakEnd = breakStart + timeSec;
+        let breakRemaining = breakEnd - Math.floor(Date.now() / 1000);
+      
+        while (breakRemaining > 0) {
+          const minutes = Math.floor(breakRemaining / 60);
+          const seconds = breakRemaining % 60;
+          console.log(`Break: ${minutes}:${seconds}`);
+          breakRemaining = breakEnd - Math.floor(Date.now() / 1000);
+        }
+    }
 
     const clockify = (distance) => {
 
@@ -40,10 +62,6 @@ const FocusModeV2 = (poses) => {
         }
     }
 
-    const dummy = () =>  {
-        console.log("111")
-    };
-
     const beginTimer = (totaltime) => {
         setStartTime(Date.now());
         finishTime = startTime + (totaltime*1000); 
@@ -60,19 +78,47 @@ const FocusModeV2 = (poses) => {
     //     }
     // }, [timerOn])
 
-    var timer = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = Math.floor((finishTime - now)/1000);
-
-        if (distance < 0) {
-            clearInterval(timer);
-        }
-        return distance;
-    }, 1000)
 
     // useEffect(() => {
-    //     if 
-    // })
+    //     var now = new Date().getTime();
+    //     distance = Math.floor((finishTime - now)/1000);
+
+    //     if (distance < 0) {
+    //         distance = 0
+    //     }
+    //     return distance;
+    // }, 1000)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setDistance((distance) => {
+                if (distance > 0) {
+                    console.log(distance)
+                    return finishTime - Date.now()
+                } else {
+                    console.log(0);
+                    clearInterval(interval);
+                    return 0;
+                }
+            })
+        });
+    }, 1000);
+    // }, 100);  // for debugging
+
+
+    // var timer = setInterval(function() {
+    //     var now = new Date().getTime();
+    //     distance = Math.floor((finishTime - now)/1000);
+
+    //     if (distance < 0) {
+    //         clearInterval(timer);
+    //     }
+    //     return distance;
+    // }, 1000)
+
+    // useEffect(() => {
+    //     if (activeCounter) returntimer;
+    // }, [activeCounter])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -165,9 +211,10 @@ const FocusModeV2 = (poses) => {
                     }
                 />
 
+
                 <View style={styles.text}>
                     <Text style={styles.megatext}>
-                        {clockify().displayHours.toString()}:{clockify().displayMins}:{clockify().displaySecs}
+                        {clockify(distance).displayHours.toString()}:{clockify(distance).displayMins}:{clockify(distance).displaySecs}
                     </Text>
                     <Text style={styles.titletext}>
                         Get It On!

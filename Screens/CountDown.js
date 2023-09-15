@@ -6,6 +6,21 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationContainer } from "@react-navigation/native";
 import BreakTimer from './BreakTimer';
 import SubButton2 from '../Components/SubButton2';
+import PercentageBar from '../Components/PercentageBar';
+import BreakBar from '../Components/BreakBar';
+
+function calculateBreakTimes(totalTime, workTime) {
+    const breakMilestones = [];
+    let currentTime = 0;
+
+    while (currentTime + workTime < totalTime) {
+    currentTime += workTime;
+    const percentage = (currentTime / totalTime) * 100;
+    breakMilestones.push(percentage);
+    }
+
+    return breakMilestones;
+}
 
 const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
@@ -19,6 +34,8 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [num_breaks, setnum_breaks] = useState(Math.ceil((targetTime) / (breakInterval)) - 1);
     const tot_breaks = Math.ceil((startTime/60) / (breakInterval)) - 1;
     
+    const breakList = calculateBreakTimes(startTime, worktime)
+
     useEffect(() => {
         const interval = setInterval(() => {
           setTimeRemaining((prevTime) => {
@@ -48,6 +65,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                 } else {
                     console.log(prevTime);
                     console.log("Start_total:",targetTime, worktime)
+                    console.log(breakList)
                     return prevTime - 1;
                 }
             } else {
@@ -104,8 +122,6 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     {hour.toString()}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
                 </Text>
 
-                <PercentageBar percentage={Math.round(((startTime - timeRemaining)/ startTime) * 100)}/>
-
                 <Text style={styles.titletext}>
                     Hours to go    
                 </Text>
@@ -117,6 +133,10 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                 <Text style={styles.smallertext}>
                     
                 </Text>
+
+                <PercentageBar percentage={Math.round(((startTime - timeRemaining)/ startTime) * 100)}/>
+                
+                {/* <BreakBar percentage={worktime/startTime*100}></BreakBar>    */}
 
                 <Text style={styles.midsmalltext}>
                     

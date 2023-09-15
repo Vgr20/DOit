@@ -13,10 +13,10 @@ const CountDownV3 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     const [worktime, setWorktime] = useState(breakInterval*60)
     const [isBreak, setIsBreak] = useState(false);
-    const [break_mins, setbreak_mins] = useState(breakDuration*60)
+    const [break_duration, setbreak_duration] = useState(breakDuration*60)
     const startTime = targetTime*60;
     const resetNumMinutes = () => {
-        setbreak_mins(breakDuration*60);
+        setbreak_duration(breakDuration*60);
     }
     const [num_breaks, setnum_breaks] = useState(Math.ceil((targetTime) / (breakInterval)) - 1);
     const tot_breaks = Math.ceil((startTime/60) / (breakInterval)) - 1;
@@ -33,6 +33,45 @@ const CountDownV3 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
         return [mins, secs];
       }
 
+      async function workLoop() {
+        while (num_breaks > 0) {
+          const workStart = Math.floor(Date.now() / 1000);
+          const workFinish = workStart + worktime;
+          let workRemaining = workFinish - Math.floor(Date.now() / 1000);
+      
+          while (workRemaining > 0) {
+            const [workMins, workSecs] = displayMMSS(workRemaining);
+            console.log(`Work : ${workMins}:${workSecs}`);
+            workRemaining = workFinish - Math.floor(Date.now() / 1000);
+          }
+      
+          num_breaks--;
+          isBreak = true;
+          await breakCounter(break_duration);
+          isBreak = false;
+        }
+      
+        if (num_breaks === 0) {
+          const workDuration = totalTime % worktime;
+          const workStart = Math.floor(Date.now() / 1000);
+          const workFinish = workStart + workDuration;
+          let workRemaining = workFinish - Math.floor(Date.now() / 1000);
+      
+          while (workRemaining > 0) {
+            const [workMins, workSecs] = displayMMSS(workRemaining);
+            console.log(`Work : ${workMins}:${workSecs}`);
+            workRemaining = workFinish - Math.floor(Date.now() / 1000);
+          }
+        }
+
+        return (
+            <Text style={styles.midmegatext}>
+                {workMins.toString().padStart(2, '0')}:{workSecs.toString().padStart(2, '0')} 
+            </Text>
+        )
+      }
+      
+      workLoop();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -74,7 +113,7 @@ const CountDownV3 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     </Text>
 
                     <View style={styles.text}>
-                        <BreakTimer key={Date.now()} targetTime={break_mins} />
+                        <BreakTimerV2 key={Date.now()} timeSec={break_duration} />
                     </View>
 
                     <Text style={styles.titletext}>
@@ -91,11 +130,9 @@ const CountDownV3 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     </>
                 )}
     
-                {/* <Text style={styles.midmegatext}>
+                <Text style={styles.midmegatext}>
                     {hour.toString()}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
-                </Text> */}
-
-                <BreakTimerV2 key={Date.now()} timeSec={300} />
+                </Text>
 
                 <PercentageBar percentage={Math.round(((startTime - timeRemaining)/ startTime) * 100)}/>
                 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { Button, View , StyleSheet , Text, Alert, TextInput} from 'react-native';
 import MainButton from '../Components/MainButton';
@@ -8,28 +8,55 @@ import SubButton from '../Components/SubButton';
 import { useFocusEffect } from '@react-navigation/native';
 import SubButton2 from '../Components/SubButton2';
 import { ScrollView } from 'react-native-gesture-handler';
-import CountDownV3 from './CountDownV3';
+import CounterV4 from './CountDownV4';
+import BreakTimerV2 from './BreakTimerV2';
 
-function FocusMode(props) {
-    const [worktime, onChangeText1] = React.useState('60');
-    const [breaktime, onChangeText2] = React.useState((worktime/2).toString());
-    const [breakinterval, onChangeText3] = React.useState('5');
-    const [showCountdown, setShowCountdown] = React.useState(false);
-    const [startCounter, setStartCounter] = React.useState(false);
-    const handleCheckBoxChange = (isChecked) => {
-        console.log('Checkbox checked:', isChecked);
-    };
-    const [isFocused, setIsFocused] = useState(true);
+function FocusModeV3 (props) {
+    const [totaltimeInput, onChangeTotalTimeInput] = React.useState('60');
+    const [worktimeInput, onChangeWorkTimeInput] = React.useState('30');
+    const [breaktimeInput, onChangeBreakTimeInput] = React.useState('5');
+
+    const totaltime = totaltimeInput*60;
+    const worktime = worktimeInput*60;
+    const breaktime = breaktimeInput*60;
+
+    var numBreaksLeft = Math.ceil(totaltime / worktime) - 1;
+    const tot_breaks = Math.ceil(totaltime / worktime) - 1;
+
+    const [activeCounter, setActiveCounter] = React.useState(false);
+    const [isBreak, setIsBreak] = React.useState(false);
+
+    useEffect(() => {
+        if (activeCounter) {
+            workLoop();
+        }   
+    }, [activeCounter])
+
+    const workLoop = () => {
+        const intervalId = setInterval(() => {
+          if (numBreaksLeft > 0) {
+            if (isBreak) {
+              // Display Break Timer 
+              setIsBreak(false);
+            } else {
+              // Display Work Timer
+              numBreaksLeft -= 1;
+              console.log(numBreaksLeft)
+              setIsBreak(true);
+            }
+          } else {
+            // Display Work Timer for remaining time
+            clearInterval(intervalId);
+            setIsBreak(true); // or false based on your final requirement
+          }
+        }, worktime * 1000); // Assumes worktime is in seconds
+      };
 
     return (
-
-        
         <SafeAreaView style={styles.container}>
         <ScrollView>
-
-            {!startCounter ? (
+            {!activeCounter ? (
                 <>
-
                 <SubButton
                     text="Focus Mode"
                     img = {require('../assets/focused.png')}
@@ -38,8 +65,8 @@ function FocusMode(props) {
                         Alert.alert("Focus Mode", "Let's Get Focused!", [
                             {text: "Yippeee!", onPress: () =>  
                             console.log("Yippeee!")
-                            } ])
-                        }
+                        } ])
+                    }
                 />
 
                 <Text style={styles.smalltext}>
@@ -50,8 +77,8 @@ function FocusMode(props) {
                 </Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeText1}
-                    value={worktime}
+                    onChangeText={onChangeTotalTimeInput}
+                    value={totaltimeInput}
                 />
 
                 <Text style={styles.smalltext}>
@@ -62,10 +89,10 @@ function FocusMode(props) {
                 </Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeText2}
-                    value={breaktime}
+                    onChangeText={onChangeWorkTimeInput}
+                    value={worktimeInput}
                 />
-
+                
                 <Text style={styles.smalltext}>
                     Break Duration
                 </Text>
@@ -74,8 +101,8 @@ function FocusMode(props) {
                 </Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeText3}
-                    value={breakinterval}
+                    onChangeText={onChangeBreakTimeInput}
+                    value={breaktimeInput}
                 />
 
                 <SubButton2 
@@ -83,21 +110,16 @@ function FocusMode(props) {
                     onPress={() => 
                         Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
                             {text: "Yes", onPress: () =>  
-                                [setShowCountdown(true),
-                                setStartCounter(true)]
+                                [setActiveCounter(true),
+                                console.log(worktime)]
                             },
-                            {text: "No", onPress: () => console.log(startCounter)},
+                            {text: "No", onPress: () => console.log("Not Started")},
                         ])
                     }
-                />
+                />  
 
                 </>
-                ) : (
-                    <></>
-                )
-            }
-
-            {showCountdown && (
+            ) : (
                 <>
                 <MainButton 
                 text="Focus Mode"
@@ -110,19 +132,35 @@ function FocusMode(props) {
                         } ])
                     }
                 />
-                {/* <Text style={styles.titletext}>
-                    Focus Mode
-                </Text>    */}
+                
+                {!isBreak ? (
+                    <View style={styles.text}>
+                    <Text style={styles.titletext}>
+                        Working Time
+                    </Text>
+                    <CounterV4 key={Date.now()} timeSec={worktime} />
+                    </View>
+                ) : (
+                    <View style={styles.text}>
+                    <Text style={styles.titletext}>
+                        Take a Break
+                    </Text>
+                    <BreakTimerV2 key={Date.now()} timeSec={breaktime} />
+                    </View>
+                )
 
-                <View style={styles.text}>
-                    <CountDown key={Date.now()} targetTime={worktime} breakInterval={breaktime} breakDuration = {breakinterval} poses={props}/>
-                </View>
+                }
+
+
+
                 </>
             )}
 
+
         </ScrollView>
-        </SafeAreaView> 
-    );
+        </SafeAreaView>
+
+    )
 }
 
 const styles = StyleSheet.create({
@@ -139,6 +177,7 @@ const styles = StyleSheet.create({
         // fontFamily: 'AppleSDGothicNeo-Bold',
         textTransform: 'uppercase',
         fontWeight: 'bold',
+        textAlign: 'center'
     },
 
     smalltext: {
@@ -181,4 +220,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default FocusMode;
+export default FocusModeV3;

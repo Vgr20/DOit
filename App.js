@@ -19,6 +19,7 @@ import yourHabits from "./Screens/yourHabits";
 import PastReflections from "./Screens/PastReflections";
 import FocusModeV2 from "./Screens/FocusModeV2";
 import CountDownV2 from "./Screens/CountDownV2";
+import FocusModeV3 from "./Screens/FocusModeV3";
 
 //connecting backend
 import axios from "axios";
@@ -93,7 +94,11 @@ const navigator = createStackNavigator(
 
     FocusModeV2: {
       screen: FocusModeV2,
-    }
+    },
+    FocusModeV3: {
+      screen: FocusModeV3,
+    },
+
   },
   {
     initialRouteName: "HomeScreen",

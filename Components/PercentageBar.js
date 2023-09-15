@@ -12,12 +12,13 @@ const PercentageBar = ({ percentage }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: 30,
+    width: '85%',
+    height: 50,
     backgroundColor: '#ccc',
-    borderRadius: 5,
+    borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
+    alignSelf: 'center'
   },
   progressBar: {
     height: '100%',
@@ -26,7 +27,8 @@ const styles = StyleSheet.create({
   },
   percentageText: {
     marginLeft: 10,
-    fontSize: 16,
+    fontSize: 25,
+    fontWeight: 'bold'
   },
 });
 
