@@ -18,6 +18,7 @@ import MorningRoutine from "./Screens/MorningRoutine";
 import yourHabits from "./Screens/yourHabits";
 import PastReflections from "./Screens/PastReflections";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {  useFonts, Satisfy_400Regular } from '@expo-google-fonts/satisfy';
 
 //connecting backend
 import axios from "axios";
@@ -35,6 +36,11 @@ const checkUserLoginStatus = async () => {
 };
 
 export default function App() {
+
+  const [isFontLoaded] = useFonts({
+    Satisfy_400Regular,
+  });
+
   const [initialRoute, setInitialRoute] = useState("SignInScreen");
 
   useEffect(() => {
@@ -56,67 +62,130 @@ export default function App() {
 
     fetchApi();
   }, []);
+
+  if (!isFontLoaded) {
+    return null;
+}
+
+
   const navigator = createStackNavigator(
     {
       HomeScreen: {
         screen: Dashboard,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       HabitScreen: {
         screen: Habits,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       NewHabitsScreen: {
         screen: NewHabits,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       SignInScreen: {
         screen: SignInScreen,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       RegisterScreen: {
         screen: RegisterScreen,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       StatsScreen: {
         screen: Stats,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       SelectGoalsScreen: {
         screen: SelectGoals,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       TimerGoalScreen: {
         screen: TimerGoal,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       TrendingHabitsScreen: {
         screen: TrendingHabits,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       FullScreen: {
         screen: fullscreentest,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
 
       NavigationBarScreen: {
         screen: NavigationBar,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
 
       FocusMode: {
         screen: FocusMode,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       CountdownPage: {
         screen: CountdownPage,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       CountdownPage: {
         screen: CountdownPage,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       MorningRoutine: {
         screen: MorningRoutine,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       yourHabits: {
         screen: yourHabits,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       SelectGoals2: {
         screen: SelectGoals2,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
       SelectGoals2: {
         screen: SelectGoals2,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
 
       PastReflections: {
         screen: PastReflections,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
       },
     },
     {

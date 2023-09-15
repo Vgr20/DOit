@@ -56,22 +56,43 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <FormContainer>
+
+    <Image
+      source={require("../assets/GGOFINAL.png")}
+      style={{ width: 300, height: 300, position: "relative", alignSelf: "center", marginTop: 20, marginBottom: 20 }}
+    />
+
+    <Text style={{fontFamily: 'Satisfy_400Regular', color: "#E1E5E5", fontWeight : 'normal', marginBottom: 10, fontSize: 30}}>
+                You're almost there!
+    </Text>
+
       {error ? (
         <Text style={{ color: "red", fontSize: 18, textAlign: "center" }}>
           {error}
         </Text>
       ) : null}
+
       <FormInput
         value={email}
         onChangeText={(value) => handleOnChangeText(value, "email")}
-        label="Email"
+        label={
+          <Text style={{ color: "#E1E5E5", fontWeight : 'normal'}}>
+            Email
+          </Text>
+        }
+        labelStyle={{ paddingRight: 0 }}
         placeholder="example@email.com"
         autoCapitalize="none"
       />
       <FormInput
         value={password}
         onChangeText={(value) => handleOnChangeText(value, "password")}
-        label="Password"
+        label={
+          <Text style={{ color: "#E1E5E5", fontWeight : 'normal'}}>
+            Password
+          </Text>
+        }
+        labelStyle={{ paddingRight: 0 }}
         placeholder="********"
         autoCapitalize="none"
         secureTextEntry
