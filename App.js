@@ -17,6 +17,9 @@ import SelectGoals2 from "./Screens/SelectGoals_drop";
 import MorningRoutine from "./Screens/MorningRoutine";
 import yourHabits from "./Screens/yourHabits";
 import PastReflections from "./Screens/PastReflections";
+import FocusModeV2 from "./Screens/FocusModeV2";
+import CountDownV2 from "./Screens/CountDownV2";
+import FocusModeV3 from "./Screens/FocusModeV3";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {  useFonts, Satisfy_400Regular } from '@expo-google-fonts/satisfy';
 
