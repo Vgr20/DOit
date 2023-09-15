@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         //add colour gradient 
         width : 350,
         borderColor: "#ff6200",
-        borderWidth: 3,
+        // borderWidth: 3,
         marginVertical : 5,
     },
     buttonText : {
