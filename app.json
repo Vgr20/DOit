@@ -3,7 +3,7 @@
     "name": "DOit",
     "slug": "DOit",
     "version": "1.0.0",
-    "orientation": "potrait",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -11,12 +11,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "fonts": [
-      {
-        "name": "Satisfy-Regular",
-        "asset": "./assets/fonts/Satisfy-Regular.ttf"
-      }
-    ],
     "assetBundlePatterns": [
       "**/*"
     ],
