@@ -18,6 +18,7 @@ import MorningRoutine from "./Screens/MorningRoutine";
 import yourHabits from "./Screens/yourHabits";
 import PastReflections from "./Screens/PastReflections";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {  useFonts, Satisfy_400Regular } from '@expo-google-fonts/satisfy';
 
 //connecting backend
 import axios from "axios";
@@ -35,6 +36,11 @@ const checkUserLoginStatus = async () => {
 };
 
 export default function App() {
+
+  const [isFontLoaded] = useFonts({
+    Satisfy_400Regular,
+  });
+
   const [initialRoute, setInitialRoute] = useState("SignInScreen");
 
   useEffect(() => {
@@ -56,6 +62,12 @@ export default function App() {
 
     fetchApi();
   }, []);
+
+  if (!isFontLoaded) {
+    return null;
+}
+
+
   const navigator = createStackNavigator(
     {
       HomeScreen: {

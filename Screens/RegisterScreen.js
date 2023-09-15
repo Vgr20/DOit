@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 
 import { isValidEmail, isValidObjField, updateError } from "../utils/methods";
 import FormContainer from "../Form/FormContainer";
@@ -15,16 +15,16 @@ import client from "../api/client";
 const validationSchema = Yup.object({
   fullname: Yup.string()
     .trim()
-    .min(3, "Invalid name!")
-    .required("Name is required!"),
-  email: Yup.string().email("Invalid email!").required("Email is required!"),
+    .min(3, " Invalid name!")
+    .required(" Name is required!"),
+  email: Yup.string().email(" Invalid email!").required(" Email is required!"),
   password: Yup.string()
     .trim()
-    .min(8, "Password is too short!")
-    .required("Password is required!"),
+    .min(8, " Password is too short!")
+    .required(" Password is required!"),
   confirmPassword: Yup.string().equals(
     [Yup.ref("password"), null],
-    "Password does not match!"
+    " Password does not match!"
   ),
 });
 
@@ -100,6 +100,7 @@ const RegisterScreen = ({ navigation }) => {
         validationSchema={validationSchema}
         onSubmit={signUp}
       >
+
         {({
           values,
           errors,
@@ -111,13 +112,26 @@ const RegisterScreen = ({ navigation }) => {
         }) => {
           const { fullname, email, password, confirmPassword } = values;
           return (
-            <>
+            <View style={{ flex: 1, alignItems: "center", paddingLeft: 20, paddingRight: 20, justifyContent: "center" }}>
+
+              <Image
+                source={require("../assets/undraw_welcome.png")}
+                style={{ width: 300, height: 250, position: "relative", alignSelf: "center", marginBottom: 5 }}
+              />
+              <Text style={{fontFamily: 'Satisfy_400Regular', fontSize: 20, color: "#E1E5E5", fontWeight : 'normal', marginBottom: 10, textAlign: "center"}}>
+                Take the first step to a better you!
+              </Text>
               <FormInput
                 value={fullname}
                 error={touched.fullname && errors.fullname}
                 onChangeText={handleChange("fullname")}
                 onBlur={handleBlur("fullname")}
-                label="Full Name"
+                label={
+                  <Text style={{ color: "#E1E5E5", fontWeight : 'normal'}}>
+                    Full Name
+                  </Text>
+                }
+                labelStyle={{ paddingRight: 5 }}
                 placeholder="John Smith"
               />
               <FormInput
@@ -126,7 +140,12 @@ const RegisterScreen = ({ navigation }) => {
                 onChangeText={handleChange("email")}
                 onBlur={handleBlur("email")}
                 autoCapitalize="none"
-                label="Email"
+                label={
+                  <Text style={{ color: "#E1E5E5", fontWeight : 'normal'}}>
+                    Email
+                  </Text>
+                }
+                labelStyle={{ marginLeft: 5 }}
                 placeholder="example@email.com"
               />
               <FormInput
@@ -136,7 +155,12 @@ const RegisterScreen = ({ navigation }) => {
                 onBlur={handleBlur("password")}
                 autoCapitalize="none"
                 secureTextEntry
-                label="Password"
+                label={
+                  <Text style={{ color: "#E1E5E5", fontWeight : 'normal'}}>
+                    Password
+                  </Text>
+                }
+                labelStyle={{ paddingRight: 5 }}
                 placeholder="********"
               />
               <FormInput
@@ -146,7 +170,12 @@ const RegisterScreen = ({ navigation }) => {
                 onBlur={handleBlur("confirmPassword")}
                 autoCapitalize="none"
                 secureTextEntry
-                label="Confirm Password"
+                label={
+                  <Text style={{ color: "#E1E5E5", fontWeight : 'normal'}}>
+                    Confirm Password
+                  </Text>
+                }
+                labelStyle={{ paddingRight: 5 }}
                 placeholder="********"
               />
               <FormSubmitButton
@@ -154,7 +183,7 @@ const RegisterScreen = ({ navigation }) => {
                 onPress={handleSubmit}
                 title="Sign up"
               />
-            </>
+            </View>
           );
         }}
       </Formik>
