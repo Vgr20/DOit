@@ -72,7 +72,7 @@ const Dashboard = (poses) => {
     };
   }, [poses.navigation]);
 
-  const texts = "Control Center";
+  const texts = "Activity Hub";
 
   return (
     <ScrollView style={styles.scrollviewcontainer}>
@@ -80,15 +80,11 @@ const Dashboard = (poses) => {
         <Text style={styles.text}>{texts}</Text>
         <Image
           source={require("../assets/undraw_habits2.png")}
-          style={{ width: 350, height: 300, position: "relative" }}
+          style={{ width: 270, height: 230, position: "relative" }}
         />
 
-        <Text style={{ fontSize: 18, color: "white", textAlign: "center"}}>
-        Go Get On
-        </Text>
-
-        <Text style={{ fontSize: 18, color: "white", textAlign: "center", paddingVertical: 8}}>
-        and Complete Each Section!
+        <Text style={{ fontSize: 20, color: "white", textAlign: "center", paddingVertical: 15}}>
+        Go Get On & Complete Each Section!
         </Text>
 
         <MainButton

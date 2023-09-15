@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  Image,
   View,
   Alert
 } from 'react-native';
@@ -90,11 +91,16 @@ const Item = ({ item, onPress, onTrashPress, backgroundColor, textColor }) => (
   >
     <View style={{ flexDirection: 'column' }}>
       <Text style={[styles.title, { color: 'black', fontSize: 25, fontWeight:'bold', alignItems:'center', marginBottom:7}]}>{item.title}</Text>
+      <Image
+          source={require("../assets/undraw_schedule2.png")}
+          style={{ width: 200, height: 200, alignSelf: "center", marginLeft: 80, marginBottom: 0 }}
+        />
       <View style={styles.taskDetails}>
         <View >
           <Text style={[styles.titlesmall, { color: '#E1E5E5' }]}>
             {item.task1} (Priority: {item.task1priority})
           </Text>
+          
         </View>
           <View >
           {item.task2 && (
@@ -153,12 +159,24 @@ const TaskView = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginBottom: 0, fontSize: 40}}>
+            Organize Yourself
+          </Text>
+      <Image
+          source={require("../assets/undraw_grouping_tasks.png")}
+          style={{ width: 200, height: 200, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
+        />
+
+        <Text style={{ color: "#E1E5E5", fontWeight : 'normal', alignSelf: "center", marginBottom: 10}}>
+            Let's break huge tasks into doable slices.
+          </Text>
       <FlatList
         data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         extraData={selectedId}
       />
+
     </SafeAreaView>
   );
 };

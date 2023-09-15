@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   View,
   Text,
+  Image,
   StatusBar,
   StyleSheet,
   Button,
@@ -206,20 +207,24 @@ const AddTask = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Text> </Text>
-        {/* <Image
-          source={require("../assets/celebrate2.png")}
-          style={{
-            width: 50,
-            height: 50,
-            position: "absolute",
-            left: 10,
-            top: 100,
-          }}
-        /> */}
+      <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 10, fontSize: 40}}>
+            Generate Tasks
+          </Text>
+      <Image
+          source={require("../assets/undraw_schedule.png")}
+          style={{ width: 200, height: 200, alignSelf: "center", marginLeft: 40, marginBottom: 0 }}
+        />
+        <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 0, fontSize: 18, marginBottom: 10}}>
+            Task Up and Thrive!
+          </Text>
+
         {/* Task Name */}
         <View style={styles.box}>
           <Text style={styles.font}>TASK GROUP</Text>
+          <Image
+          source={require("../assets/task.png")}
+          style={{ width: 60, height: 60, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
+        />
           <Picker
             style={[
               styles.box,
@@ -264,6 +269,10 @@ const AddTask = () => {
         {/* Level of game */}
         <View style={styles.box}>
           <Text style={styles.font}>TASK NAME</Text>
+          <Image
+          source={require("../assets/writingtask.png")}
+          style={{ width: 60, height: 60, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
+        />
           <TextInput
             style={styles.input}
             onChangeText={onChangeNumber}
@@ -278,7 +287,10 @@ const AddTask = () => {
         {/* Starting Task Time */}
         <View style={styles.box}>
           <Text style={styles.font}>START AT</Text>
-          <Text> </Text>
+          <Image
+          source={require("../assets/hourglass.png")}
+          style={{ width: 60, height: 60, alignSelf: "center", marginTop: 0, marginBottom: 5 }}
+        />
           <View style={styles.selectdatetime}>
             <TouchableOpacity
               onPress={showDatepicker}
@@ -383,7 +395,7 @@ const AddTask = () => {
 
         {/* Deadline Task Time */}
         <View style={styles.box}>
-          <Text style={styles.font}>DEAD-LINE(Optional)</Text>
+          <Text style={styles.font}>DEAD-LINE (Optional)</Text>
           <Text> </Text>
           <View style={styles.selectdatetime}>
             <TouchableOpacity
@@ -437,6 +449,10 @@ const AddTask = () => {
         {/* Level of Importance */}
         <View style={styles.box}>
           <Text style={styles.font}>LEVEL OF IMPORTANCE</Text>
+          <Image
+          source={require("../assets/reward1.png")}
+          style={{ width: 60, height: 60, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
+        />
           <View style={styles.stars}>
             {[1, 2, 3].map((starNumber) => (
               <TouchableOpacity
