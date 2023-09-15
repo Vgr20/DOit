@@ -20,111 +20,200 @@ import PastReflections from "./Screens/PastReflections";
 import FocusModeV2 from "./Screens/FocusModeV2";
 import CountDownV2 from "./Screens/CountDownV2";
 import FocusModeV3 from "./Screens/FocusModeV3";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {  useFonts, Satisfy_400Regular } from '@expo-google-fonts/satisfy';
 
 //connecting backend
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const navigator = createStackNavigator(
-  {
-    HomeScreen: {
-      screen: Dashboard,
-    },
-    HabitScreen: {
-      screen: Habits,
-    },
-    NewHabitsScreen: {
-      screen: NewHabits,
-    },
-    SignInScreen: {
-      screen: SignInScreen,
-    },
-    RegisterScreen: {
-      screen: RegisterScreen,
-    },
-    StatsScreen: {
-      screen: Stats,
-    },
-    SelectGoalsScreen: {
-      screen: SelectGoals,
-    },
-    TimerGoalScreen: {
-      screen: TimerGoal,
-    },
-    TrendingHabitsScreen: {
-      screen: TrendingHabits,
-    },
-    FullScreen: {
-      screen: fullscreentest,
-    },
-
-    NavigationBarScreen: {
-      screen: NavigationBar,
-    },
-
-    FocusMode: {
-      screen: FocusMode,
-    },
-    CountdownPage: {
-      screen: CountdownPage,
-    },
-    CountdownPage: {
-      screen: CountdownPage,
-    },
-    MorningRoutine: {
-      screen: MorningRoutine,
-    },
-    yourHabits: {
-      screen: yourHabits,
-    },
-    SelectGoals2: {
-      screen: SelectGoals2,
-    },
-    SelectGoals2: {
-      screen: SelectGoals2,
-    },
-
-    PastReflections: {
-      screen: PastReflections,
-    },
-
-    CountDownV2: {
-      screen: CountDownV2,
-    },
-
-    FocusModeV2: {
-      screen: FocusModeV2,
-    },
-    FocusModeV3: {
-      screen: FocusModeV3,
-    },
-
-  },
-  {
-    initialRouteName: "HomeScreen",
-    defaultNavigationOption: {
-      title: "App",
-    },
+const checkUserLoginStatus = async () => {
+  try {
+    const value = await AsyncStorage.getItem("KeepLoggedIn");
+    console.log(value);
+    return value;
+  } catch (error) {
+    console.log(error);
+    return null; // Return null in case of an error
   }
-);
-
-const AppContainer = createAppContainer(navigator);
+};
 
 export default function App() {
-  const fetchApi = async () => {
-    try {
-      // const res = await axios.get("http://10.10.23.145:4000/");
-      const res = await axios.get(
-        "https://gogeton-backend-c2510df4ea4b.herokuapp.com/"
-      );
-      console.log(res.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+
+  const [isFontLoaded] = useFonts({
+    Satisfy_400Regular,
+  });
+
+  const [initialRoute, setInitialRoute] = useState("SignInScreen");
 
   useEffect(() => {
+    const fetchApi = async () => {
+      try {
+        // const res = await axios.get("http://10.10.23.145:4000/");
+        const res = await axios.get(
+          "https://gogeton-backend-c2510df4ea4b.herokuapp.com/"
+        );
+        console.log(res.data);
+        const userLoginStatus = await checkUserLoginStatus();
+        if (userLoginStatus) {
+          setInitialRoute("HomeScreen");
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
     fetchApi();
   }, []);
+
+  if (!isFontLoaded) {
+    return null;
+}
+
+
+  const navigator = createStackNavigator(
+    {
+      HomeScreen: {
+        screen: Dashboard,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      HabitScreen: {
+        screen: Habits,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      NewHabitsScreen: {
+        screen: NewHabits,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      SignInScreen: {
+        screen: SignInScreen,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      RegisterScreen: {
+        screen: RegisterScreen,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      StatsScreen: {
+        screen: Stats,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      SelectGoalsScreen: {
+        screen: SelectGoals,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      TimerGoalScreen: {
+        screen: TimerGoal,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      TrendingHabitsScreen: {
+        screen: TrendingHabits,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      FullScreen: {
+        screen: fullscreentest,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+
+      NavigationBarScreen: {
+        screen: NavigationBar,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+
+      FocusMode: {
+        screen: FocusMode,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      CountdownPage: {
+        screen: CountdownPage,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      CountdownPage: {
+        screen: CountdownPage,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      MorningRoutine: {
+        screen: MorningRoutine,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      yourHabits: {
+        screen: yourHabits,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      SelectGoals2: {
+        screen: SelectGoals2,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      SelectGoals2: {
+        screen: SelectGoals2,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+
+      PastReflections: {
+        screen: PastReflections,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+    },
+    {
+      initialRouteName: initialRoute,
+    }
+  );
+  const AppContainer = createAppContainer(navigator);
   return <AppContainer />;
 }
+
+// export default function App() {
+//   const fetchApi = async () => {
+//     try {
+//       // const res = await axios.get("http://10.10.23.145:4000/");
+//       const res = await axios.get(
+//         "https://gogeton-backend-c2510df4ea4b.herokuapp.com/"
+//       );
+//       console.log(res.data);
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchApi();
+//   }, []);
+//   return <AppContainer />;
+// }

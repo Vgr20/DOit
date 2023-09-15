@@ -6,7 +6,7 @@ import CountDown from './CountDown';
 import CheckBoxWithText from '../Components/CheckBoxWithText';
 import SubButton from '../Components/SubButton';
 import { useFocusEffect } from '@react-navigation/native';
-import SubButton2 from '../Components/SubButton2';
+import SubButton22 from '../Components/SubButton22';
 import { ScrollView } from 'react-native-gesture-handler';
 import CountDownV3 from './CountDownV3';
 
@@ -80,7 +80,37 @@ function FocusMode(props) {
                     value={breakinterval}
                 />
 
-                <SubButton2 
+
+                {/* <Text style={styles.smalltext}>
+                    Select the Apps to Block during Focus Mode
+
+                </Text>
+
+                <CheckBoxWithText
+                    label="Whatsapp"
+                    initialValue={true}
+                    onChange={handleCheckBoxChange}
+                />
+
+                <CheckBoxWithText
+                    label="Facebook"
+                    initialValue={true}
+                    onChange={handleCheckBoxChange}
+                />
+
+                <CheckBoxWithText
+                    label="Instagram"
+                    initialValue={true}
+                    onChange={handleCheckBoxChange}
+                />
+
+                <CheckBoxWithText
+                    label="Phone"
+                    initialValue={true}
+                    onChange={handleCheckBoxChange}
+                /> */}
+
+                <SubButton22 
                     text="Start Now"
                     onPress={() => 
                         Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
@@ -101,8 +131,9 @@ function FocusMode(props) {
 
             {showCountdown && (
                 <>
-                <MainButton 
+                <SubButton 
                 text="Focus Mode"
+                subtext={"Let's Go Get On!"}
                 img = {require('../assets/focused.png')}
                 // onPress={() => poses.navigation.navigate('FocusMode')}
                 onPress={() => 

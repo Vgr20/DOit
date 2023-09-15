@@ -7,6 +7,7 @@ import FormInput from "../Form/FormInput";
 import FormSubmitButton from "../Form/FormSubmitButton";
 import SubButton2 from "../Components/SubButton2";
 import { withNavigation } from "react-navigation";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SignInScreen = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState({
@@ -41,6 +42,7 @@ const SignInScreen = ({ navigation }) => {
 
         if (res.data.message === "Login Succesful!") {
           setUserInfo({ email: "", password: "" });
+          AsyncStorage.setItem("KeepLoggedIn", JSON.stringify(true));
           navigation.navigate("HomeScreen");
           // No need to setProfile and setIsLoggedIn here
         }
@@ -54,22 +56,43 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <FormContainer>
+
+    <Image
+      source={require("../assets/GGOFINAL.png")}
+      style={{ width: 300, height: 300, position: "relative", alignSelf: "center", marginTop: 80, marginBottom: 30 }}
+    />
+
+    <Text style={{fontFamily: 'Satisfy_400Regular', color: "#E1E5E5", fontWeight : 'normal', marginBottom: 30, fontSize: 30}}>
+                You're almost there!
+    </Text>
+
       {error ? (
         <Text style={{ color: "red", fontSize: 18, textAlign: "center" }}>
           {error}
         </Text>
       ) : null}
+
       <FormInput
         value={email}
         onChangeText={(value) => handleOnChangeText(value, "email")}
-        label="Email"
+        label={
+          <Text style={{ color: "#E1E5E5", fontWeight : 'normal'}}>
+            Email
+          </Text>
+        }
+        labelStyle={{ paddingRight: 0 }}
         placeholder="example@email.com"
         autoCapitalize="none"
       />
       <FormInput
         value={password}
         onChangeText={(value) => handleOnChangeText(value, "password")}
-        label="Password"
+        label={
+          <Text style={{ color: "#E1E5E5", fontWeight : 'normal'}}>
+            Password
+          </Text>
+        }
+        labelStyle={{ paddingRight: 0 }}
         placeholder="********"
         autoCapitalize="none"
         secureTextEntry

@@ -23,16 +23,15 @@ const styles = StyleSheet.create({
         backgroundColor : '#ff6200',
         paddingVertical : 15,
         // paddingHorizontal : 80,
-        width : 325,
-        height : 65,
-        marginVertical : 5,
+        width : 375,
+        marginVertical : 15,
         
     },
     buttonText : {
         color : '#E1E5E5',
         fontWeight : 'bold',
         textTransform : 'capitalize',
-        fontSize : 18,
+        fontSize : 25,
         textAlign : 'center',
         marginHorizontal : 80,
         

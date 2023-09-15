@@ -1,12 +1,22 @@
 import React from "react";
 import { TouchableOpacity, ScrollView, StyleSheet, Text, Image,View} from "react-native";
-import SubButton2 from "../Components/SubButton2";
+import SubButton22 from "../Components/SubButton22";
 import habitStore from "./habitstore";
 import { SafeAreaView } from "react-navigation";
 
 const yourHabits = (poses) => {
     return (
         <ScrollView  style = {{flex: 1, backgroundColor:"#2f4f4f"}}> 
+
+        <Text style = {{
+            color : '#E1E5E5',
+            fontWeight : 'semibold',
+            fontSize : 40,
+            textAlign : 'center',
+            marginVertical : 20,
+            marginHorizontal : 10+"%",
+            }}>YOUR HABITS
+        </Text>
             <TouchableOpacity >
             <View style = {styles.button}>
                 <Text style = {styles.buttonText}>{"Habit Name: "+habitStore.nameOfHabit}</Text>
@@ -19,7 +29,7 @@ const yourHabits = (poses) => {
             </View>
         </TouchableOpacity>
         <SafeAreaView style={styles.container}>
-        <SubButton2 
+        <SubButton22 
             text="Return to Dashboard"
             onPress={() => poses.navigation.navigate('HomeScreen')}
             />

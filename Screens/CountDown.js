@@ -9,6 +9,7 @@ import SubButton2 from '../Components/SubButton2';
 import PercentageBar from '../Components/PercentageBar';
 import BreakBar from '../Components/BreakBar';
 import SubButton from '../Components/SubButton';
+import SubButton22 from '../Components/SubButton22';
 
 const Tips_list = [
     <SubButton
@@ -227,7 +228,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
                 {Tips_list[randomNum]}
 
-                <SubButton2 
+                <SubButton22 
                     text="Pause/Play"
                     onPress={() => [
                         isPaused = !isPaused,
@@ -235,7 +236,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     }
                 />
 
-                <SubButton2 
+                <SubButton22 
                     text="Stop"
                     onPress={() => Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
                         {text: "Yes", onPress: () =>     
@@ -254,11 +255,24 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
                 <Text style={styles.smallertext}> Were you able to complete your task? </Text>
 
-                <SubButton2 
+
+                
+                {/* <MainButton
+                    style = {{bottom : 1000}}
+                    text = "No, I need to reschedule :("
+                    onPress={() => poses.navigation.navigate('NavigationBarScreen')}
+                />
+                <MainButton
+                    style = {{bottom : 1000}}
+                    text = "Yes, I am all good :)"
+                    onPress={() => poses.navigation.navigate('HomeScreen')}
+                />     */}
+
+                <SubButton22 
                     text="No, I need to reschedule"
                     onPress={() => poses.navigation.navigate('NavigationBarScreen')}
                 />
-                <SubButton2 
+                <SubButton22 
                     text="Yes, I am all good !"
                     onPress={() => poses.navigation.navigate('HomeScreen')}
                 />

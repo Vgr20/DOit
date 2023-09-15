@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, SafeAreaView, StyleSheet, Text, ScrollView} from "react-native";
 import SubButton from "../Components/SubButton";
-import SubButton2 from "../Components/SubButton2";
+import SubButton22 from "../Components/SubButton22";
 
 const Habits = (poses) => {
     return (
@@ -20,12 +20,6 @@ const Habits = (poses) => {
         <Text style={styles.text}>Our suggestions:</Text>
 
         <SubButton 
-            text="Trending Habits"
-            img = {require('../assets/trendinghabits.png')}
-            subtext="Build better habits, one at a time."
-            onPress={() => poses.navigation.navigate('TrendingHabitsScreen')}
-            />
-        <SubButton 
             text="Make your Bed"
             img = {require('../assets/sleeping.png')}
             subtext="Start your day right"
@@ -38,13 +32,6 @@ const Habits = (poses) => {
             subtext={"Make sure you drink enough."}
             onPress={() => poses.navigation.navigate('MorningRoutine')}
             />
-        <SubButton
-            text="Go For a Walk"
-            img = {require('../assets/walk2.png')}
-            subtext={"Feel the Environment."}
-            onPress={() => poses.navigation.navigate('FullScreen')}
-            />
-
         <SubButton
             text="Meditate"
             img = {require('../assets/stayathome2.png')}
@@ -65,9 +52,13 @@ const Habits = (poses) => {
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         
-        <SubButton2 
+        <SubButton22 
             text="+ Add New Habit"
             onPress={() => poses.navigation.navigate('NewHabitsScreen')}
+            />
+        <SubButton22 
+            text="Dashboard"
+            onPress={() => poses.navigation.navigate('HomeScreen')}
             />
         
         </SafeAreaView>

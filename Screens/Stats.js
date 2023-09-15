@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Svg, Circle } from "react-native-svg";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -17,8 +17,8 @@ import Animated, {
 } from "react-native-reanimated";
 import { ReText } from "react-native-redash";
 import { TextInput } from "react-native-gesture-handler";
-import * as Font from "expo-font";
-import SubButton2 from "../Components/SubButton2";
+import SubButton22 from "../Components/SubButton22";
+import FormInput from "../Form/FormInput";
 
 const INPUT_PROGRESS_VALUE = 0.73;
 
@@ -34,14 +34,12 @@ const rotateX = width / 2;
 const rotateY = height / 3;
 const transformString = `rotate(-90 ${rotateX} ${rotateY})`;
 
-// const cursiveStyles = StyleSheet.create({
-//     customFont: {
-//     fontFamily: 'Satisfy-Regular',
-//     fontSize: 16,
-//     },
-//   });
-
 const Stats = (poses) => {
+  const [enteredText, setEnteredText] = useState(""); // Initialize with an empty string
+  const handleOnChangeText = (value) => {
+    setEnteredText(value); // Update enteredText state with the entered value
+  };
+
   const progress = useSharedValue(0);
 
   useEffect(() => {
@@ -56,21 +54,11 @@ const Stats = (poses) => {
     return `${Math.floor(progress.value * 100)}%`;
   });
 
-  //   useEffect(() => {
-  //     async function loadFont() {
-  //       await Font.loadAsync({
-  //         "Satisfy-Regular": require("../assets/fonts/Satisfy-Regular.ttf"),
-  //         // Add more custom fonts if needed
-  //       });
-  //     }
-  //     loadFont();
-  //   }, []);
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text
         style={{
-          fontSize: 20,
+          fontSize: 28,
           color: "white",
           fontWeight: "bold",
           marginVertical: 30,
@@ -108,56 +96,51 @@ const Stats = (poses) => {
       <Text style={styles.mainTextStyle}>Well done!</Text>
 
       <Text
-        style={{ fontSize: 20, color: "white", textAlign: "center", top: 235 }}
+        style={{ fontSize: 20, color: "white", textAlign: "center", top: 205 }}
       >
-        A little more and you will be done for the day.
+        A little more to go.
       </Text>
 
       <Image
         source={require("../assets/undraw_self_reflection.png")}
-        style={{ width: 200, height: 200, top: 243, position: "relative" }}
+        style={{ width: 230, height: 230, top: 225, position: "relative" }}
       />
 
       <Text
         style={{
-          fontSize: 30,
+          fontSize: 20,
           color: "white",
           textAlign: "center",
           top: 255,
+          paddingBottom: 245,
         }}
       >
         What is your reflection today?
       </Text>
+
+      <FormInput
+        onChangeText={(value) => handleOnChangeText(value)}
+        placeholder="Type your reflection here"
+        autoCapitalize="none"
+      />
+
+        <SubButton22
+          text="Past Reflections"
+          onPress={() => poses.navigation.navigate("PastReflections")}
+          // img = {require('../assets/signup.png')}
+        />
 
       <View
         style={{
           flexDirection: "column",
           alignItems: "center",
           marginHorizontal: 15,
-          marginVertical: 125,
+          marginVertical: 14,
         }}
       >
-        <TextInput
-          placeholder="Type reflection here"
-          onChangeText={(text) => this.setState({ name: text })}
-          style={{
-            width: 370,
-            backgroundColor: "#fff",
-            padding: 15,
-            marginBottom: 5,
-            marginHorizontal: 10,
-            marginVertical: 150,
-            borderRadius: 10,
-          }}
-        />
+        
 
-        <SubButton2
-          text="Past Reflections"
-          onPress={() => poses.navigation.navigate("PastReflections")}
-          // img = {require('../assets/signup.png')}
-        />
-
-        <Text style={{ fontSize: 25, color: "white", textAlign: "center" }}>
+        <Text style={{ fontSize: 20, color: "white", textAlign: "center"}}>
           Ongoing Tasks: None
         </Text>
 
@@ -166,7 +149,7 @@ const Stats = (poses) => {
           style={{ width: 230, height: 200, position: "relative" }}
         />
 
-        <Text style={{ fontSize: 25, color: "white", textAlign: "center" }}>
+        <Text style={{ fontSize: 20, color: "white", textAlign: "center" }}>
           Ongoing Habits: None
         </Text>
 
@@ -175,10 +158,10 @@ const Stats = (poses) => {
           style={{ width: 250, height: 200, position: "relative" }}
         />
 
-        <SubButton2
+        <SubButton22
           text="Dashboard"
           // onPress={() => this.props.navigation.navigate('HabitScreen')}
-          onPress={() => poses.navigation.navigate("Dashboard")}
+          onPress={() => poses.navigation.navigate("HomeScreen")}
           // img = {require('../assets/signup.png')}
         />
       </View>

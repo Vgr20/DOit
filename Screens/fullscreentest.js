@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, SafeAreaView, StyleSheet, Text, Image} from "react-native";
 import SubButton3 from "../Components/SubButton3";
-import SubButton2 from "../Components/SubButton2";
+import SubButton22 from "../Components/SubButton22";
 import habitStore from "./habitstore";
 
 
@@ -16,12 +16,12 @@ const fullscreentest = (poses) => {
         <Text style={styles.text}>CONGRATULATIONS!</Text>
         <Text style={styles.text2}>You have set a new habit!</Text>
         
-        <SubButton2 
+        <SubButton22 
             text="Return to Dashboard"
             onPress={() => poses.navigation.navigate('HomeScreen')}
             />
         
-        <SubButton2 
+        <SubButton22
             text="Create Another Habit"
             onPress={() => poses.navigation.navigate('HabitScreen')}
             />
