@@ -8,6 +8,72 @@ import BreakTimer from './BreakTimer';
 import SubButton2 from '../Components/SubButton2';
 import PercentageBar from '../Components/PercentageBar';
 import BreakBar from '../Components/BreakBar';
+import SubButton from '../Components/SubButton';
+
+const Tips_list = [
+    <SubButton
+    text="Productivity Tip"
+    img = {require('../assets/PrioritizeTasks.png')}
+    subtext={"Prioritize Tasks"}
+    onPress={() => 
+        Alert.alert("Prioritize Tasks", "Rank activities based on urgency and impact to tackle the most critical first.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />, 
+
+    <SubButton
+    text="Productivity Tip"
+    img = {require('../assets/ClearGoals.png')}
+    subtext={"Set Clear Goals"}
+    onPress={() => 
+        Alert.alert("Set Actionable Clear Goals", "Clearly define your objectives and desired outcomes for a focused direction.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />, 
+
+    <SubButton
+    text="Productivity Tip"
+    img = {require('../assets/QuietWork.png')}
+    subtext={"Create a Quiet Workspace"}
+    onPress={() => 
+        Alert.alert("Create a Quiet Workspace", " Establish a clutter-free, peaceful environment for better concentration.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />, 
+
+    <SubButton
+    text="Productivity Tip"
+    img = {require('../assets/rewards.png')}
+    subtext={"Set Rewards"}
+    onPress={() => 
+        Alert.alert("Set Rewards", "Motivate yourself with small incentives for completing challenging tasks. Like that well-deserved break in a few minutes more.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />, 
+
+    <SubButton
+    text="Productivity Tip"
+    img = {require('../assets/NoMultiTask.png')}
+    subtext={"Eliminate Multitasking"}
+    onPress={() => 
+        Alert.alert("Eliminate Multitasking", "Focus on one task at a time for improved efficiency and better results.", [
+            {text: "Right!", onPress: () =>  
+            console.log("Yippeee!")
+            } ])
+        }
+    />
+
+]
+
+var randomNum = Math.floor(Math.random() * 5);
 
 function calculateBreakTimes(totalTime, workTime) {
     const breakMilestones = [];
@@ -36,10 +102,20 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     
     const breakList = calculateBreakTimes(startTime, worktime)
 
+    var isPaused = false;
+
     useEffect(() => {
         const interval = setInterval(() => {
           setTimeRemaining((prevTime) => {
+            if (isPaused) {
+                return prevTime;
+            }
+
             if (prevTime > 0) {
+                if (prevTime % 120 == 0) {
+                    randomNum = Math.floor(Math.random() * 5);
+                    console.log("New Habit:",randomNum)
+                }
                 if ((startTime - prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
                     console.log("Break")
                     setIsBreak(true);
@@ -111,9 +187,15 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     </>
                 ) : (
                     <>
-                    <Text style={styles.titletext}>
-                    Time to Get It On!
-                    </Text>
+                    {(isPaused) ? (
+                        <Text style={styles.titletext}>
+                        Timer Paused
+                        </Text>
+                    ) : (
+                        <Text style={styles.titletext}>
+                        Time to Get It On!
+                        </Text>
+                    )}                    
 
                     </>
                 )}
@@ -142,6 +224,16 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     
                     You have {num_breaks}/{tot_breaks} breaks left!
                 </Text>
+
+                {Tips_list[randomNum]}
+
+                <SubButton2 
+                    text="Pause/Play"
+                    onPress={() => [
+                        isPaused = !isPaused,
+                      ]
+                    }
+                />
 
                 <SubButton2 
                     text="Stop"

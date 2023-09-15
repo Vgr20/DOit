@@ -8,7 +8,7 @@ import SubButton from '../Components/SubButton';
 
 const Habits_list = [
     <SubButton
-    text="Drink Water"
+    text="Drinking Water"
     img = {require('../assets/drinkwater.png')}
     subtext={"Make sure you drink enough."}
     onPress={() => 
@@ -20,7 +20,7 @@ const Habits_list = [
     />, 
 
     <SubButton
-    text="Go For a Walk"
+    text="Going For a Walk"
     img = {require('../assets/walk2.png')}
     subtext={"Feel the Environment."}
     onPress={() => 
@@ -32,7 +32,7 @@ const Habits_list = [
     />,
 
     <SubButton
-    text="Meditate"
+    text="Meditating"
     img = {require('../assets/stayathome2.png')}
     subtext={"Make your mind Focus."}
     onPress={() => 
@@ -69,7 +69,7 @@ const Habits_list = [
 
 ]
 
-var randomNum = 2
+var randomNum = Math.floor(Math.random() * 5);
 
 const BreakTimer = ({ targetTime }) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime);
