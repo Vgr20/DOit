@@ -15,7 +15,7 @@ const Tips_list = [
     <SubButton
     text="Productivity Tip"
     img = {require('../assets/PrioritizeTasks.png')}
-    subtext={"Prioritize Tasks"}
+    subtext={"Prioritize Tasks\nClick to Read More"}
     onPress={() => 
         Alert.alert("Prioritize Tasks", "Rank activities based on urgency and impact to tackle the most critical first.", [
             {text: "Right!", onPress: () =>  
@@ -27,7 +27,7 @@ const Tips_list = [
     <SubButton
     text="Productivity Tip"
     img = {require('../assets/ClearGoals.png')}
-    subtext={"Set Clear Goals"}
+    subtext={"Set Clear Goals\nClick to Read More"}
     onPress={() => 
         Alert.alert("Set Actionable Clear Goals", "Clearly define your objectives and desired outcomes for a focused direction.", [
             {text: "Right!", onPress: () =>  
@@ -39,7 +39,7 @@ const Tips_list = [
     <SubButton
     text="Productivity Tip"
     img = {require('../assets/QuietWork.png')}
-    subtext={"Create a Quiet Workspace"}
+    subtext={"Create a Quiet Workspace\nClick to Read More"}
     onPress={() => 
         Alert.alert("Create a Quiet Workspace", " Establish a clutter-free, peaceful environment for better concentration.", [
             {text: "Right!", onPress: () =>  
@@ -51,7 +51,7 @@ const Tips_list = [
     <SubButton
     text="Productivity Tip"
     img = {require('../assets/rewards.png')}
-    subtext={"Set Rewards"}
+    subtext={"Set Rewards\nClick to Read More"}
     onPress={() => 
         Alert.alert("Set Rewards", "Motivate yourself with small incentives for completing challenging tasks. Like that well-deserved break in a few minutes more.", [
             {text: "Right!", onPress: () =>  
@@ -63,7 +63,7 @@ const Tips_list = [
     <SubButton
     text="Productivity Tip"
     img = {require('../assets/NoMultiTask.png')}
-    subtext={"Eliminate Multitasking"}
+    subtext={"Eliminate Multitasking\nClick to Read More"}
     onPress={() => 
         Alert.alert("Eliminate Multitasking", "Focus on one task at a time for improved efficiency and better results.", [
             {text: "Right!", onPress: () =>  
@@ -226,7 +226,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     You have {num_breaks}/{tot_breaks} breaks left!
                 </Text>
 
-                {Tips_list[randomNum]}
+                {Tips_list[4]}
 
                 <SubButton22 
                     text="Pause/Play"

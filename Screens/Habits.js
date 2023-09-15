@@ -46,9 +46,9 @@ const Habits = (poses) => {
             />
 
         <SubButton
-            text="Journalling"
+            text="Journaling"
             img = {require('../assets/journaling2.png')}
-            subtext={"Write evry memory."}
+            subtext={"Write every memory."}
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         

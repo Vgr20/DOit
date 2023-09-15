@@ -10,7 +10,7 @@ const Habits_list = [
     <SubButton
     text="Drinking Water"
     img = {require('../assets/drinkwater.png')}
-    subtext={"Make sure you drink enough."}
+    subtext={"Make sure you drink enough.\nClick to Read More"}
     onPress={() => 
         Alert.alert("Drinking Water", "Stay hydrated: Sip water throughout the day for optimal energy and vitality.", [
             {text: "Right!", onPress: () =>  
@@ -22,7 +22,7 @@ const Habits_list = [
     <SubButton
     text="Going For a Walk"
     img = {require('../assets/walk2.png')}
-    subtext={"Feel the Environment."}
+    subtext={"Feel the Environment.\nClick to Read More"}
     onPress={() => 
         Alert.alert("Going For A Walk", "Take daily walks: Boost mood and creativity while improving physical health.", [
             {text: "Right!", onPress: () =>  
@@ -34,7 +34,7 @@ const Habits_list = [
     <SubButton
     text="Meditating"
     img = {require('../assets/stayathome2.png')}
-    subtext={"Make your mind Focus."}
+    subtext={"Make your mind Focus.\nClick to Read More"}
     onPress={() => 
         Alert.alert("Meditating", "Meditate daily: Relieve stress, enhance focus, and find inner peace.", [
             {text: "Right!", onPress: () =>  
@@ -46,7 +46,7 @@ const Habits_list = [
     <SubButton
     text="Exercise"
     img = {require('../assets/excercise.png')}
-    subtext={"Get ready you body."}
+    subtext={"Get ready you body.\nClick to Read More"}
     onPress={() => 
         Alert.alert("Exercising", "Exercise regularly: Boost energy, stay fit, and improve your mood.", [
             {text: "Right!", onPress: () =>  
@@ -56,11 +56,11 @@ const Habits_list = [
     />,
 
     <SubButton
-    text="Journalling"
+    text="Journaling"
     img = {require('../assets/journaling2.png')}
-    subtext={"Write evry memory."}
+    subtext={"Write every memory.\nClick to Read More"}
     onPress={() => 
-        Alert.alert("Journalling", "Journal daily: Reflect on your thoughts, feelings, and experiences for mental clarity and self-discovery.", [
+        Alert.alert("Journaling", "Journal daily: Reflect on your thoughts, feelings, and experiences for mental clarity and self-discovery.", [
             {text: "Right!", onPress: () =>  
             console.log("Yippeee!")
             } ])
@@ -203,7 +203,7 @@ const BreakTimer = ({ targetTime }) => {
                 <Text style={styles.titletext}>
                     Try out
                     <View>
-                        {Habits_list[randomNum]}
+                        {Habits_list[4]}
                     </View>
                 </Text>
                 
