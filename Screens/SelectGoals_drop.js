@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View,ScrollView,TextInput } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-import SubButton2 from '../Components/SubButton2';
+import SubButton22 from '../Components/SubButton22';
 import habitStore from './habitstore';
 const data = [
     { label: 'Units', value: '1' },
@@ -53,9 +53,19 @@ const SelectGoals2 = (poses) => {
 
   return (
     <ScrollView style={styles.scrollContainer}>
-        <View style={styles.container}>
+
+            <Text style = {{
+                color : '#E1E5E5',
+                fontWeight : 'semibold',
+                fontSize : 22,
+                textAlign : 'left',
+                marginTop : 20,
+                marginHorizontal : 20,  
+            }}>
+                {/* -----------  Select Repeat Interval  ----------- */}
+                Select Type of Reminder
+            </Text>
             <View style={styles.dropdownContainer}>
-            {/* {renderLabel()} */}
             <Dropdown
                 style={[styles.dropdown, isFocus1 && { borderColor: 'blue' }]}
                 placeholderStyle={styles.placeholderStyle}
@@ -79,10 +89,20 @@ const SelectGoals2 = (poses) => {
                     setIsFocus2(false);
                     // console.log("Selected Interval:", item.label);
                     habitStore.method = item.label;
-
                 }}
             />
             </View>
+            <Text style = {{
+                color : '#E1E5E5',
+                fontWeight : 'semibold',
+                fontSize : 22,
+                textAlign : 'left',
+                // marginTop : 20,
+                marginHorizontal : 20,  
+            }}>
+                {/* -----------  Select Repeat Interval  ----------- */}
+                Select Times of preferred Reminder
+            </Text>
 
             <View style={styles.dropdownContainer}>
             <Dropdown
@@ -111,8 +131,6 @@ const SelectGoals2 = (poses) => {
    
             />
             </View>
-
-
             {isTextInputVisible && (
             <View style={styles.textInputContainer}>
               <TextInput
@@ -126,24 +144,17 @@ const SelectGoals2 = (poses) => {
 
 
 
-            <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 5}}>
-
-                    <SubButton2
-                    style = {{marginVertical : 5, marginHorizontal : 25}}
+            <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 8}}>
+                    <SubButton22
                     text="Save"
                     onPress={() => poses.navigation.navigate('FullScreen')}
                     />
 
-                    <SubButton2
+                    <SubButton22
                     text="Cancel"
                     onPress={() => poses.navigation.navigate('HabitScreen')}
                     />
             </View>
-
-            
-
-
-        </View>
     </ScrollView>
   );
 };
@@ -198,6 +209,7 @@ const styles = StyleSheet.create({
         padding:10,
         borderRadius:20,
         marginVertical:20,
+        marginHorizontal:10,
 
   },
 
@@ -206,6 +218,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 20,
     marginVertical: 20,
+    marginHorizontal: 10,
   },
   textInput: {
     height: 40,

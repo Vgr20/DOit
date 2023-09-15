@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, SafeAreaView, StyleSheet, Text, Image } from "react-native";
-import SubButton2 from "../Components/SubButton2";
+import SubButton22 from "../Components/SubButton22";
 import * as Font from "expo-font";
 
 const PastReflections = (poses) => {
@@ -36,9 +36,14 @@ const PastReflections = (poses) => {
       <Text style={styles.text2}>Empty.</Text>
       <Text style={styles.text2}>Start today!</Text>
 
-      <SubButton2
+      <SubButton22
         text="Productivity Pulse"
-        onPress={() => poses.navigation.navigate("Stats")}
+        onPress={() => poses.navigation.navigate("StatsScreen")}
+      />
+
+      <SubButton22
+        text="Dashboard"
+        onPress={() => poses.navigation.navigate("HomeScreen")}
       />
     </SafeAreaView>
   );

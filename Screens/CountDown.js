@@ -5,7 +5,7 @@ import MainButton from '../Components/MainButton';
 import { useNavigation } from "@react-navigation/native";
 import { NavigationContainer } from "@react-navigation/native";
 import BreakTimer from './BreakTimer';
-import SubButton2 from '../Components/SubButton2';
+import SubButton22 from '../Components/SubButton22';
 
 const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
@@ -199,7 +199,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                           ])
                         }
                 /> */}
-                <SubButton2 
+                <SubButton22 
                     text="Stop"
                     onPress={() => Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
                         {text: "Yes", onPress: () =>     
@@ -231,11 +231,11 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     onPress={() => poses.navigation.navigate('HomeScreen')}
                 />     */}
 
-                <SubButton2 
+                <SubButton22 
                     text="No, I need to reschedule"
                     onPress={() => poses.navigation.navigate('NavigationBarScreen')}
                 />
-                <SubButton2 
+                <SubButton22 
                     text="Yes, I am all good !"
                     onPress={() => poses.navigation.navigate('HomeScreen')}
                 />

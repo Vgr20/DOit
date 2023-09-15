@@ -1,10 +1,44 @@
-import React from "react";
+import React , { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View , SafeAreaView} from "react-native";
 import {Picker} from '@react-native-picker/picker'
 import { TextInput } from "react-native-gesture-handler";
 import Slider from "@react-native-community/slider";
-import SubButton2 from "../Components/SubButton2";
+import SubButton22 from "../Components/SubButton22";
 import habitStore from "./habitstore";
+
+const timesOfDay = [
+    { label: "Morning", value: "Morning" },
+    { label: "Afternoon", value: "Afternoon" },
+    { label: "Evening", value: "Evening" },
+    { label: "Night", value: "Ninght" },
+  ];
+
+const daysOfWeek = [
+    { label: "Sunday", value: "Sunday" },
+    { label: "Monday", value: "Monday" },
+    { label: "Tuesday", value: "Tuesday" },
+    { label: "Wednesday", value: "Wednesday" },
+    { label: "Thursday", value: "Thursday" },
+    { label: "Friday", value: "Friday" },
+    { label: "Saturday", value: "Saturday" },
+  ];
+
+  const monthsOfYear = [
+    { label: "January", value: "January" },
+    { label: "February", value: "February"},
+    { label: "March", value: "March" },
+    { label: "April", value: "April"},
+    { label: "May", value: "May" },
+    { label: "June", value: "June"},
+    { label: "July", value: "July" },
+    { label: "August", value: "August"},
+    { label: "September", value: "Spetember" },
+    { label: "October", value: "October"},
+    { label: "November", value: "November" },
+    { label: "December", value: "December"}, 
+  ];
+
+
 class NewHabits extends React.Component {
     constructor() {
         super();
@@ -13,6 +47,7 @@ class NewHabits extends React.Component {
             description : "",
             useState : "",
             repeatInterval : "",
+            selectedDay: "", 
         };
 
         };
@@ -26,6 +61,8 @@ class NewHabits extends React.Component {
         updateSlider = (sliderValue) => {
             this.setState({sliderValue : sliderValue})
         }
+
+
 
         
           addHabit = () => {
@@ -50,10 +87,11 @@ class NewHabits extends React.Component {
             }
           };
 
-     
-    
     render(){
         
+
+        const { repeatInterval } = this.state;
+
         return (
             <ScrollView style = {styles.container}>
                 <TextInput
@@ -75,8 +113,6 @@ class NewHabits extends React.Component {
                     borderRadius : 10}}
                     
                 />
-                
-
             <TextInput
                 placeholder="Description"
                 onChangeText={(text) => this.setState({description : text})}
@@ -96,7 +132,7 @@ class NewHabits extends React.Component {
                     borderRadius : 10}}
                 />
 
-                {/* <Text style = {{
+                <Text style = {{
                     color : '#E1E5E5',
                     fontWeight : 'semibold',
                     fontSize : 22,
@@ -106,13 +142,14 @@ class NewHabits extends React.Component {
                     
                 }}>
                     {/* -----------  Select Repeat Interval  ----------- */}
-                    {/* Select Repeat Interval */}
-                {/* </Text> */}
+                    Select Repeat Interval
+                </Text>
 
 
-                {/* <Picker selectedValue = {this.state.user}
+                <Picker selectedValue = {this.state.user}
                 onValueChange={(itemValue) => {
                     this.updateUser(itemValue);
+                    this.setState({ repeatInterval: itemValue, selectedDay: "" });
                     // console.log("Selected Interval:", itemValue);
                     habitStore.repeatInterval = itemValue;
                 }}
@@ -129,7 +166,74 @@ class NewHabits extends React.Component {
                     <Picker.Item label = "Daily" value = "Daily"/>
                     <Picker.Item label = "Weekly" value = "Weekly"/>
                     <Picker.Item label = "Monthly" value = "Monthly"/>
-                </Picker> */}
+                </Picker>
+
+
+                {repeatInterval === "Daily" && (
+                <Picker
+                    selectedValue={this.state.selectedDay}
+                    onValueChange={(itemValue) => {
+                    this.setState({ selectedDay: itemValue });
+                    }}
+                    style = {{
+                        // height : 200,
+                        width : 360,
+                        backgroundColor : "white",
+                        borderRadius : 20,
+                        marginVertical : 10,
+                        // alignContent : 'right',
+                        marginHorizontal : 15}}
+                >
+                    <Picker.Item label="Select Time" value="" />
+                    {timesOfDay.map((day) => (
+                    <Picker.Item key={day.value} label={day.label} value={day.value} />
+                    ))}
+                </Picker>
+                )}
+
+                {repeatInterval === "Weekly" && (
+                <Picker
+                    selectedValue={this.state.selectedDay}
+                    onValueChange={(itemValue) => {
+                    this.setState({ selectedDay: itemValue });
+                    }}
+                    style = {{
+                        // height : 200,
+                        width : 360,
+                        backgroundColor : "white",
+                        borderRadius : 20,
+                        marginVertical : 10,
+                        // alignContent : 'right',
+                        marginHorizontal : 15}}
+                >
+                    <Picker.Item label="Select Day" value="" />
+                    {daysOfWeek.map((day) => (
+                    <Picker.Item key={day.value} label={day.label} value={day.value} />
+                    ))}
+                </Picker>
+                )}
+
+                {repeatInterval === "Monthly" && (
+                <Picker
+                    selectedValue={this.state.selectedDay}
+                    onValueChange={(itemValue) => {
+                    this.setState({ selectedDay: itemValue });
+                    }}
+                    style = {{
+                        // height : 200,
+                        width : 360,
+                        backgroundColor : "white",
+                        borderRadius : 20,
+                        marginVertical : 10,
+                        // alignContent : 'right',
+                        marginHorizontal : 15}}
+                >
+                    <Picker.Item label="Select Month" value="" />
+                    {monthsOfYear.map((day) => (
+                    <Picker.Item key={day.value} label={day.label} value={day.value} />
+                    ))}
+                </Picker>
+                )}
 
                 <Text style = {{
                     color : '#E1E5E5',
@@ -176,12 +280,12 @@ class NewHabits extends React.Component {
 
                 <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 8}}>
 
-                    <SubButton2
+                    <SubButton22
                     text="Continue"
                     onPress={() => this.props.navigation.navigate('SelectGoals2')}
                     />
 
-                    <SubButton2
+                    <SubButton22
                     text="Cancel"
                     onPress={() => this.props.navigation.navigate('HabitScreen')}
                     />
