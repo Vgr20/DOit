@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View , SafeAreaView} fr
 import {Picker} from '@react-native-picker/picker'
 import { TextInput } from "react-native-gesture-handler";
 import Slider from "@react-native-community/slider";
-import SubButton2 from "../Components/SubButton2";
+import SubButton22 from "../Components/SubButton22";
 import habitStore from "./habitstore";
 class NewHabits extends React.Component {
     constructor() {
@@ -176,12 +176,12 @@ class NewHabits extends React.Component {
 
                 <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 8}}>
 
-                    <SubButton2
+                    <SubButton22
                     text="Continue"
                     onPress={() => this.props.navigation.navigate('SelectGoals2')}
                     />
 
-                    <SubButton2
+                    <SubButton22
                     text="Cancel"
                     onPress={() => this.props.navigation.navigate('HabitScreen')}
                     />

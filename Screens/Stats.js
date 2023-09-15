@@ -17,7 +17,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { ReText } from "react-native-redash";
 import { TextInput } from "react-native-gesture-handler";
-import SubButton2 from "../Components/SubButton2";
+import SubButton22 from "../Components/SubButton22";
 import FormInput from "../Form/FormInput";
 
 const INPUT_PROGRESS_VALUE = 0.73;
@@ -124,7 +124,7 @@ const Stats = (poses) => {
         autoCapitalize="none"
       />
 
-        <SubButton2
+        <SubButton22
           text="Past Reflections"
           onPress={() => poses.navigation.navigate("PastReflections")}
           // img = {require('../assets/signup.png')}
@@ -158,10 +158,10 @@ const Stats = (poses) => {
           style={{ width: 250, height: 200, position: "relative" }}
         />
 
-        <SubButton2
+        <SubButton22
           text="Dashboard"
           // onPress={() => this.props.navigation.navigate('HabitScreen')}
-          onPress={() => poses.navigation.navigate("Dashboard")}
+          onPress={() => poses.navigation.navigate("HomeScreen")}
           // img = {require('../assets/signup.png')}
         />
       </View>

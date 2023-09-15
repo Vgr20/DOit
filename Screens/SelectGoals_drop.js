@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View,ScrollView,TextInput } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-import SubButton2 from '../Components/SubButton2';
+import SubButton22 from '../Components/SubButton22';
 import habitStore from './habitstore';
 const data = [
     { label: 'Units', value: '1' },
@@ -128,13 +128,13 @@ const SelectGoals2 = (poses) => {
 
             <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 5}}>
 
-                    <SubButton2
+                    <SubButton22
                     style = {{marginVertical : 5, marginHorizontal : 25}}
                     text="Save"
                     onPress={() => poses.navigation.navigate('FullScreen')}
                     />
 
-                    <SubButton2
+                    <SubButton22
                     text="Cancel"
                     onPress={() => poses.navigation.navigate('HabitScreen')}
                     />

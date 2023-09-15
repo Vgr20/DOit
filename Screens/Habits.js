@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, SafeAreaView, StyleSheet, Text, ScrollView} from "react-native";
 import SubButton from "../Components/SubButton";
-import SubButton2 from "../Components/SubButton2";
+import SubButton22 from "../Components/SubButton22";
 
 const Habits = (poses) => {
     return (
@@ -65,9 +65,13 @@ const Habits = (poses) => {
             onPress={() => poses.navigation.navigate('FullScreen')}
             />
         
-        <SubButton2 
+        <SubButton22 
             text="+ Add New Habit"
             onPress={() => poses.navigation.navigate('NewHabitsScreen')}
+            />
+        <SubButton22 
+            text="Dashboard"
+            onPress={() => poses.navigation.navigate('HomeScreen')}
             />
         
         </SafeAreaView>
