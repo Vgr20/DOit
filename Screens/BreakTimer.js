@@ -203,7 +203,7 @@ const BreakTimer = ({ targetTime }) => {
                 <Text style={styles.titletext}>
                     Try out
                     <View>
-                        {Habits_list[4]}
+                        {Habits_list[randomNum]}
                     </View>
                 </Text>
                 

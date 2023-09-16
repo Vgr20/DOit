@@ -226,7 +226,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     You have {num_breaks}/{tot_breaks} breaks left!
                 </Text>
 
-                {Tips_list[4]}
+                {Tips_list[randomNum]}
 
                 <SubButton22 
                     text="Pause/Play"
