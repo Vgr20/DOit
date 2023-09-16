@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
         width : 350,
         height : 100,
         marginVertical : 8,
-        left: 15
+        alignSelf : 'center',
+        // left: 0.5 + "%",
+        
     },
     buttonText : {
         color : '#E1E5E5',
