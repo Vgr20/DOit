@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text , Alert} from 'react-native';
+import { View, Text , Alert, Image} from 'react-native';
 import { StyleSheet } from 'react-native';
 import MainButton from '../Components/MainButton';
 import { useNavigation } from "@react-navigation/native";
@@ -167,6 +167,10 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
     return (
         <View style={styles.text}>
+            <Image
+            source={require("../assets/undraw_time.png")}
+            style={{ width: 260, height: 260, alignSelf: "center"}}
+            />
             {(timeRemaining) > 0 ? (
                 
                 <>
@@ -295,7 +299,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: 'white',
         // fontFamily: 'AppleSDGothicNeo-Bold',
-        textTransform: 'uppercase',
+        textTransform: 'capitalize',
         fontWeight: 'bold',
         textAlign: 'center',
     },
@@ -320,9 +324,11 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: 'white',
         // fontFamily: 'AppleSDGothicNeo-Bold',
-        textTransform: 'uppercase',
+        textTransform: 'capitalize',
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 20,
+        marginBottom: 20
       },
 
       megatext: {

@@ -84,7 +84,7 @@ const Dashboard = (poses) => {
         />
 
         <Text style={{ fontSize: 20, color: "white", textAlign: "center", paddingVertical: 15}}>
-        Go Get On & Complete Each Section!
+          Go Get On & Complete Each Section!
         </Text>
 
         <MainButton

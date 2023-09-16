@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { Button, View , StyleSheet , Text, Alert, TextInput} from 'react-native';
+import { Button, View , StyleSheet , Text, Alert, TextInput, Image} from 'react-native';
 import MainButton from '../Components/MainButton';
 import CountDown from './CountDown';
 import CheckBoxWithText from '../Components/CheckBoxWithText';
@@ -30,6 +30,17 @@ function FocusMode(props) {
             {!startCounter ? (
                 <>
 
+            <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 20, fontSize: 30}}>
+            Let's Focus
+            </Text>   
+            <Image
+            source={require("../assets/undraw_focus.png")}
+            style={{ width: 250, height: 250, alignSelf: "center"}}
+            />
+
+        {/* <Text style={{ color: "#E1E5E5", fontWeight : 'semibold', alignSelf: "center", fontSize: 20, left: 20, marginRight: 20}}>
+        Every habit you form is a brushstroke on the canvas of your destiny. Keep painting your masterpiece
+        </Text> */}
                 <SubButton
                     text="Focus Mode"
                     img = {require('../assets/focused.png')}
@@ -178,7 +189,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
         // fontFamily: 'AppleSDGothicNeo-Bold',
-        textTransform: 'uppercase',
+        textTransform: "capitalize",
+        // textTransform: 'uppercase',
         fontWeight: 'bold',
         textAlign: 'center'
 
@@ -188,7 +200,8 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: 'white',
         // fontFamily: 'AppleSDGothicNeo-Bold',
-        textTransform: 'uppercase',
+        // textTransform: 'uppercase',
+        textTransform: "capitalize",
         fontWeight: 'bold',
         textAlign: 'center'
 
@@ -196,20 +209,24 @@ const styles = StyleSheet.create({
     input: {
         height: 55,
         margin: 15,
-        borderWidth: 4,
+        borderWidth: 3,
+        borderRadius: 10,
         padding: 12,
-        fontSize:30,
+        fontSize:25,
         width: 60,
+        fontWeight: 'bold',
         alignSelf: "center",
-        textAlign: "center"
+        textAlign: "center",
+        backgroundColor: "#829595"
       },
 
       smallertext: {
         fontSize: 15,
         color: 'white',
         // fontFamily: 'AppleSDGothicNeo-Bold',
-        textTransform: 'uppercase',
-        fontWeight: 'bold',
+        // textTransform: 'uppercase',
+        textTransform: "capitalize",
+        fontWeight: 'semibold',
         textAlign: 'center'
       },
 });

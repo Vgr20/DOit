@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View,ScrollView,TextInput } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, Image } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import SubButton22 from '../Components/SubButton22';
 import habitStore from './habitstore';
@@ -53,11 +53,19 @@ const SelectGoals2 = (poses) => {
 
   return (
     <ScrollView style={styles.scrollContainer}>
+            {/* <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 20, fontSize: 28}}>Habit Center</Text> */}
+            <Image
+            source={require("../assets/undraw_goals.png")}
+            style={{ width:250, height: 250, alignSelf: "center"}}
+            />
 
+            <Text style={{ color: "#E1E5E5", fontWeight : 'semibold', alignSelf: "center", marginBottom: 0, fontSize: 20}}>
+            Your new habit is almost ready!
+            </Text>
             <Text style = {{
                 color : '#E1E5E5',
                 fontWeight : 'semibold',
-                fontSize : 22,
+                fontSize : 20,
                 textAlign : 'left',
                 marginTop : 20,
                 marginHorizontal : 20,  
@@ -95,7 +103,7 @@ const SelectGoals2 = (poses) => {
             <Text style = {{
                 color : '#E1E5E5',
                 fontWeight : 'semibold',
-                fontSize : 22,
+                fontSize : 20,
                 textAlign : 'left',
                 // marginTop : 20,
                 marginHorizontal : 20,  
@@ -144,7 +152,7 @@ const SelectGoals2 = (poses) => {
 
 
 
-            <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 8}}>
+            <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 17}}>
                     <SubButton22
                     text="Save"
                     onPress={() => poses.navigation.navigate('FullScreen')}

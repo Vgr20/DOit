@@ -6,13 +6,13 @@ import {
   SafeAreaView,
   View,
   Text,
-  Image,
   StatusBar,
   StyleSheet,
   Button,
   TextInput,
   ScrollView,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import Icon from "react-native-vector-icons//FontAwesome";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -214,16 +214,15 @@ const AddTask = () => {
           source={require("../assets/undraw_schedule.png")}
           style={{ width: 200, height: 200, alignSelf: "center", marginLeft: 40, marginBottom: 0 }}
         />
-        <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 0, fontSize: 18, marginBottom: 10}}>
-            Task Up and Thrive!
-          </Text>
-
-        {/* Task Name */}
+      <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 0, fontSize: 18, marginBottom: 10}}>
+          Task Up and Thrive!
+        </Text>
+        {/* Task Group */}
         <View style={styles.box}>
           <Text style={styles.font}>TASK GROUP</Text>
           <Image
           source={require("../assets/task.png")}
-          style={{ width: 60, height: 60, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
+          style={{ width: 50, height: 50, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
         />
           <Picker
             style={[
@@ -271,7 +270,7 @@ const AddTask = () => {
           <Text style={styles.font}>TASK NAME</Text>
           <Image
           source={require("../assets/writingtask.png")}
-          style={{ width: 60, height: 60, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
+          style={{ width: 50, height: 50, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
         />
           <TextInput
             style={styles.input}
@@ -289,7 +288,7 @@ const AddTask = () => {
           <Text style={styles.font}>START AT</Text>
           <Image
           source={require("../assets/hourglass.png")}
-          style={{ width: 60, height: 60, alignSelf: "center", marginTop: 0, marginBottom: 5 }}
+          style={{ width: 50, height: 50, alignSelf: "center", marginTop: 0, marginBottom: 5 }}
         />
           <View style={styles.selectdatetime}>
             <TouchableOpacity
@@ -451,7 +450,7 @@ const AddTask = () => {
           <Text style={styles.font}>LEVEL OF IMPORTANCE</Text>
           <Image
           source={require("../assets/reward1.png")}
-          style={{ width: 60, height: 60, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
+          style={{ width: 50, height: 50, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
         />
           <View style={styles.stars}>
             {[1, 2, 3].map((starNumber) => (

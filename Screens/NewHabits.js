@@ -1,5 +1,5 @@
 import React , { useState } from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View , SafeAreaView} from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View , SafeAreaView, Image} from "react-native";
 import {Picker} from '@react-native-picker/picker'
 import { TextInput } from "react-native-gesture-handler";
 import Slider from "@react-native-community/slider";
@@ -94,6 +94,16 @@ class NewHabits extends React.Component {
 
         return (
             <ScrollView style = {styles.container}>
+                <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 10, fontSize:30}}>
+                    Create A New Habit
+                </Text>
+                <Image
+                    source={require("../assets/undraw_habits3.png")}
+                    style={{ width: 230, height: 230, alignSelf: "center"}}
+                    />
+                <Text style={{ color: "#E1E5E5", fontWeight : 'semibold', alignSelf: "center", marginBottom: 0, fontSize: 18}}>
+                    Transform routines into enduring habits.
+                    </Text>
                 <TextInput
                 placeholder="Name of Habit"
                 onChangeText={(text) => this.setState({name : text})}
@@ -108,7 +118,7 @@ class NewHabits extends React.Component {
                     flexDirection : 'column',
                     flex : 1,
                     marginBottom : 10,
-                    marginHorizontal : 10,
+                    marginHorizontal : 20,
                     marginVertical : 25,
                     borderRadius : 10}}
                     
@@ -127,18 +137,18 @@ class NewHabits extends React.Component {
                     backgroundColor : '#fff',
                     padding : 15, 
                     marginBottom : 10,
-                    marginHorizontal : 10,
-                    marginVertical : 15,
+                    marginHorizontal : 20,
+                    marginVertical : 10,
                     borderRadius : 10}}
                 />
 
                 <Text style = {{
                     color : '#E1E5E5',
                     fontWeight : 'semibold',
-                    fontSize : 22,
+                    fontSize : 18,
                     textAlign : 'left',
                     marginVertical : 10,
-                    marginHorizontal : 20,
+                    marginHorizontal : 25,
                     
                 }}>
                     {/* -----------  Select Repeat Interval  ----------- */}
@@ -162,7 +172,7 @@ class NewHabits extends React.Component {
                         borderRadius : 20,
                         marginVertical : 10,
                         // alignContent : 'right',
-                        marginHorizontal : 15}}>
+                        marginHorizontal : 25}}>
                     <Picker.Item label = "Daily" value = "Daily"/>
                     <Picker.Item label = "Weekly" value = "Weekly"/>
                     <Picker.Item label = "Monthly" value = "Monthly"/>
@@ -238,10 +248,10 @@ class NewHabits extends React.Component {
                 <Text style = {{
                     color : '#E1E5E5',
                     fontWeight : 'semibold',
-                    fontSize : 22,
+                    fontSize : 18,
                     textAlign : 'left',
                     marginVertical : 10,
-                    marginHorizontal : 20,
+                    marginHorizontal : 25,
 
                 }}>
                     {/* ------------  Select Priority Level  ------------ */}
@@ -268,11 +278,11 @@ class NewHabits extends React.Component {
                 />
 
                 <View style = {{flexDirection : 'row', justifyContent : 'space-between', marginHorizontal : 25}}>
-                    <Text style = {{color : '#E1E5E5', fontWeight : 'bold', fontSize : 20, textTransform : 'uppercase', textAlign : 'left', marginVertical : 2, marginHorizontal : 20,}}>
+                    <Text style = {{color : '#E1E5E5', fontWeight : 'bold', fontSize : 18, textTransform : 'uppercase', textAlign : 'left', marginVertical : 2, marginHorizontal : 20,}}>
                         Low
                     </Text>
 
-                    <Text style = {{color : '#E1E5E5', fontWeight : 'bold', fontSize : 20, textTransform : 'uppercase', textAlign : 'right', marginVertical : 2, marginHorizontal : 20,}}>
+                    <Text style = {{color : '#E1E5E5', fontWeight : 'bold', fontSize : 18, textTransform : 'uppercase', textAlign : 'right', marginVertical : 2, marginHorizontal : 20,}}>
                         High
                     </Text>
 
@@ -303,6 +313,7 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         backgroundColor : '#2f4f4f',
+        // marginLeft : 20,
         // alignItems : 'center',
         // justifyContent : 'center',
     },

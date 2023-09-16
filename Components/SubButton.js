@@ -6,8 +6,8 @@ export default function SubButton({text,subtext, onPress, img}) {
         <TouchableOpacity onPress = {onPress}>
             <View style = {styles.button}>
             <Image source={img} 
-                        style={{width: 90, 
-                                height: 90, 
+                        style={{width: 50, 
+                                height: 50, 
                                 position: "absolute", 
                                 right: 10, 
                                 top: 13}}/>
@@ -23,27 +23,30 @@ const styles = StyleSheet.create({
     button : {
         borderRadius : 20,
         backgroundColor : '#162626',
+        borderWidth: 1,
         // paddingVertical : 35,
         // paddingHorizontal : 80,
         width : 350,
-        height : 115,
-        marginVertical : 15,
+        height : 100,
+        marginVertical : 8,
+        left: 15
     },
     buttonText : {
         color : '#E1E5E5',
         fontWeight : 'semibold',
         textTransform : 'capitalize',
-        fontSize : 30,
+        fontSize : 20,
         textAlign : 'left',
         paddingLeft : 15,
-        paddingTop : 12,
+        paddingTop : 10,
+        fontWeight: "bold"
     },
     subText : {
         color : '#a9c0c0',
-        fontSize : 17,
+        fontSize : 15,
         textAlign : 'left',
         paddingLeft : 15,
-        paddingTop : 7,
+        paddingTop : 4,
         
     }
 });

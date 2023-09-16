@@ -10,7 +10,7 @@ export default function MainButton({text, onPress, img}) {
                                 height: 55, 
                                 position: "absolute", 
                                 right: 25, 
-                                top: 5}}/>
+                                top: 10}}/>
                 <Text style = {styles.buttonText}>{text}</Text>
             </View>
         </TouchableOpacity>
@@ -20,13 +20,13 @@ export default function MainButton({text, onPress, img}) {
 const styles = StyleSheet.create({
     button : {
         borderRadius : 20,
-        backgroundColor : '#5f8080',
-        paddingVertical : 15,
+        backgroundColor : '#162626',
+        paddingVertical : 21,
         //paddingHorizontal : 80,
         //add colour gradient 
         width : 350,
-        borderColor: "#ff6200",
-        // borderWidth: 3,
+        // borderColor: "#ffffff",
+        borderWidth: 1,
         marginVertical : 5,
     },
     buttonText : {

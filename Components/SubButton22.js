@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
         paddingVertical : 15,
         // paddingHorizontal : 80,
         width : 375,
-        marginVertical : 15,
+        marginVertical : 10,
         
     },
     buttonText : {
         color : '#E1E5E5',
         fontWeight : 'bold',
         textTransform : 'capitalize',
-        fontSize : 25,
+        fontSize : 20,
         textAlign : 'center',
         marginHorizontal : 80,
         

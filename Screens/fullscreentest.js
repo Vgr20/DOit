@@ -8,14 +8,26 @@ import habitStore from "./habitstore";
 const fullscreentest = (poses) => {
     return (
         <SafeAreaView style={styles.container}>
-        <Image  source={require('../assets/celebrate2.png')} 
-                style={{width: 150, 
-                        height: 150,  
-                        left: 10, 
-                        top: 100}}/>
+        <Image  source={require('../assets/undraw_celebration3.png')} 
+                style={{width: 250, 
+                        height: 250, 
+                        top: 10}}/>
         <Text style={styles.text}>CONGRATULATIONS!</Text>
-        <Text style={styles.text2}>You have set a new habit!</Text>
-        
+        {/* <Text style={styles.text2}>You have set a new habit!</Text> */}
+        <Text style={{ color: "#E1E5E5", fontWeight : 'semibold', alignSelf: "center", marginBottom: 0, fontSize: 15}}>
+            You have created a new habit!
+        </Text>
+        <Text/>
+        <Text style={{ color: "#E1E5E5", fontWeight : 'semibold', alignSelf: "center", marginBottom: 0, fontSize: 15}}>
+            Your dedication to sticking with the routine 
+            </Text>
+        <Text style={{ color: "#E1E5E5", fontWeight : 'semibold', alignSelf: "center", marginBottom: 5, fontSize: 15}}>
+            is the secret to establishing this habit.
+        </Text>
+        <Image  source={require('../assets/undraw_celebration2.png')} 
+                style={{width: 230, 
+                        height: 230, 
+                        top: 0}}/>
         <SubButton22 
             text="Return to Dashboard"
             onPress={() => poses.navigation.navigate('HomeScreen')}
@@ -41,12 +53,12 @@ const styles = StyleSheet.create({
         alignContent : 'center',
     },
     text : {
-        fontSize : 40,
+        fontSize : 30,
         fontWeight : 'bold',
         marginVertical:5,
         color : '#EAEAEA',
         alignContent : 'center',
-        paddingTop : 150,
+        paddingTop : 10,
     },
     text2 : {
         fontSize : 30,

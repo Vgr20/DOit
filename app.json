@@ -4,7 +4,7 @@
     "slug": "GoGetOn",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/GGOFINAL.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
