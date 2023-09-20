@@ -7,26 +7,30 @@
     "icon": "./assets/GGOFINAL.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/GGOFINAL.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#2f4f4f"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/GGOFINAL.png",
+        "backgroundColor": "#2f4f4f"
       },
       "package": "com.app.GoGetOn"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/GGOFINAL.png"
     },
     "extra": {
-      "eas": {}
+      "eas": {
+        "projectId": "fb0914e5-ead0-4e11-b19d-26fdb7fc4d57"
+      }
     }
   }
 }
