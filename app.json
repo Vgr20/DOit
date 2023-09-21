@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "GoGetOn",
-    "slug": "GoGetOn",
+    "name": "DOit",
+    "slug": "DOit",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/GGOFINAL.png",
@@ -21,16 +21,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/GGOFINAL.png",
         "backgroundColor": "#2f4f4f"
-      },
-      "package": "com.app.DOit"
-    },
+    }
+  },
     "web": {
       "favicon": "./assets/GGOFINAL.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "fb0914e5-ead0-4e11-b19d-26fdb7fc4d57"
-      }
     }
   }
 }
