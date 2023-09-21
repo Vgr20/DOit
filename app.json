@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/GGOFINAL.png",
         "backgroundColor": "#2f4f4f"
       },
-      "package": "com.app.GoGetOn"
+      "package": "com.app.DOit"
     },
     "web": {
       "favicon": "./assets/GGOFINAL.png"
