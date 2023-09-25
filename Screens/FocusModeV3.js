@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { Button, View , StyleSheet , Text, Alert, TextInput} from 'react-native';
 import MainButton from '../Components/MainButton';
-import CountDown from './CountDown';
+import CountDownV1 from './CountDownV1';
 import CheckBoxWithText from '../Components/CheckBoxWithText';
 import SubButton from '../Components/SubButton';
 import { useFocusEffect } from '@react-navigation/native';

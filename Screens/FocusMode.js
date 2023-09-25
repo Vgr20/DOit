@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { Button, View , StyleSheet , Text, Alert, TextInput, Image} from 'react-native';
 import MainButton from '../Components/MainButton';
-import CountDown from './CountDown';
+import CountDownV1 from './CountDownV1';
 import CheckBoxWithText from '../Components/CheckBoxWithText';
 import SubButton from '../Components/SubButton';
 import { useFocusEffect } from '@react-navigation/native';
@@ -159,7 +159,7 @@ function FocusMode(props) {
                 </Text>    */}
 
                 <View style={styles.text}>
-                    <CountDown key={Date.now()} targetTime={worktime} breakInterval={breaktime} breakDuration = {breakinterval} poses={props}/>
+                    <CountDownV1 key={Date.now()} targetTime={worktime} breakInterval={breaktime} breakDuration = {breakinterval} poses={props}/>
                 </View>
                 </>
             )}

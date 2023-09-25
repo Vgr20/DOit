@@ -89,7 +89,7 @@ function calculateBreakTimes(totalTime, workTime) {
     return breakMilestones;
 }
 
-const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
+const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     const [worktime, setWorktime] = useState(breakInterval*60)
     const [isBreak, setIsBreak] = useState(false);
@@ -217,9 +217,9 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     H:MM:SS
                 </Text>
 
-                <Text style={styles.smallertext}>
+                {/* <Text style={styles.smallertext}>
                     
-                </Text>
+                </Text> */}
 
                 <PercentageBar percentage={Math.round(((startTime - timeRemaining)/ startTime) * 100)}/>
                 
@@ -359,4 +359,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default CountDown;
+export default CountDownV1;
