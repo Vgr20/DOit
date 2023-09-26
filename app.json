@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#2f4f4f"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -26,11 +24,11 @@
     },
     "web": {
       "favicon": "./assets/GGOFINAL.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "fb0914e5-ead0-4e11-b19d-26fdb7fc4d57"
-      }
     }
+    // "extra": {
+    //   "eas": {
+    //     "projectId": "fb0914e5-ead0-4e11-b19d-26fdb7fc4d57"
+    //   }
+    // }
   }
 }

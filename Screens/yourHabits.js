@@ -1,10 +1,26 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
 import { TouchableOpacity, ScrollView, StyleSheet, Text, Image, View} from "react-native";
 import SubButton22 from "../Components/SubButton22";
 import habitStore from "./habitstore";
 import { SafeAreaView } from "react-navigation";
+import client from "../api/client";
 
 const yourHabits = (poses) => {
+    const [habits,setHabit] = useState([]);
+
+    const fetchData = async ()=>{
+        const response = await client.post("/api/NewHabitRoute");
+        const data = await response.data;
+        setHabit(data.response);
+    };
+
+    useEffect(()=>{
+        fetchData();
+    }, []);
+
+    // const {item} = poses.params;
+    // console.log(poses.navigation.state)
+
     return (
         <ScrollView  style = {{flex: 1, backgroundColor:"#2f4f4f"}}> 
 
@@ -26,19 +42,48 @@ const yourHabits = (poses) => {
         <Text style={{ color: "#E1E5E5", fontWeight : 'semibold', alignSelf: "center", fontSize: 20, left: 20, marginRight: 20}}>
         Every habit you form is a brushstroke on the canvas of your destiny. Keep painting your masterpiece
         </Text>
+        <View>
+            {habits.map((habit,index)=>{
+                // Split the description into words
+                const words = habit.description.split(' ');
 
-        <TouchableOpacity >
-        <View style = {styles.button}>
-            <Text style = {styles.buttonText}>{"Habit Name: "+habitStore.nameOfHabit}</Text>
-            <Text style = {styles.buttonText}>{"Description: "+habitStore.description}</Text>
-            <Text style = {styles.buttonText}>{"Priority: "+habitStore.sliderValue}</Text>
-            <Text style = {styles.buttonText}>{"Repeat Interval: "+habitStore.repeatInterval}</Text>
-            <Text style = {styles.buttonText}>{"Reminder: "+habitStore.method}</Text>
-            <Text style = {styles.buttonText}>{"Duration: "+habitStore.value}</Text>
-
+                // Group words into lines of up to 4 words each
+                const lines = [];
+                for (let i = 0; i < words.length; i += 4) {
+                    const lineWords = words.slice(i, i + 4);
+                    lines.push(lineWords.join(' '));
+                }
+                return(
+                    <TouchableOpacity >
+                        <View style = {styles.button}>
+                            <Text style = {styles.buttonText_big}>{habit.newhabitname}</Text>
+                            {/* <Text style = {styles.buttonText}>{`Description: `}</Text> */}
+                            {/* <Text style = {styles.buttonText_small}>{`${truncatedDescription}`}</Text> */}
+                            {lines.map((line, lineIndex) => (
+                                <Text key={lineIndex} style={styles.buttonText_small}>
+                                    {line}
+                                </Text>
+                            ))}
+                            <Text style = {styles.buttonText}>{"Priority: "+habit.prioritylevel}</Text>
+                            <Text style = {styles.buttonText}>{"Repeat Interval: "+habit.intervaltype}</Text>
+                            <Text style = {styles.buttonText}>{"Reminder: "+habit.remindertype}</Text>
+                            <Text style = {styles.buttonText}>{"Duration: "+habit.preferedtime}</Text>
+                        </View>
+                    </TouchableOpacity>
+                )
+            })}
         </View>
-
-        </TouchableOpacity>
+        {/* <TouchableOpacity >
+            <View style = {styles.button}>
+                <Text style = {styles.buttonText}>{"Habit Name: "+habitStore.nameOfHabit}</Text>
+                <Text style = {styles.buttonText}>{"Description: "+habitStore.description}</Text>
+                <Text style = {styles.buttonText}>{"Priority: "+habitStore.sliderValue}</Text>
+                <Text style = {styles.buttonText}>{"Repeat Interval: "+habitStore.repeatInterval}</Text>
+                <Text style = {styles.buttonText}>{"Reminder: "+habitStore.method}</Text>
+                <Text style = {styles.buttonText}>{"Duration: "+habitStore.value}</Text>
+            </View>
+        </TouchableOpacity> */}
+        
         <SafeAreaView style={styles.container}>
         <SubButton22 
             text="Return to Dashboard"
@@ -72,13 +117,27 @@ const styles = StyleSheet.create({
     },
     buttonText : {
         color : '#E1E5E5',
-        fontWeight : 'semibold',
+        fontWeight : 'bold',
         textTransform : 'capitalize',
-        fontSize : 20,
+        fontSize : 18,
         textAlign : 'left',
         left : 25,
-        
-    
+    },
+    buttonText_big : {
+        color : '#E1E5E5',
+        fontWeight : 'bold',
+        textTransform : 'capitalize',
+        fontSize : 24,
+        textAlign : 'left',
+        left : 25,
+    },
+    buttonText_small:{
+        color : '#E1E5E5',
+        fontWeight : 'semibold',
+        textTransform : 'capitalize',
+        fontSize : 16,
+        textAlign : 'left',
+        left : 25,
     }
 
 });
