@@ -10,6 +10,8 @@ import SubButton22 from '../Components/SubButton22';
 import { ScrollView } from 'react-native-gesture-handler';
 import CountDownV3 from './CountDownV3';
 
+import { useTimerStatus, useTimerUpdate } from '../Context/TimerStatus';
+
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
     const [breaktime, onChangeText2] = React.useState('25');
@@ -19,7 +21,8 @@ function FocusMode(props) {
     const handleCheckBoxChange = (isChecked) => {
         console.log('Checkbox checked:', isChecked);
     };
-    const [isFocused, setIsFocused] = useState(true);
+    const isTimerActive = useTimerStatus();
+    const toggleTimerStatus = useTimerUpdate();
 
     return (
 
@@ -35,12 +38,9 @@ function FocusMode(props) {
             </Text>   
             <Image
             source={require("../assets/undraw_focus.png")}
-            style={{ width: 250, height: 250, alignSelf: "center"}}
+            style={{ width: 200, height: 200, alignSelf: "center"}}
             />
 
-        {/* <Text style={{ color: "#E1E5E5", fontWeight : 'semibold', alignSelf: "center", fontSize: 20, left: 20, marginRight: 20}}>
-        Every habit you form is a brushstroke on the canvas of your destiny. Keep painting your masterpiece
-        </Text> */}
                 <SubButton
                     text="Focus Mode"
                     img = {require('../assets/focused.png')}
@@ -92,34 +92,6 @@ function FocusMode(props) {
                 />
 
 
-                {/* <Text style={styles.smalltext}>
-                    Select the Apps to Block during Focus Mode
-
-                </Text>
-
-                <CheckBoxWithText
-                    label="Whatsapp"
-                    initialValue={true}
-                    onChange={handleCheckBoxChange}
-                />
-
-                <CheckBoxWithText
-                    label="Facebook"
-                    initialValue={true}
-                    onChange={handleCheckBoxChange}
-                />
-
-                <CheckBoxWithText
-                    label="Instagram"
-                    initialValue={true}
-                    onChange={handleCheckBoxChange}
-                />
-
-                <CheckBoxWithText
-                    label="Phone"
-                    initialValue={true}
-                    onChange={handleCheckBoxChange}
-                /> */}
 
                 <SubButton22 
                     text="Start Now"
