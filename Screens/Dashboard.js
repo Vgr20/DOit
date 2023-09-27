@@ -88,7 +88,7 @@ const Dashboard = (poses) => {
         </Text>
 
         <MainButton
-          text="Overall Stats"
+          text="Stats"
           img={require("../assets/overallstats.png")}
           onPress={() => poses.navigation.navigate("StatsScreen")}
         />
