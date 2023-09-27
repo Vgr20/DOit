@@ -8,7 +8,7 @@ import SubButton from '../Components/SubButton';
 import { useFocusEffect } from '@react-navigation/native';
 import SubButton22 from '../Components/SubButton22';
 import { ScrollView } from 'react-native-gesture-handler';
-import CountDownV3 from './CountDownV3';
+import CountDownV5 from './CountDownV5';
 
 import { useTimerStatus, useTimerUpdate } from '../Context/TimerStatus';
 
@@ -30,7 +30,7 @@ function FocusMode(props) {
         <SafeAreaView style={styles.container}>
         <ScrollView>
 
-            {!startCounter ? (
+            {!isTimerActive ? (
                 <>
 
             <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 20, fontSize: 30}}>
@@ -91,9 +91,13 @@ function FocusMode(props) {
                     value={breakinterval}
                 />
 
+                <SubButton22
+                    text = "Start Now"
+                    onPress={toggleTimerStatus}
+                />
 
 
-                <SubButton22 
+                {/* <SubButton22 
                     text="Start Now"
                     onPress={() => 
                         Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
@@ -104,7 +108,7 @@ function FocusMode(props) {
                             {text: "No", onPress: () => console.log(startCounter)},
                         ])
                     }
-                />
+                /> */}
 
                 </>
                 ) : (
@@ -112,7 +116,7 @@ function FocusMode(props) {
                 )
             }
 
-            {showCountdown && (
+            {isTimerActive && (
                 <>
                 <SubButton 
                 text="Focus Mode"
@@ -124,7 +128,7 @@ function FocusMode(props) {
                         {text: "Yesssss!", onPress: () =>  
                         console.log("Yessss!")
                         } ])
-                    }
+                    } 
                 />
                 {/* <Text style={styles.titletext}>
                     Focus Mode

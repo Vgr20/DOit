@@ -12,6 +12,9 @@ import SubButton from '../Components/SubButton';
 import SubButton22 from '../Components/SubButton22';
 import CountDown from 'react-native-countdown-component';
 
+import { useTimerStatus, useTimerUpdate } from '../Context/TimerStatus';
+import CountDownComp from '../Components/CountDownComp';
+
 const Tips_list = [
     <SubButton
     text="Productivity Tip"
@@ -103,6 +106,11 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const tot_breaks = Math.ceil((startTime/60) / (breakInterval)) - 1;
     
     const breakList = calculateBreakTimes(startTime, worktime)
+
+    const isTimerActive = useTimerStatus();
+    const toggleTimerStatus = useTimerUpdate();
+
+    const [isPlaying, setIsPlaying] = React.useState(true);
 
     var isPaused = false;
 
@@ -210,14 +218,15 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     {hour.toString()}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
                 </Text> */}
 
-                <CountDown
-                        until={60}
+                <CountDownComp
+                        until={startTime}
                         size={30}
                         onFinish={() => alert('Finished')}
                         digitStyle={{backgroundColor: '#FFF'}}
                         digitTxtStyle={{color: '#1CC625'}}
                         timeToShow={['M', 'S']}
                         timeLabels={{m: 'MM', s: 'SS'}}
+                        running={isPlaying}
                     />
 
                 <Text style={styles.titletext}>
@@ -244,6 +253,14 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                 {Tips_list[randomNum]}
 
                 <SubButton22 
+                    text="Pause/Play22"
+                    onPress={() => [
+                        setIsPlaying(!isPlaying)
+                      ]
+                    }
+                />
+
+                <SubButton22 
                     text="Pause/Play"
                     onPress={() => [
                         isPaused = !isPaused,
@@ -251,7 +268,12 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     }
                 />
 
-                <SubButton22 
+                <SubButton22
+                    text= "Stop"
+                    onPress={toggleTimerStatus}
+                />
+
+                {/* <SubButton22 
                     text="Stop"
                     onPress={() => Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
                         {text: "Yes", onPress: () =>     
@@ -260,7 +282,7 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                         {text: "No", onPress: () => console.log("Cancel")},
                       ])
                     }
-                />
+                /> */}
                 
                 </>
                 
@@ -269,19 +291,6 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                 <Text style={styles.text}> CountDown Over! </Text>
 
                 <Text style={styles.smallertext}> Were you able to complete your task? </Text>
-
-
-                
-                {/* <MainButton
-                    style = {{bottom : 1000}}
-                    text = "No, I need to reschedule :("
-                    onPress={() => poses.navigation.navigate('NavigationBarScreen')}
-                />
-                <MainButton
-                    style = {{bottom : 1000}}
-                    text = "Yes, I am all good :)"
-                    onPress={() => poses.navigation.navigate('HomeScreen')}
-                />     */}
 
                 <SubButton22 
                     text="No, I need to reschedule"

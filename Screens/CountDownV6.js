@@ -91,7 +91,7 @@ function calculateBreakTimes(totalTime, workTime) {
     return breakMilestones;
 }
 
-const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
+const CountDownV6 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     const [worktime, setWorktime] = useState(breakInterval*60)
     const [isBreak, setIsBreak] = useState(false);
@@ -357,4 +357,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default CountDownV1;
+export default CountDownV6;
