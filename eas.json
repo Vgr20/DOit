@@ -5,27 +5,15 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal",
-      "env": {
-        "CLIENT_API": "@env.CLIENT_API",
-        "APP_API": "@env.APP_API"
-      }
+      "distribution": "internal"
     },
     "preview": {
       "android": {
         "buildType": "apk"
       },
-      "distribution": "internal",
-      "env": {
-        "CLIENT_API": "@env.CLIENT_API",
-        "APP_API": "@env.APP_API"
-      }
+      "distribution": "internal"
     },
     "production": {
-      "env": {
-        "CLIENT_API": "@env.CLIENT_API",
-        "APP_API": "@env.APP_API"
-      }
     }
   },
   "submit": {

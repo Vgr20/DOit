@@ -6,11 +6,11 @@ export default function MainButton({text, onPress, img}) {
         <TouchableOpacity onPress = {onPress}>
             <View style = {styles.button}>
             <Image source={img} 
-                        style={{width: 40, 
-                                height: 40, 
+                        style={{width: 45, 
+                                height: 45, 
                                 position: "absolute", 
-                                right: 25, 
-                                top: 13}}/>
+                                right: 32, 
+                                top: 12}}/>
                 <Text style = {styles.buttonText}>{text}</Text>
             </View>
         </TouchableOpacity>
@@ -19,7 +19,7 @@ export default function MainButton({text, onPress, img}) {
 
 const styles = StyleSheet.create({
     button : {
-        borderRadius : 40,
+        borderRadius : 20,
         backgroundColor : '#230001',
         paddingVertical : 20,
         //paddingHorizontal : 80,
