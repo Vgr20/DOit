@@ -54,16 +54,6 @@ const yourHabits = (poses) => {
         }
       };
     
-    // const handleDelete = (habitId) => {
-    //     const deletedHabit = habits.find((habit) => habit._id === habitId);
-    //     if (deletedHabit) {
-    //         const updatedHabits = habits.filter((habit) => habit._id !== habitId);
-    //         setHabit(updatedHabits);
-    //         const completionTime = new Date().toLocaleTimeString(); // Current time
-    //         setDeletedHabits([...deletedHabits, { newhabitname: deletedHabit.newhabitname, completionTime }]);
-    //         saveCompletedHabits();
-    //     }
-    //   };
       const handleDelete = (habitId) => {
         // Find the habit to complete by habitId
         const habitToComplete = habits.find((habit) => habit._id === habitId);
@@ -79,12 +69,6 @@ const yourHabits = (poses) => {
           saveCompletedHabits();
         }
       };
-    // const renderDeletedHabits = ({ item }) => (
-    // <View style={styles.deletedHabit}>
-    //     <Text style={styles.deletedHabitText}>{item.newhabitname}</Text>
-    //     <Text style={styles.deletedHabitText}>{item.description}</Text>
-    // </View>
-    // );
 
     return (
         <ScrollView style = {{flex: 1, backgroundColor:"#2f4f4f"}}>
@@ -109,6 +93,11 @@ const yourHabits = (poses) => {
         <Text style={{ color: "#E1E5E5", fontWeight : 'semibold', alignSelf: "center", fontSize: 20, left: 20, marginRight: 20}}>
         Every habit you form is a brushstroke on the canvas of your destiny. Keep painting your masterpiece
         </Text>
+        <View style={{alignSelf:'center',marginTop:10,marginEnd:"15%"}}>
+            <Text style={[styles.buttonText_bigger,{padding:6}]}>
+                    OnGoing Habits
+            </Text>
+        </View>
         <View>
             {habits.map((habit,index)=>{
                 return(
@@ -242,6 +231,14 @@ const styles = StyleSheet.create({
     },
     buttonText_big : {
         color : '#E1E5E5',
+        fontWeight : 'bold',
+        textTransform : 'capitalize',
+        fontSize : 24,
+        textAlign : 'left',
+        left : 25,
+    },
+    buttonText_bigger : {
+        color : 'white',
         fontWeight : 'bold',
         textTransform : 'capitalize',
         fontSize : 24,
