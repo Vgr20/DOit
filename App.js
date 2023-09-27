@@ -25,6 +25,7 @@ import { APP_API } from "@env";
 //connecting backend
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { TimerStatusProvider } from "./Context/TimerStatus";
 
 const checkUserLoginStatus = async () => {
   try {
@@ -191,7 +192,11 @@ export default function App() {
     }
   );
   const AppContainer = createAppContainer(navigator);
-  return <AppContainer />;
+  return (
+    <TimerStatusProvider>
+    <AppContainer />
+    </TimerStatusProvider>
+    );
 }
 
 // export default function App() {
