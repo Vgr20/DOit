@@ -40,7 +40,9 @@ export const TimerStatusProvider = ({children}) => {
         setIsTimerActive(prevTimerStatus => !prevTimerStatus)
     }
 
-    // function changeTotalDuration(newtotalDuration)
+    const changeTotalDuration = (newtotalDuration) => {
+        setTotalDuration(newtotalDuration)
+    }
 
     const changeFinishTime = (newFinishTime) => {
         setFinishTime(newFinishTime)
@@ -50,9 +52,9 @@ export const TimerStatusProvider = ({children}) => {
         <TimerStatus.Provider value={isTimerActive}>
             <TimerUpdateStatus.Provider value={toggleTimerStatus}>
                 <FinishTime.Provider value={{finishTime , changeFinishTime}}>
-                    {/* <setFinishTime.Provider value={changeFinishTime}> */}
+                    <TotalDuration.Provider value={{totalDuration, changeTotalDuration}}>
                         {children}
-                    {/* </setFinishTime.Provider> */}
+                    </TotalDuration.Provider>
                 </FinishTime.Provider>
             </TimerUpdateStatus.Provider>
         </TimerStatus.Provider>
