@@ -8,6 +8,7 @@ import FormSubmitButton from "../Form/FormSubmitButton";
 import SubButton2 from "../Components/SubButton2";
 import { withNavigation } from "react-navigation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ScrollView } from "react-native-gesture-handler";
 
 const SignInScreen = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState({
@@ -56,10 +57,11 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <FormContainer>
+    <ScrollView>
 
     <Image
       source={require("../assets/GGOFINAL.png")}
-      style={{ width: 300, height: 300, position: "relative", alignSelf: "center", marginTop: 80, marginBottom: 30 }}
+      style={{ width: 250, height: 250, position: "relative", alignSelf: "center", marginTop: 80, marginBottom: 30 }}
     />
 
     <Text style={{fontFamily: 'Satisfy_400Regular', color: "#E1E5E5", fontWeight : 'normal', marginBottom: 30, fontSize: 30}}>
@@ -102,6 +104,7 @@ const SignInScreen = ({ navigation }) => {
         text="Sign Up"
         onPress={() => navigation.navigate("RegisterScreen")}
       />
+    </ScrollView>
     </FormContainer>
   );
 };

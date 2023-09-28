@@ -113,7 +113,7 @@ const CountDown = ({ targetTime , breakInterval, breakDuration, poses} ) => {
             }
 
             if (prevTime > 0) {
-                if (prevTime % 120 == 0) {
+                if (prevTime % 30 == 0) {
                     randomNum = Math.floor(Math.random() * 5);
                     console.log("New Habit:",randomNum)
                 }

@@ -11,6 +11,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 
 import client from "../api/client";
+import { ScrollView } from "react-native-gesture-handler";
 
 const validationSchema = Yup.object({
   fullname: Yup.string()
@@ -95,6 +96,7 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <FormContainer>
+    <ScrollView>
       <Formik
         initialValues={userInfo}
         validationSchema={validationSchema}
@@ -187,6 +189,7 @@ const RegisterScreen = ({ navigation }) => {
           );
         }}
       </Formik>
+      </ScrollView>
     </FormContainer>
   );
 };
