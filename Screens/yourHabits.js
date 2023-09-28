@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-import { TouchableOpacity, ScrollView, StyleSheet, Text, Image, View, FlatList} from "react-native";
+import { TouchableOpacity, ScrollView, StyleSheet, Text, Image, View, FlatList, Alert} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome";
 import ReadMore from '@fawazahmed/react-native-read-more';
@@ -54,7 +54,7 @@ const yourHabits = (poses) => {
         }
       };
     
-      const handleDelete = (habitId) => {
+      const handleCheck = (habitId) => {
         // Find the habit to complete by habitId
         const habitToComplete = habits.find((habit) => habit._id === habitId);
       
@@ -70,6 +70,41 @@ const yourHabits = (poses) => {
         }
       };
 
+      const handleDelete = async (habitId) => {
+        try {
+          // Make a DELETE request to the API to delete the habit by its ID
+          const response = await client.delete(`/api/NewHabitRoute/${habitId}`);
+      
+          if (response.status === 200) {
+            // Successfully deleted the habit on the server, update the state locally
+            const updatedHabits = habits.filter((habit) => habit._id !== habitId);
+            setHabit(updatedHabits);
+          } else {
+            console.error("Failed to delete habit.");
+          }
+        } catch (error) {
+          console.error("Error deleting habit: ", error);
+        }
+      };
+    //   const handleDeletePress = () => {
+    //     Alert.alert(
+    //       'Confirm Deletion',
+    //       'Are you sure you want to delete the habit?',
+    //       [
+    //         {
+    //           text: 'No',
+    //           style: 'cancel',
+    //         },
+    //         {
+    //           text: 'Yes',
+    //           onPress: () => {
+    //             handleDelete(habit._id);
+    //           },
+    //         },
+    //       ],
+    //       { cancelable: false }
+    //     );
+    //   };
     return (
         <ScrollView style = {{flex: 1, backgroundColor:"#2f4f4f"}}>
 
@@ -111,8 +146,32 @@ const yourHabits = (poses) => {
                             <Text style = {styles.buttonText}>{"Repeat Interval: "+habit.intervaltype}</Text>
                             <Text style = {styles.buttonText}>{"Reminder: "+habit.remindertype}</Text>
                             <Text style = {styles.buttonText}>{"Duration: "+habit.preferedtime}</Text>
-                            <TouchableOpacity style={styles.deleteButton} onPress={() => handleDelete(habit._id)}>
+                            <TouchableOpacity style={styles.deleteButton} onPress={() => handleCheck(habit._id)}>
                                 <Icon name="check" color="lightgreen" size={40} />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.deleteButton1}
+                                onPress={() =>
+                                    Alert.alert(
+                                    'Confirm Deletion',
+                                    'Are you sure you want to delete the habit?',
+                                    [
+                                        {
+                                        text: 'No',
+                                        style: 'cancel',
+                                        },
+                                        {
+                                        text: 'Yes',
+                                        onPress: () => {
+                                            handleDelete(habit._id);
+                                        },
+                                        },
+                                    ],
+                                    { cancelable: false }
+                                    )
+                                }
+                                >
+                                <Icon name="trash" color="grey" size={40} />
                             </TouchableOpacity>
                         </View>
                     </TouchableOpacity>
@@ -149,17 +208,7 @@ const yourHabits = (poses) => {
                 </View>
             )}
             </View>
-        {/* <View>
-            <Text style={styles.historyHeader}>Completed Habits History</Text>
-            {deletedHabits.slice(-6).reverse().map((item, index) => (
-                <View key={index} style={styles.deletedHabit}>
-                <Text style={styles.buttonText_small}>
-                    {item.newhabitname} - Completed at: {item.completionTime.toLocaleString()}
-                </Text>
-                </View>
-            ))}
-        </View> */}
-        
+
         </ScrollView>
         <SafeAreaView style={styles.container}>
             <SubButton22
@@ -178,6 +227,12 @@ const styles = StyleSheet.create({
         right: 10,
         padding: 5,
         borderRadius: 5,
+    },
+    deleteButton1: {
+        top:15,
+        width:40,
+        padding:2,
+        left:150
     },
     deleteButtonText: {
         color: "#FFF",
