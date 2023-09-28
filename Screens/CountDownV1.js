@@ -11,7 +11,7 @@ import BreakBar from '../Components/BreakBar';
 import SubButton from '../Components/SubButton';
 import SubButton22 from '../Components/SubButton22';
 
-import { useTimerStatus, useTimerUpdate, useFinishTime, useTotalDuration, useAppPaused, usePauseStart } from '../Context/TimerStatus';
+import { useTimerStatus, useTimerUpdate, useFinishTime, useTotalDuration, useAppPaused, usePauseStart, useBreakList } from '../Context/TimerStatus';
 
 const Tips_list = [
     <SubButton
@@ -107,7 +107,7 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [num_breaks, setnum_breaks] = useState(Math.ceil((startTime/60) / (breakInterval)) - 1);
     const tot_breaks = Math.ceil((startTime/60) / (breakInterval)) - 1;
     
-    const breakList = calculateBreakTimes(startTime, worktime)
+    const breakList = useBreakList().breakList;
 
     const isTimerActive = useTimerStatus();
     const toggleTimerStatus = useTimerUpdate();

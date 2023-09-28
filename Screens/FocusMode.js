@@ -10,7 +10,7 @@ import SubButton22 from '../Components/SubButton22';
 import { ScrollView } from 'react-native-gesture-handler';
 // import CountDownV3 from './CountDownV3';
 
-import { useTimerStatus, useTimerUpdate , useFinishTime , useTotalDuration} from '../Context/TimerStatus';
+import { useTimerStatus, useTimerUpdate , useFinishTime , useTotalDuration, useBreakList} from '../Context/TimerStatus';
 
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('1');
@@ -28,6 +28,9 @@ function FocusMode(props) {
     const workFinish = useFinishTime().finishTime;
     const updateFinishTime = useFinishTime().changeFinishTime;
 
+    const breakList = useBreakList().breakList;
+    const setBreakList = useBreakList().changeBreakList
+
     var inProgress = isTimerActive;
 
     const startUpCounter = () => {
@@ -35,9 +38,23 @@ function FocusMode(props) {
         console.log(Date.now()/1000 )
         updateFinishTime((Date.now()/1000) + worktime*60)
         updateTotalTime(worktime*60)
+        // console.log(calculateBreakTimes(worktime, breaktime))
+        // setBreakList(calculateBreakTimes(worktime, breaktime))
         console.log("total",totalInitialTime)
         console.log(workFinish) // actual worktime is updated
         toggleTimerStatus()
+        
+    }
+
+    function calculateBreakTimes(totalTime, workTime) {
+        const breakMilestones = [];
+        let currentTime = 0;
+    
+        while (currentTime + workTime < totalTime) {
+        currentTime += workTime;
+        const percentage = (currentTime / totalTime) * 100;
+        breakMilestones.push(percentage);
+        }
     }
 
     return (
