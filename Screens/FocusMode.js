@@ -10,7 +10,7 @@ import SubButton22 from '../Components/SubButton22';
 import { ScrollView } from 'react-native-gesture-handler';
 import CountDownV3 from './CountDownV3';
 
-import { useTimerStatus, useTimerUpdate } from '../Context/TimerStatus';
+import { useTimerStatus, useTimerUpdate , useFinishTime , useSetFinishTime} from '../Context/TimerStatus';
 
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
@@ -23,6 +23,10 @@ function FocusMode(props) {
     };
     const isTimerActive = useTimerStatus();
     const toggleTimerStatus = useTimerUpdate();
+    const workFinish = useFinishTime();
+    const updateFinishTime = useSetFinishTime();
+
+    var inProgress = isTimerActive;
 
     return (
 
@@ -30,7 +34,7 @@ function FocusMode(props) {
         <SafeAreaView style={styles.container}>
         <ScrollView>
 
-            {!startCounter ? (
+            {!isTimerActive ? (
                 <>
 
             <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 20, fontSize: 30}}>
@@ -91,9 +95,12 @@ function FocusMode(props) {
                     value={breakinterval}
                 />
 
+                <SubButton22
+                    text = "Start Now"
+                    onPress={toggleTimerStatus}
+                />
 
-
-                <SubButton22 
+                {/* <SubButton22 
                     text="Start Now"
                     onPress={() => 
                         Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
@@ -104,7 +111,7 @@ function FocusMode(props) {
                             {text: "No", onPress: () => console.log(startCounter)},
                         ])
                     }
-                />
+                /> */}
 
                 </>
                 ) : (
@@ -112,7 +119,7 @@ function FocusMode(props) {
                 )
             }
 
-            {showCountdown && (
+            {isTimerActive && (
                 <>
                 <SubButton 
                 text="Focus Mode"
@@ -131,7 +138,7 @@ function FocusMode(props) {
                 </Text>    */}
 
                 <View style={styles.text}>
-                    <CountDownV1 key={Date.now()} targetTime={worktime} breakInterval={breaktime} breakDuration = {breakinterval} poses={props}/>
+                    <CountDownV5 key={Date.now()} targetTime={worktime} breakInterval={breaktime} breakDuration = {breakinterval} poses={props}/>
                 </View>
                 </>
             )}

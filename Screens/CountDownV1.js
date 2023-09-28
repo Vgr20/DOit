@@ -11,6 +11,8 @@ import BreakBar from '../Components/BreakBar';
 import SubButton from '../Components/SubButton';
 import SubButton22 from '../Components/SubButton22';
 
+import { useTimerStatus, useTimerUpdate } from '../Context/TimerStatus';
+
 const Tips_list = [
     <SubButton
     text="Productivity Tip"
@@ -102,6 +104,9 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const tot_breaks = Math.ceil((startTime/60) / (breakInterval)) - 1;
     
     const breakList = calculateBreakTimes(startTime, worktime)
+
+    const isTimerActive = useTimerStatus();
+    const toggleTimerStatus = useTimerUpdate();
 
     var isPaused = false;
 
@@ -240,7 +245,12 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     }
                 />
 
-                <SubButton22 
+                <SubButton22
+                    text = "Stop"
+                    onPress= {toggleTimerStatus}
+                />
+            
+                {/* <SubButton22 
                     text="Stop"
                     onPress={() => Alert.alert("Focus Mode Exit", "Are you sure to exit Focus Mode?", [
                         {text: "Yes", onPress: () =>     
@@ -249,7 +259,7 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                         {text: "No", onPress: () => console.log("Cancel")},
                       ])
                     }
-                />
+                /> */}
                 
                 </>
                 

@@ -11,6 +11,7 @@ import BreakBar from '../Components/BreakBar';
 import SubButton from '../Components/SubButton';
 import SubButton22 from '../Components/SubButton22';
 import CountDown from 'react-native-countdown-component';
+import { useTimer, useCountdown } from 'react-native-timestamp-timer-hooks';
 
 const Tips_list = [
     <SubButton
@@ -166,6 +167,42 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const minutes = Math.floor((timeRemaining % 3600) / 60);
     const seconds = timeRemaining % 60;
 
+    const Timer = () => {
+        const { counter , start, stop, reset, isStart } = useTimer({
+            from: 30000,
+            interval: 100,
+            to: 40000,
+        });
+
+        return(
+            <View>
+      <View>
+        <Text style={[styles.defaultText, { alignSelf: 'center' }]}>Timer</Text>
+      </View>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <TouchableOpacity
+          onPress={() => {
+            if (isStart) stop();
+            else start();
+          }}
+        >
+          <Text style={styles.defaultText}>{isStart ? 'stop' : 'start'}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => reset()}>
+          <Text style={styles.defaultText}>reset</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{ alignItems: 'center', marginTop: 20 }}>
+        <Text
+          style={[styles.defaultText, { fontSize: 24, fontWeight: 'bold' }]}
+        >
+          {counter}
+        </Text>
+      </View>
+    </View>
+        );
+    };
+
     return (
         <View style={styles.text}>
             <Image
@@ -210,7 +247,7 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     {hour.toString()}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
                 </Text> */}
 
-                <CountDown
+                {/* <CountDown
                         until={60}
                         size={30}
                         onFinish={() => alert('Finished')}
@@ -218,7 +255,9 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                         digitTxtStyle={{color: '#1CC625'}}
                         timeToShow={['M', 'S']}
                         timeLabels={{m: 'MM', s: 'SS'}}
-                    />
+                    /> */}
+
+                {Timer}
 
                 <Text style={styles.titletext}>
                     Hours to go    
@@ -269,19 +308,6 @@ const CountDownV5 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                 <Text style={styles.text}> CountDown Over! </Text>
 
                 <Text style={styles.smallertext}> Were you able to complete your task? </Text>
-
-
-                
-                {/* <MainButton
-                    style = {{bottom : 1000}}
-                    text = "No, I need to reschedule :("
-                    onPress={() => poses.navigation.navigate('NavigationBarScreen')}
-                />
-                <MainButton
-                    style = {{bottom : 1000}}
-                    text = "Yes, I am all good :)"
-                    onPress={() => poses.navigation.navigate('HomeScreen')}
-                />     */}
 
                 <SubButton22 
                     text="No, I need to reschedule"
