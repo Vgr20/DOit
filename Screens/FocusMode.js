@@ -13,9 +13,9 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useTimerStatus, useTimerUpdate , useFinishTime , useTotalDuration} from '../Context/TimerStatus';
 
 function FocusMode(props) {
-    const [worktime, onChangeText1] = React.useState('60');
-    const [breaktime, onChangeText2] = React.useState('25');
-    const [breakinterval, onChangeText3] = React.useState('5');
+    const [worktime, onChangeText1] = React.useState('1');
+    const [breaktime, onChangeText2] = React.useState('0.2');
+    const [breakinterval, onChangeText3] = React.useState('0.1');
     const [showCountdown, setShowCountdown] = React.useState(false);
     const [startCounter, setStartCounter] = React.useState(false);
     const handleCheckBoxChange = (isChecked) => {

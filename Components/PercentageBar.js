@@ -12,7 +12,7 @@ const PercentageBar = ({ percentage }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '85%',
+    width: '75%',
     height: 50,
     backgroundColor: '#ccc',
     borderRadius: 10,

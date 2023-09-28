@@ -134,6 +134,7 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     console.log("New Habit:",randomNum)
                 }
                 if ((startTime - prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
+                    // updatePlayPause(true);
                     console.log("Break")
                     setIsBreak(true);
                     const incrementNumMinutes = () => {
@@ -146,8 +147,15 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                         console.log(break_mins)
                         setIsBreak(false);
                     } else {
+                        newFinishTime();
+                        // updatePlayPause(true);
+                        // console.log("Updated before break ", workFinish);
+                        // const newFinish = break_mins + workFinish; 
+                        // updateFinishTime(newFinish);
+                        // console.log("should have been ", newFinish);
+                        // console.log("Updated finish after break ", workFinish);
                         console.log(break_mins);
-                        console.log("Reset")
+                        console.log("Reset");
                         resetNumMinutes();
                         console.log(break_mins);
                         setIsBreak(false);
@@ -158,7 +166,7 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                 } else {
                     // console.log(prevTime);
                     // console.log("Start_total:",targetTime, worktime)
-                    console.log("start and remain ",startTime, timeRemaining)
+                    console.log("start, remain, end_epoch ",startTime, timeRemaining, workFinish)
                     // console.log(breakList)
                     return prevTime - 1;
                 }
@@ -188,6 +196,15 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
         toggleTimerStatus()
         updatePlayPause(false)
         poses.navigation.navigate("FocusModeActive")
+    }
+
+    const newFinishTime = () => {
+        console.log("Updated before break ", workFinish);
+        console.log("break_dur",breakDuration*60)
+        const newFinish = (breakDuration*60) + workFinish; 
+        updateFinishTime(newFinish);
+        console.log("should have been ", newFinish);
+        console.log("Updated finish after break ", workFinish);
     }
 
     const applyPlayPause = () => {
@@ -281,10 +298,10 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
                 {Tips_list[randomNum]}
 
-                <SubButton22 
-                    text="Pause/Play"
+                {<SubButton22 
+                    text={isPaused ? 'Play' : 'Pause'}
                     onPress={applyPlayPause}
-                />
+                />}
 
                 <SubButton22
                     text = "Stop"
