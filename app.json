@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "GoGetOn",
-    "slug": "GoGetOn",
-    "version": "1.0.0",
+    "slug": "DOit",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/GGOFINAL.png",
     "userInterfaceStyle": "light",
@@ -20,10 +20,16 @@
         "foregroundImage": "./assets/GGOFINAL.png",
         "backgroundColor": "#2f4f4f"
       },
-      "package": "com.app.DOit"
+      "package": "com.saeedha.DOit",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/GGOFINAL.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f61d2b9b-adcd-4bb5-9b71-6ad791888880"
+      }
     }
     // "extra": {
     //   "eas": {
