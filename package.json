@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo-google-fonts/satisfy": "^0.2.3",
+    "@fawazahmed/react-native-read-more": "^3.0.3",
     "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native-community/datetimepicker": "^7.2.0",
     "@react-native-community/slider": "^4.4.2",
