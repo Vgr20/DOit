@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import { Agenda } from "react-native-calendars";
 import { Card, Avatar } from "react-native-paper";
+import client from "../api/client";
 
 const timeToString = (time) => {
   const date = new Date(time || Date.now()); // If 'time' is not provided, use the current date
@@ -13,34 +14,47 @@ const timeToString = (time) => {
 const Schedule = () => {
   const [items, setItems] = useState({});
 
+  const [tasks, setTasks] = useState([]);
+
+  const fetchData = async () => {
+    const response = await client.post("/api/TasksRoute");
+    const data = await response.data;
+    setTasks(data.response);
+
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  //TaskDetails
+
   const loadItems = (day) => {
-    setTimeout(() => {
-      for (let i = -365; i < 365; i++) {
-        const time = day.timestamp + i * 24 * 60 * 60 * 1000;
+    // setTimeout(() => {
+      tasks.map((task, index) => {
+        const time = task.startDate;
         const strTime = timeToString(time);
+      
         if (!items[strTime]) {
           items[strTime] = [];
-          const numItems = Math.floor(Math.random() * 3 + 1);
-          for (let j = 1; j < numItems; j++) {
-            items[strTime].push({
-              name:
-                j +
-                " : " +
-                "Task Planned on " +
-                strTime +
-                " is " +
-                "(View Task)",
-              height: Math.max(50, Math.floor(Math.random() * 150)),
-            });
-          }
         }
-      }
+      
+        // Check if a task with the same name already exists for this date
+        const existingTask = items[strTime].find((item) => item.name === task.taskName);
+      
+        if (!existingTask) {
+          items[strTime].push({
+            name: task.taskName,
+            height: Math.max(50, Math.floor(Math.random() * 150)),
+          });
+        }
+      });
       const newItems = {};
       Object.keys(items).forEach((key) => {
         newItems[key] = items[key];
       });
       setItems(newItems);
-    }, 1000);
+    // }, 10);
   };
 
   const renderItem = (item) => {

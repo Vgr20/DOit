@@ -77,17 +77,17 @@ const Item = ({ item, onPress, onTrashPress, backgroundColor, textColor }) => (
       { backgroundColor },
       {
         backgroundColor: "#a9c0c0",
-        marginBottom: 20,
+        // marginBottom: 20,
         borderRadius: 10,
-        padding: 10,
+        // padding: 10,
         alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        elevation: 10, // Android shadow
+        // flexDirection: "row",
+        // justifyContent: "space-between",
+        // elevation: 10, // Android shadow
       },
     ]}
   >
-    <View style={{ flexDirection: "column" }}>
+    
       <Text
         style={[
           styles.title,
@@ -104,35 +104,32 @@ const Item = ({ item, onPress, onTrashPress, backgroundColor, textColor }) => (
       </Text>
       <Image
           source={require("../assets/undraw_schedule2.png")}
-          style={{ width: 150, height: 150, alignSelf: "center", marginLeft: 100, marginBottom: 0 }}
+          style={{ width: 150, height: 150, alignSelf: "center", marginBottom: 0 }}
         />
-      <View style={styles.taskDetails}>
-        <View>
+      
           <Text style={[styles.titlesmall, { color: "#E1E5E5" }]}>
             {item.task1} (Priority: {item.task1priority})
           </Text>
-        </View>
-        <View>
+      
           {item.task2 && (
             <Text style={[styles.titlesmall, { color: "#E1E5E5" }]}>
               {item.task2} (Priority: {item.task2priority})
             </Text>
           )}
-        </View>
-        <View>
+        
           {item.task3 && (
             <Text style={[styles.titlesmall, { color: "#E1E5E5" }]}>
               {item.task3} (Priority: {item.task3priority})
             </Text>
           )}
-        </View>
-      </View>
+        
+      
       <View>
         <TouchableOpacity style={styles.noteDelete} onPress={onTrashPress}>
           <Icon name="trash" color="black" size={40} />
         </TouchableOpacity>
       </View>
-    </View>
+    
   </TouchableOpacity>
 );
 
@@ -173,7 +170,7 @@ const TaskView = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginBottom: 0, fontSize: 40}}>
+      {/* <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginBottom: 0, fontSize: 40}}>
             Organize Yourself
           </Text>
       <Image
@@ -183,12 +180,26 @@ const TaskView = ({ navigation }) => {
 
       <Text style={{ color: "#E1E5E5", fontWeight : 'normal', alignSelf: "center", marginBottom: 10}}>
           Let's break huge tasks into doable slices.
-        </Text>
+        </Text> */}
       <FlatList
         data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         extraData={selectedId}
+        ListHeaderComponent={() => (
+          <>
+            <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginBottom: 0, fontSize: 40}}>
+              Organize Yourself
+            </Text>
+            <Image
+              source={require("../assets/undraw_grouping_tasks.png")}
+              style={{ width: 180, height: 180, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
+            />
+            <Text style={{ color: "#E1E5E5", fontWeight : 'normal', alignSelf: "center", marginBottom: 10}}>
+              Let's break huge tasks into doable slices.
+            </Text>
+          </>
+        )}
       />
     </SafeAreaView>
   );
@@ -196,10 +207,10 @@ const TaskView = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   noteDelete: {
-    padding: 5,
-    marginStart: 195,
+    // padding: 5,
+    // marginStart: 195,
     // backgroundColor:'red',
-    right: "13%",
+    // right: "13%",
   },
   trashIcon: {
     fontSize: 50,
@@ -223,7 +234,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
   titlesmall: {
-    width: "190%",
+    width:'90%',
     padding: 10,
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     borderRadius: 5,
@@ -233,7 +244,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
     marginBottom: 6,
-    color: "#aa8cc2",
+    // color: "#aa8cc2",
   },
   headertitle: {
     height: "10%",
