@@ -11,7 +11,7 @@ import BreakBar from '../Components/BreakBar';
 import SubButton from '../Components/SubButton';
 import SubButton22 from '../Components/SubButton22';
 
-import { useTimerStatus, useTimerUpdate, useFinishTime, useTotalDuration } from '../Context/TimerStatus';
+import { useTimerStatus, useTimerUpdate, useFinishTime, useTotalDuration, useAppPaused, usePauseStart } from '../Context/TimerStatus';
 
 const Tips_list = [
     <SubButton
@@ -92,7 +92,7 @@ function calculateBreakTimes(totalTime, workTime) {
 }
 
 const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
-    const workFinish = useFinishTime().finishTime;
+    let workFinish = useFinishTime().finishTime;
     const updateFinishTime = useFinishTime().changeFinishTime;
 
     const [timeRemaining, setTimeRemaining] = useState(Math.floor(workFinish - (Date.now()/1000)));
@@ -112,7 +112,13 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const isTimerActive = useTimerStatus();
     const toggleTimerStatus = useTimerUpdate();
 
-    var isPaused = false;
+    // var isPaused = false;
+
+    let isPaused = useAppPaused().timerPaused;
+    const updatePlayPause = useAppPaused().changePlayPause;
+
+    let pauseStart = usePauseStart().pauseStartAt;
+    const updatePauseStart = usePauseStart().changePauseStart;
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -181,6 +187,62 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
         toggleTimerStatus()
         poses.navigation.navigate("FocusModeActive")
     }
+
+    // const applyPlayPause = () => {
+    //     if (isPaused) {
+
+
+    //         const addTime = Math.floor(Date.now()/1000) - pauseStart
+    //         console.log(workFinish)
+    //         updateFinishTime(workFinish + addTime)
+    //         workFinish = useFinishTime().finishTime;
+    //         console.log(workFinish)
+
+    //         console.log("a",timerPaused)
+    //         updatePlayPause(false)
+    //         console.log("b",timerPaused)
+    //         console.log("Q",isPaused)
+    //         isPaused = !isPaused
+    //         console.log("W",isPaused)
+    //     } else {
+    //         updatePauseStart(Math.floor(Date.now()/1000))
+    //         console.log("pause Start",pauseStart)
+
+
+
+
+    //         console.log("c",timerPaused)
+    //         updatePlayPause(true)
+    //         console.log("d",timerPaused)
+    //         console.log("E",isPaused)
+    //         isPaused = !isPaused
+    //         console.log("R",isPaused)
+    //     }
+    // }
+
+    const applyPlayPause = () => {
+        if (isPaused) {
+          const addTime = Math.floor(Date.now() / 1000) - pauseStart;
+      
+          console.log(workFinish)
+          // Update the finish time with the added time
+          const newFinishTime = workFinish + addTime;
+          updateFinishTime(newFinishTime);
+          console.log("Updated finish ", workFinish)
+      
+          // Clear the pause start time
+          updatePauseStart(0);
+      
+          // Update the pause state
+          updatePlayPause(false);
+        } else {
+          // Set the pause start time to the current time
+          updatePauseStart(Math.floor(Date.now() / 1000));
+      
+          // Update the pause state
+          updatePlayPause(true);
+        }
+      };
 
     return (
         <View style={styles.text}>
@@ -251,10 +313,7 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
                 <SubButton22 
                     text="Pause/Play"
-                    onPress={() => [
-                        isPaused = !isPaused,
-                      ]
-                    }
+                    onPress={applyPlayPause}
                 />
 
                 <SubButton22
