@@ -25,12 +25,12 @@
     },
     "web": {
       "favicon": "./assets/GGOFINAL.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "f61d2b9b-adcd-4bb5-9b71-6ad791888880"
-      }
     }
+    // "extra": {
+    //   "eas": {
+    //     "projectId": "f61d2b9b-adcd-4bb5-9b71-6ad791888880"
+    //   }
+    // }
     // "extra": {
     //   "eas": {
     //     "projectId": "fb0914e5-ead0-4e11-b19d-26fdb7fc4d57"

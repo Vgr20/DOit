@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { Svg, Circle } from "react-native-svg";
-import React, { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect, useState} from "react";
 import {
   StyleSheet,
   Text,
@@ -8,6 +9,7 @@ import {
   Image,
   View,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import Animated, {
   useAnimatedProps,
@@ -35,9 +37,40 @@ const rotateY = height / 3;
 const transformString = `rotate(-90 ${rotateX} ${rotateY})`;
 
 const Stats = (poses) => {
+  // const navigation = useNavigation();
   const [enteredText, setEnteredText] = useState(""); // Initialize with an empty string
+  const [reflections, setReflections] = useState([]);
   const handleOnChangeText = (value) => {
     setEnteredText(value); // Update enteredText state with the entered value
+  };
+
+  const handleSaveReflection = async () => {
+    if (enteredText) {
+      const currentDate = new Date();
+      // const dateTimeString = currentDate.toLocaleDateString();
+      const dateString = currentDate.toLocaleDateString();
+      const TimeString = currentDate.toLocaleTimeString();
+      
+  
+      // Create a new reflection object
+      const newReflection = { text: enteredText, date: dateString, time:TimeString };
+  
+      try {
+        const storedReflections = await AsyncStorage.getItem("reflections");
+        let existingReflections = [];
+  
+        if (storedReflections) {
+          existingReflections = JSON.parse(storedReflections);
+        }
+        const updatedReflections = [...existingReflections, newReflection];
+        await AsyncStorage.setItem("reflections", JSON.stringify(updatedReflections));
+        setReflections(updatedReflections);
+        setEnteredText("");
+        poses.navigation.navigate("PastReflections");
+      } catch (error) {
+        console.error("Error saving reflection to local storage: ", error);
+      }
+    }
   };
 
   const progress = useSharedValue(0);
@@ -118,11 +151,17 @@ const Stats = (poses) => {
         What is your reflection today?
       </Text>
 
-      <FormInput
-        onChangeText={(value) => handleOnChangeText(value)}
-        placeholder="Type your reflection here"
-        autoCapitalize="none"
-      />
+      <View style = {{flexDirection:'row', marginTop:30}}>  
+        <FormInput
+          onChangeText={(value) => setEnteredText(value)}
+          value={enteredText}
+          placeholder="Type your reflection here"
+          autoCapitalize="none"
+        />
+        <TouchableOpacity style={styles.button} onPress={handleSaveReflection}>
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>
+      </View>
 
         <SubButton22
           text="Past Reflections"
@@ -170,6 +209,25 @@ const Stats = (poses) => {
 };
 
 const styles = StyleSheet.create({
+button : {
+  borderRadius : 10,
+  backgroundColor : '#ff6200',
+  // paddingHorizontal : 80,
+  width : 40,
+  height: 50,
+  justifyContent:'center',
+  alignItems:'center',
+  marginStart:5,
+  // marginVertical : 10,    
+  },
+  buttonText : {
+      color : '#E1E5E5',
+      fontWeight : 'bold',
+      textTransform : 'capitalize',
+      fontSize : 20,
+      textAlign : 'center',
+      // marginHorizontal : 80,
+  },
   container: {
     // flex: 1,
     flexGrow: 1,
