@@ -124,7 +124,8 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
         const interval = setInterval(() => {
           setTimeRemaining((prevTime) => {
             if (isPaused) {
-                return prevTime;
+                return prevTime + Math.floor(Date.now() / 1000) - pauseStart - (+ Math.floor(Date.now() / 1000) - pauseStart)
+                // return prevTime;
             }
 
             if (prevTime > 0) {
@@ -185,40 +186,9 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
     const stopCounter = () => {
         toggleTimerStatus()
+        updatePlayPause(false)
         poses.navigation.navigate("FocusModeActive")
     }
-
-    // const applyPlayPause = () => {
-    //     if (isPaused) {
-
-
-    //         const addTime = Math.floor(Date.now()/1000) - pauseStart
-    //         console.log(workFinish)
-    //         updateFinishTime(workFinish + addTime)
-    //         workFinish = useFinishTime().finishTime;
-    //         console.log(workFinish)
-
-    //         console.log("a",timerPaused)
-    //         updatePlayPause(false)
-    //         console.log("b",timerPaused)
-    //         console.log("Q",isPaused)
-    //         isPaused = !isPaused
-    //         console.log("W",isPaused)
-    //     } else {
-    //         updatePauseStart(Math.floor(Date.now()/1000))
-    //         console.log("pause Start",pauseStart)
-
-
-
-
-    //         console.log("c",timerPaused)
-    //         updatePlayPause(true)
-    //         console.log("d",timerPaused)
-    //         console.log("E",isPaused)
-    //         isPaused = !isPaused
-    //         console.log("R",isPaused)
-    //     }
-    // }
 
     const applyPlayPause = () => {
         if (isPaused) {
