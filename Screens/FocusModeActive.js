@@ -12,7 +12,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 import { useTimerStatus, useTimerUpdate , useFinishTime , useSetFinishTime} from '../Context/TimerStatus';
 
-function FocusMode(props) {
+function FocusModeActive(props) {
     const [worktime, onChangeText1] = React.useState('60');
     const [breaktime, onChangeText2] = React.useState('25');
     const [breakinterval, onChangeText3] = React.useState('5');
@@ -36,82 +36,35 @@ function FocusMode(props) {
 
             {!isTimerActive ? (
                 <>
-
-            <Text style={{ color: "#E1E5E5", fontWeight : 'bold', alignSelf: "center", marginTop: 20, fontSize: 30}}>
-            Let's Focus
-            </Text>   
-            <Image
-            source={require("../assets/undraw_focus.png")}
-            style={{ width: 200, height: 200, alignSelf: "center"}}
-            />
-
-                <SubButton
-                    text="Focus Mode"
-                    img = {require('../assets/focused.png')}
-                    subtext={"With Pomodoro technique \nLearn more here!"}
-                    onPress={() => 
-                        Alert.alert("Focus Mode", "Time management method: Work intensely for 25 minutes, "+
-                        "then take a 5-minute break; repeat for focus and productivity."+
-                        " Adjust the timings according to your preference!", [
-                            {text: "Right!", onPress: () =>  
-                            console.log("Yippeee!")
-                            } ])
-                        }
+                <Image
+                img = {require('../assets/focused.png')}
+                style={{ width: 200, height: 200, alignSelf: "center"}}
                 />
-
-                <Text style={styles.smalltext}>
-                    Total Duration of Task
-                </Text>
-                <Text style={styles.smallertext}>
-                    in Minutes
-                </Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText1}
-                    value={worktime}
-                />
-
-                <Text style={styles.smalltext}>
-                    Working Duration of a Segment
-                </Text>
-                <Text style={styles.smallertext}>
-                    in Minutes
-                </Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText2}
-                    value={breaktime}
-                />
-
-                <Text style={styles.smalltext}>
-                    Break Duration
-                </Text>
-                <Text style={styles.smallertext}>
-                    in Minutes
-                </Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText3}
-                    value={breakinterval}
-                />
-
-                <SubButton22
-                    text = "Start Now"
-                    onPress={toggleTimerStatus}
-                />
-
-                {/* <SubButton22 
-                    text="Start Now"
-                    onPress={() => 
-                        Alert.alert("Focus Mode", "Are you ready to start Focus Mode?", [
-                            {text: "Yes", onPress: () =>  
-                                [setShowCountdown(true),
-                                setStartCounter(true)]
-                            },
-                            {text: "No", onPress: () => console.log(startCounter)},
-                        ])
+                <SubButton 
+                text="Focus Mode"
+                subtext={"Let's Go Get On!"}
+                img = {require('../assets/focused.png')}
+                // onPress={() => poses.navigation.navigate('FocusMode')}
+                onPress={() => 
+                    Alert.alert("Focus Mode", "Let's Get it On!", [
+                        {text: "Yesssss!", onPress: () =>  
+                        console.log("Yessss!")
+                        } ])
                     }
-                /> */}
+                />
+
+            <Text style={styles.text}> CountDown Over! </Text>
+
+            <Text style={styles.smallertext}> Were you able to complete your task? </Text>
+
+            <SubButton22 
+                text="No, I need to reschedule"
+                onPress={() => props.navigation.navigate('NavigationBarScreen')}
+            />
+            <SubButton22 
+                text="Yes, I am all good !"
+                onPress={() => props.navigation.navigate('HomeScreen')}
+            />
 
                 </>
                 ) : (
@@ -122,7 +75,7 @@ function FocusMode(props) {
             {isTimerActive && (
                 <>
                 <SubButton 
-                text="Focus Mode"
+                text="Focus Mode Activated"
                 subtext={"Let's Go Get On!"}
                 img = {require('../assets/focused.png')}
                 // onPress={() => poses.navigation.navigate('FocusMode')}
@@ -210,4 +163,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default FocusMode;
+export default FocusModeActive;

@@ -16,6 +16,8 @@ import MainButton2 from "../Components/MainButton2";
 import { ScrollView } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { useTimerStatus } from "../Context/TimerStatus";
+
 function handleBackPress() {
   Alert.alert(
     "Hold on!",
@@ -54,6 +56,9 @@ const signOut = async () => {
 
 
 const Dashboard = (poses) => {
+
+  const isTimerActive = useTimerStatus();
+
   useEffect(() => {
     StatusBar.setHidden(true);
     const onBackPress = () => {
@@ -73,6 +78,15 @@ const Dashboard = (poses) => {
   }, [poses.navigation]);
 
   const texts = "Activity Hub";
+
+  const handleFocusModeDirect = () => {
+    console.log("Pressed")
+    if (isTimerActive) {
+      poses.navigation.navigate("FocusModeActive")
+    } else {
+      poses.navigation.navigate("FocusMode")
+    }
+  }
 
   return (
     <ScrollView style={styles.scrollviewcontainer}>
@@ -108,7 +122,8 @@ const Dashboard = (poses) => {
         <MainButton
           text="Focus Mode"
           img={require("../assets/focused.png")}
-          onPress={() => poses.navigation.navigate("FocusMode")}
+          onPress={() => handleFocusModeDirect() }
+          // onPress={() => poses.navigation.navigate("FocusMode")}
         />
 
         <MainButton2

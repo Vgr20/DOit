@@ -18,6 +18,7 @@ import MorningRoutine from "./Screens/MorningRoutine";
 import yourHabits from "./Screens/yourHabits";
 import PastReflections from "./Screens/PastReflections";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import FocusModeActive from "./Screens/FocusModeActive";
 import { useFonts, Satisfy_400Regular } from "@expo-google-fonts/satisfy";
 
 import Config from "react-native-config";
@@ -182,6 +183,13 @@ export default function App() {
 
       PastReflections: {
         screen: PastReflections,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      
+      FocusModeActive: {
+        screen: FocusModeActive,
         navigationOptions: {
           headerShown: false, // Hide the header for the SignInScreen
         },

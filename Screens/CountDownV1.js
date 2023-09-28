@@ -269,19 +269,6 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
                 <Text style={styles.smallertext}> Were you able to complete your task? </Text>
 
-
-                
-                {/* <MainButton
-                    style = {{bottom : 1000}}
-                    text = "No, I need to reschedule :("
-                    onPress={() => poses.navigation.navigate('NavigationBarScreen')}
-                />
-                <MainButton
-                    style = {{bottom : 1000}}
-                    text = "Yes, I am all good :)"
-                    onPress={() => poses.navigation.navigate('HomeScreen')}
-                />     */}
-
                 <SubButton22 
                     text="No, I need to reschedule"
                     onPress={() => poses.navigation.navigate('NavigationBarScreen')}
