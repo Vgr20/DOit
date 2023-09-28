@@ -9,7 +9,7 @@ import SubButton2 from '../Components/SubButton2';
 import PercentageBar from '../Components/PercentageBar';
 import BreakTimerV2 from './BreakTimerV2';
 
-const CountDsssssssownV3 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
+const CountDownV3 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
     const [worktime, setWorktime] = useState(breakInterval*60)
     const [isBreak, setIsBreak] = useState(false);

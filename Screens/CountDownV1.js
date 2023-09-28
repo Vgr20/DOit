@@ -11,7 +11,7 @@ import BreakBar from '../Components/BreakBar';
 import SubButton from '../Components/SubButton';
 import SubButton22 from '../Components/SubButton22';
 
-import { useTimerStatus, useTimerUpdate } from '../Context/TimerStatus';
+import { useTimerStatus, useTimerUpdate, useFinishTime } from '../Context/TimerStatus';
 
 const Tips_list = [
     <SubButton
@@ -92,7 +92,10 @@ function calculateBreakTimes(totalTime, workTime) {
 }
 
 const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
-    const [timeRemaining, setTimeRemaining] = useState(targetTime*60);
+    const workFinish = useFinishTime().finishTime;
+    const updateFinishTime = useFinishTime().changeFinishTime;
+
+    const [timeRemaining, setTimeRemaining] = useState(Math.floor(workFinish - (Date.now()/1000)));
     const [worktime, setWorktime] = useState(breakInterval*60)
     const [isBreak, setIsBreak] = useState(false);
     const [break_mins, setbreak_mins] = useState(breakDuration*60)
@@ -145,15 +148,18 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     }
                     return prevTime;
                 } else {
-                    console.log(prevTime);
-                    console.log("Start_total:",targetTime, worktime)
+                    // console.log(prevTime);
+                    // console.log("Start_total:",targetTime, worktime)
+                    console.log("start and remain ",startTime, timeRemaining)
                     // console.log(breakList)
                     return prevTime - 1;
                 }
             } else {
               console.log('Done')
+              
               clearInterval(interval);
-              return 0;
+            //   return 0;
+              stopCounter();
             }
           });
         // }, 60000); // Update every 1 minute
