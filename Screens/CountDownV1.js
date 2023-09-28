@@ -170,11 +170,16 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const minutes = Math.floor((timeRemaining % 3600) / 60);
     const seconds = timeRemaining % 60;
 
+    const stopCounter = () => {
+        toggleTimerStatus()
+        poses.navigation.navigate("FocusModeActive")
+    }
+
     return (
         <View style={styles.text}>
             <Image
             source={require("../assets/undraw_time.png")}
-            style={{ width: 260, height: 260, alignSelf: "center"}}
+            style={{ width: 200, height: 200, alignSelf: "center"}}
             />
             {(timeRemaining) > 0 ? (
                 
@@ -247,7 +252,7 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
 
                 <SubButton22
                     text = "Stop"
-                    onPress= {toggleTimerStatus}
+                    onPress= {stopCounter}
                 />
             
                 {/* <SubButton22 

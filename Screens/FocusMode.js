@@ -28,6 +28,11 @@ function FocusMode(props) {
 
     var inProgress = isTimerActive;
 
+    const startUpCounter = () => {
+        props.navigation.navigate("FocusModeActive")
+        toggleTimerStatus()
+    }
+
     return (
 
         
@@ -97,6 +102,7 @@ function FocusMode(props) {
 
                 <SubButton22
                     text = "Start Now"
+                    // onPress={startUpCounter}
                     onPress={toggleTimerStatus}
                 />
 
