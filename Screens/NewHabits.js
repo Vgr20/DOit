@@ -6,6 +6,7 @@ import Slider from "@react-native-community/slider";
 import SubButton22 from "../Components/SubButton22";
 import habitStore from "./habitstore";
 
+
 const timesOfDay = [
     { label: "Morning", value: "Morning" },
     { label: "Afternoon", value: "Afternoon" },
@@ -86,7 +87,15 @@ class NewHabits extends React.Component {
               });
             }
           };
-
+    sendIt = () => {
+        console.log("navigation prop: ", this.state)
+        this.props.navigation.navigate('SelectGoals2', {
+            nameOfHabit: this.state.nameOfHabit,
+            description: this.state.description,
+            repeatInterval: this.state.repeatInterval,
+            sliderValue: this.state.sliderValue,
+          });
+    }   
     render(){
         
 
@@ -106,10 +115,10 @@ class NewHabits extends React.Component {
                     </Text>
                 <TextInput
                 placeholder="Name of Habit"
-                onChangeText={(text) => this.setState({name : text})}
+                onChangeText={(text) => this.setState({nameOfHabit : text})}
                 onEndEditing={(text) => {
                     // console.log("Name of Habit:", this.state.name); 
-                    habitStore.nameOfHabit = this.state.name;
+                    habitStore.nameOfHabit = this.state.nameOfHabit;
                     }
                 }
                 style={{width : 370,
@@ -292,7 +301,17 @@ class NewHabits extends React.Component {
 
                     <SubButton22
                     text="Continue"
-                    onPress={() => this.props.navigation.navigate('SelectGoals2')}
+                    // onPress={() => this.props.navigation.navigate('SelectGoals2'
+                    //     ,{
+                    //     nameOfHabit: this.state.nameOfHabit,
+                    //     description: this.state.description,
+                    //     repeatInterval: this.state.repeatInterval,
+                    //     sliderValue: this.state.sliderValue,  
+                    //     },
+                        
+                    // )}
+                    onPress={this.sendIt}
+                    
                     />
 
                     <SubButton22

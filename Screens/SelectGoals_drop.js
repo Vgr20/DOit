@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, ScrollView, TextInput, Image } from 'react-nati
 import { Dropdown } from 'react-native-element-dropdown';
 import SubButton22 from '../Components/SubButton22';
 import habitStore from './habitstore';
+import client from "../api/client";
+
 const data = [
     { label: 'Units', value: '1' },
     { label: 'Timer', value: '2' },
@@ -30,7 +32,7 @@ const timer = [
   ];
 
 
-const SelectGoals2 = (poses) => {
+const SelectGoals2 = (props) => {
 
   const [isTextInputVisible, setIsTextInputVisible] = useState(false);
   const [textInputValue, setTextInputValue] = useState('');
@@ -39,6 +41,44 @@ const SelectGoals2 = (poses) => {
   const [value2, setValue2] = useState(null);
   const [isFocus1, setIsFocus1] = useState(false);
   const [isFocus2, setIsFocus2] = useState(false);
+
+  const { route } = props.navigation.state;
+  const {
+    nameOfHabit = props.navigation.state.params.nameOfHabit,
+    description = props.navigation.state.params.description,
+    repeatInterval = props.navigation.state.params.repeatInterval,
+    sliderValue = props.navigation.state.params.sliderValue,
+  } = route?.params || {};
+
+  // const {
+  //   nameOfHabit=  poses.nameOfHabit,
+  //   description=  poses.description,
+  //   repeatInterval= poses.repeatInterval,
+  //   sliderValue= poses.sliderValue,
+  // } = poses;
+
+  const handleAddHabitPress = async () => {
+    try {
+      const response = client.post("/api/NewHabitRoute/saveNewHabit",{
+        newhabitname: nameOfHabit,
+        description: description,
+        intervaltype: repeatInterval,
+        prioritylevel: sliderValue,
+        remindertype: value1,
+        preferedtime: value2
+      });
+      if(response.data.message === "Habit Added Successfullly"){
+        console.log("Habit added successfully");
+        console.log(prioritylevel);
+      }
+    } catch (error){
+      console.log(error);
+    
+      console.log('Navigation State:', props.navigation.state);
+      console.log(nameOfHabit)
+    }
+    props.navigation.navigate('FullScreen');
+  };
 
   const renderLabel = () => {
     if (value1 || isFocus1) {
@@ -155,12 +195,15 @@ const SelectGoals2 = (poses) => {
             <View style = {{flexDirection : 'column', justifyContent : 'space-between', marginHorizontal : 17}}>
                     <SubButton22
                     text="Save"
-                    onPress={() => poses.navigation.navigate('FullScreen')}
+                    onPress={handleAddHabitPress}
                     />
-
+                    {/* <SubButton22
+                    text="Save"
+                    onPress={() => poses.navigation.navigate('FullScreen')}
+                    /> */}
                     <SubButton22
                     text="Cancel"
-                    onPress={() => poses.navigation.navigate('HabitScreen')}
+                    onPress={() => props.navigation.navigate('HabitScreen')}
                     />
             </View>
     </ScrollView>

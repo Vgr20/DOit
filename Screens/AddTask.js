@@ -219,11 +219,14 @@ const AddTask = () => {
         </Text>
         {/* Task Group */}
         <View style={styles.box}>
-          <Text style={styles.font}>TASK GROUP</Text>
-          <Image
-          source={require("../assets/task.png")}
-          style={{ width: 50, height: 50, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
-        />
+          <View style={{ flexDirection: "row", alignSelf: "center", marginRight:10 }}>
+            <Image
+              source={require("../assets/task.png")}
+              style={{ width: 40, height: 40, marginTop: 0, marginBottom: 0 }}
+            />
+            <Text style={styles.font}>TASK GROUP</Text>
+          </View>
+
           <Picker
             style={[
               styles.box,
@@ -267,11 +270,15 @@ const AddTask = () => {
 
         {/* Level of game */}
         <View style={styles.box}>
-          <Text style={styles.font}>TASK NAME</Text>
+          <View style={{ flexDirection: "row", alignSelf: "center", marginRight:10 }}>
           <Image
-          source={require("../assets/writingtask.png")}
-          style={{ width: 50, height: 50, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
-        />
+            source={require("../assets/writingtask.png")}
+            style={{ width: 45, height: 45, marginTop: 0, marginBottom: 0 }}
+          />
+          <Text style={styles.font}>TASK NAME</Text>
+          </View>
+          
+          
           <TextInput
             style={styles.input}
             onChangeText={onChangeNumber}
@@ -285,11 +292,15 @@ const AddTask = () => {
 
         {/* Starting Task Time */}
         <View style={styles.box}>
-          <Text style={styles.font}>START AT</Text>
+          <View style={{ flexDirection: "row", alignSelf: "center", marginRight:10 }}>
           <Image
-          source={require("../assets/hourglass.png")}
-          style={{ width: 50, height: 50, alignSelf: "center", marginTop: 0, marginBottom: 5 }}
-        />
+            source={require("../assets/hourglass.png")}
+            style={{ width: 40, height: 40, alignSelf: "center", marginTop: 0, marginBottom: 5 }}
+          />  
+          <Text style={styles.font}>START AT</Text>
+          </View>
+          
+          
           <View style={styles.selectdatetime}>
             <TouchableOpacity
               onPress={showDatepicker}
@@ -447,11 +458,14 @@ const AddTask = () => {
 
         {/* Level of Importance */}
         <View style={styles.box}>
-          <Text style={styles.font}>LEVEL OF IMPORTANCE</Text>
-          <Image
-          source={require("../assets/reward1.png")}
-          style={{ width: 50, height: 50, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
-        />
+          <View style={{ flexDirection: "row", alignSelf: "center", marginRight:10 }}>
+            <Image
+            source={require("../assets/reward1.png")}
+            style={{ width: 50, height: 50, alignSelf: "center", marginTop: 0, marginBottom: 0 }}
+            />
+            <Text style={styles.font}>LEVEL OF IMPORTANCE</Text>
+          </View>
+          
           <View style={styles.stars}>
             {[1, 2, 3].map((starNumber) => (
               <TouchableOpacity
