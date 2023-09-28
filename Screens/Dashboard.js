@@ -80,7 +80,7 @@ const Dashboard = (poses) => {
   const texts = "Activity Hub";
 
   const handleFocusModeDirect = () => {
-    console.log("Pressed")
+    console.log("Focus Pressed")
     if (isTimerActive) {
       poses.navigation.navigate("FocusModeActive")
     } else {

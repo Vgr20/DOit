@@ -10,7 +10,7 @@ import SubButton22 from '../Components/SubButton22';
 import { ScrollView } from 'react-native-gesture-handler';
 // import CountDownV3 from './CountDownV3';
 
-import { useTimerStatus, useTimerUpdate , useFinishTime , useSetFinishTime} from '../Context/TimerStatus';
+import { useTimerStatus, useTimerUpdate , useFinishTime } from '../Context/TimerStatus';
 
 function FocusMode(props) {
     const [worktime, onChangeText1] = React.useState('60');
@@ -23,13 +23,17 @@ function FocusMode(props) {
     };
     const isTimerActive = useTimerStatus();
     const toggleTimerStatus = useTimerUpdate();
-    const workFinish = useFinishTime();
-    const updateFinishTime = useSetFinishTime();
+    const workFinish = useFinishTime().finishTime;
+    const updateFinishTime = useFinishTime().changeFinishTime;
 
     var inProgress = isTimerActive;
 
     const startUpCounter = () => {
-        props.navigation.navigate("FocusModeActive")
+        // props.navigation.navigate("FocusModeActive")
+        console.log(Date.now()/1000 )
+        updateFinishTime((Date.now()/1000) + worktime*60)
+        
+        console.log(workFinish) // actual worktime is updated
         toggleTimerStatus()
     }
 
@@ -102,8 +106,8 @@ function FocusMode(props) {
 
                 <SubButton22
                     text = "Start Now"
-                    // onPress={startUpCounter}
-                    onPress={toggleTimerStatus}
+                    onPress={startUpCounter}
+                    // onPress={toggleTimerStatus}
                 />
 
                 {/* <SubButton22 
