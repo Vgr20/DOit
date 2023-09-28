@@ -237,9 +237,9 @@ const AddTask = () => {
             onValueChange={handleGroupChange}
             itemStyle={{ color: "#26214a" }}
           >
-            <Picker.Item label="Group 1" value="group1" />
-            <Picker.Item label="Group 2" value="group2" />
-            <Picker.Item label="Group 3" value="group3" />
+            <Picker.Item label="Tasks for the week" value="group1" />
+            <Picker.Item label="Tasks for the day" value="group2" />
+            <Picker.Item label="Less important tasks" value="group3" />
             <Picker.Item label="Add New Group" value="newGroup" />
             {/* Add more items as needed */}
           </Picker>
