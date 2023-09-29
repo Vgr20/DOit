@@ -64,7 +64,7 @@ const SignInScreen = ({ navigation }) => {
       style={{ width: 250, height: 250, position: "relative", alignSelf: "center", marginTop: 80, marginBottom: 30 }}
     />
 
-    <Text style={{fontFamily: 'Satisfy_400Regular', color: "#E1E5E5", fontWeight : 'normal', marginBottom: 30, fontSize: 30}}>
+    <Text style={{fontFamily: 'Satisfy_400Regular', color: "#E1E5E5", fontWeight : 'normal', marginBottom: 30, fontSize: 30, alignSelf:"center"}}>
                 You're almost there!
     </Text>
 

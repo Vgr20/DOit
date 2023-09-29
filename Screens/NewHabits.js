@@ -180,7 +180,7 @@ class NewHabits extends React.Component {
                         backgroundColor : "white",
                         borderRadius : 20,
                         marginVertical : 10,
-                        // alignContent : 'right',
+                        alignself : 'center',
                         marginHorizontal : 25}}>
                     <Picker.Item label = "Daily" value = "Daily"/>
                     <Picker.Item label = "Weekly" value = "Weekly"/>
@@ -200,8 +200,9 @@ class NewHabits extends React.Component {
                         backgroundColor : "white",
                         borderRadius : 20,
                         marginVertical : 10,
-                        // alignContent : 'right',
-                        marginHorizontal : 15}}
+                        alignself : 'center',
+                        marginHorizontal : 25
+                    }}
                 >
                     <Picker.Item label="Select Time" value="" />
                     {timesOfDay.map((day) => (
@@ -223,7 +224,7 @@ class NewHabits extends React.Component {
                         borderRadius : 20,
                         marginVertical : 10,
                         // alignContent : 'right',
-                        marginHorizontal : 15}}
+                        marginHorizontal : 25}}
                 >
                     <Picker.Item label="Select Day" value="" />
                     {daysOfWeek.map((day) => (
@@ -245,7 +246,7 @@ class NewHabits extends React.Component {
                         borderRadius : 20,
                         marginVertical : 10,
                         // alignContent : 'right',
-                        marginHorizontal : 15}}
+                        marginHorizontal : 25}}
                 >
                     <Picker.Item label="Select Month" value="" />
                     {monthsOfYear.map((day) => (
