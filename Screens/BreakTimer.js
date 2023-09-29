@@ -94,7 +94,7 @@ const BreakTimer = ({ targetTime }) => {
             }
           });
         // }, 60000); // Update every 1 minute
-        }, 999.9); // Update every 1 second
+        }, 999.999); // Update every 1 second
         // }, 99.99); // For debugging  
         
         return () => {

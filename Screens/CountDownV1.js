@@ -104,10 +104,13 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     const resetNumMinutes = () => {
         setbreak_mins(breakDuration*60);
     }
-    const [num_breaks, setnum_breaks] = useState(Math.ceil((startTime/60) / (breakInterval)) - 1);
-    const tot_breaks = Math.ceil((startTime/60) / (breakInterval)) - 1;
-    
+
     const breakList = useBreakList().breakList;
+    // console.log("The BreakList is",breakList)
+
+    // const [num_breaks, setnum_breaks] = useState(Math.ceil((startTime/60) / (breakInterval)) - 1);
+    let num_breaks = breakList.length;
+    const tot_breaks = breakList.length;
 
     const isTimerActive = useTimerStatus();
     const toggleTimerStatus = useTimerUpdate();
@@ -123,6 +126,7 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
     useEffect(() => {
         const interval = setInterval(() => {
           setTimeRemaining((prevTime) => {
+            num_breaks = countItemsGreaterThanLimit();
             if (isPaused) {
                 return prevTime + Math.floor(Date.now() / 1000) - pauseStart - (+ Math.floor(Date.now() / 1000) - pauseStart)
                 // return prevTime;
@@ -133,7 +137,9 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                     randomNum = Math.floor(Math.random() * 5);
                     console.log("New Habit:",randomNum)
                 }
-                if ((startTime - prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
+                console.log(startTime - prevTime, prevTime)
+                // if ((startTime - prevTime) % (breakInterval*60) === 0 && prevTime !== startTime) {
+                if (breakList.includes(prevTime)) {
                     // updatePlayPause(true);
                     console.log("Break")
                     setIsBreak(true);
@@ -159,7 +165,8 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
                         resetNumMinutes();
                         console.log(break_mins);
                         setIsBreak(false);
-                        setnum_breaks(num_breaks - 1)
+                        // setnum_breaks(num_breaks - 1)
+                        num_breaks = countItemsGreaterThanLimit;
                         return prevTime - 1;
                     }
                     return prevTime;
@@ -186,6 +193,28 @@ const CountDownV1 = ({ targetTime , breakInterval, breakDuration, poses} ) => {
             clearInterval(interval);
           };
     }, [timeRemaining, isBreak]);
+
+    const updateBreakNum = () => {
+        num_breaks = num_breaks - 1;
+    }
+
+    const countItemsGreaterThanLimit = () => {
+        // Initialize a counter
+        let count = 0;
+      
+        // Loop through the list
+        for (let i = 0; i < breakList.length; i++) {
+          // Check if the current item is greater than the limit
+          if (breakList[i] > timeRemaining) {
+            // If it is, increment the counter
+            count++;
+          }
+        }
+      
+        // Return the count of items greater than the limit
+        return count;
+      }
+
 
     // Convert remaining time to hours and minutes
     const hour = Math.floor(timeRemaining / 3600);

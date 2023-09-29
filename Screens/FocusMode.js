@@ -56,10 +56,10 @@ function FocusMode(props) {
         console.log(maxBreaks)
     
         for (let i =0; i < maxBreaks; i++) {
-        currentTime += parseFloat(breaktime);
+        currentTime += parseFloat(breaktime*60);
         console.log("i- ",currentTime)
         // const percentage = (currentTime / totalTime) * 100;
-        breakMilestones.push(worktime - currentTime);
+        breakMilestones.push((worktime*60) - currentTime);
         }
         return breakMilestones;
     }
