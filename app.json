@@ -21,7 +21,7 @@
         "backgroundColor": "#2f4f4f"
       },
       "package": "com.saeedha.DOit",
-      "versionCode": 2
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/SMALLLOGO.png"
