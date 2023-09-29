@@ -18,6 +18,10 @@ import MorningRoutine from "./Screens/MorningRoutine";
 import yourHabits from "./Screens/yourHabits";
 import PastReflections from "./Screens/PastReflections";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import DrinkWater from "./Screens/DrinkWater";
+import Journaling from "./Screens/Journaling";  
+import Exercise from "./Screens/Exercise";
+import IntermittentFasting from "./Screens/IntermittentFasting";
 import { useFonts, Satisfy_400Regular } from "@expo-google-fonts/satisfy";
 
 //connecting backend
@@ -185,7 +189,31 @@ export default function App() {
           headerShown: false, // Hide the header for the SignInScreen
         },
       },
-    },
+      DrinkWater: {
+        screen: DrinkWater,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      Journaling: {
+        screen: Journaling,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      Exercise: {
+        screen: Exercise,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },
+      IntermittentFasting: {
+        screen: IntermittentFasting,
+        navigationOptions: {
+          headerShown: false, // Hide the header for the SignInScreen
+        },
+      },  
+      },
     {
       initialRouteName: initialRoute,
     }

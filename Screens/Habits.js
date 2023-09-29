@@ -47,26 +47,26 @@ const Habits = (poses) => {
                 text="Drink Water"
                 img = {require('../assets/drinkwater.png')}
                 subtext={"Right after you wake up"}
-                onPress={() => poses.navigation.navigate('TrendingHabitsScreen')}
+                onPress={() => poses.navigation.navigate('DrinkWater')}
                 />
             <SubButton
                 text="intermittent fasting"
                 img = {require('../assets/stayathome2.png')}
                 subtext={"Resetting your body's metabolism"}
-                onPress={() => poses.navigation.navigate('TrendingHabitsScreen')}
+                onPress={() => poses.navigation.navigate('IntermittentFasting')}
                 />
             <SubButton
                 text="Exercise"
                 img = {require('../assets/excercise.png')}
                 subtext={"Elevate your physical well-being"}
-                onPress={() => poses.navigation.navigate('TrendingHabitsScreen')}
+                onPress={() => poses.navigation.navigate('Exercise')}
                 />
 
             <SubButton
                 text="Journaling"
                 img = {require('../assets/journaling2.png')}
                 subtext={"Write every memory"}
-                onPress={() => poses.navigation.navigate('TrendingHabitsScreen')}
+                onPress={() => poses.navigation.navigate('Journaling')}
                 />
             
             <SubButton22 
