@@ -2,12 +2,12 @@
   "expo": {
     "name": "GoGetOn",
     "slug": "DOit",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "orientation": "portrait",
-    "icon": "./assets/GGOFINAL.png",
+    "icon": "./assets/SMALLLOGO.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/GGOFINAL.png",
+      "image": "./assets/SMALLLOGO.png",
       "resizeMode": "contain",
       "backgroundColor": "#2f4f4f"
     },
@@ -17,24 +17,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/GGOFINAL.png",
+        "foregroundImage": "./assets/SMALLLOGO.png",
         "backgroundColor": "#2f4f4f"
       },
       "package": "com.saeedha.DOit",
       "versionCode": 2
     },
     "web": {
-      "favicon": "./assets/GGOFINAL.png"
+      "favicon": "./assets/SMALLLOGO.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f61d2b9b-adcd-4bb5-9b71-6ad791888880"
+      }
     }
-    // "extra": {
-    //   "eas": {
-    //     "projectId": "f61d2b9b-adcd-4bb5-9b71-6ad791888880"
-    //   }
-    // }
-    // "extra": {
-    //   "eas": {
-    //     "projectId": "fb0914e5-ead0-4e11-b19d-26fdb7fc4d57"
-    //   }
-    // }
   }
 }

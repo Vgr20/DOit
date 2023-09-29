@@ -7,7 +7,7 @@ import SubButton4 from "../Components/SubButton4";
 const DrinkWater = (poses) => {
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.text}>Drink Adequate!</Text>
+            <Text style={styles.text}>Drink Adequately!</Text>
             <Image
             source={require("../assets/drinkingwater.png")}
             style={{ width: 180, height: 180, alignSelf: "center", marginTop: 80, marginBottom: 50}}

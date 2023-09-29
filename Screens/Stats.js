@@ -128,12 +128,6 @@ const Stats = (poses) => {
 
       <Text style={styles.mainTextStyle}>Well done!</Text>
 
-      <Text
-        style={{ fontSize: 20, color: "white", textAlign: "center", top: 205 }}
-      >
-        A little more to go.
-      </Text>
-
       <Image
         source={require("../assets/undraw_self_reflection.png")}
         style={{ width: 230, height: 230, top: 225, position: "relative" }}
