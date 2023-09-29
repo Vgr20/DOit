@@ -13,9 +13,9 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useTimerStatus, useTimerUpdate , useFinishTime , useTotalDuration, useBreakList} from '../Context/TimerStatus';
 
 function FocusMode(props) {
-    const [worktime, onChangeText1] = React.useState('1');
-    const [breaktime, onChangeText2] = React.useState('0.2');
-    const [breakinterval, onChangeText3] = React.useState('0.1');
+    const [worktime, onChangeText1] = React.useState('5');
+    const [breaktime, onChangeText2] = React.useState('2');
+    const [breakinterval, onChangeText3] = React.useState('1');
     const [showCountdown, setShowCountdown] = React.useState(false);
     const [startCounter, setStartCounter] = React.useState(false);
     const handleCheckBoxChange = (isChecked) => {
@@ -38,23 +38,30 @@ function FocusMode(props) {
         console.log(Date.now()/1000 )
         updateFinishTime((Date.now()/1000) + worktime*60)
         updateTotalTime(worktime*60)
-        // console.log(calculateBreakTimes(worktime, breaktime))
-        // setBreakList(calculateBreakTimes(worktime, breaktime))
+        const list_break = calculateBreakTimes(worktime, breaktime) 
+        console.log(list_break)
+        setBreakList(list_break)
         console.log("total",totalInitialTime)
         console.log(workFinish) // actual worktime is updated
         toggleTimerStatus()
         
     }
 
-    function calculateBreakTimes(totalTime, workTime) {
+    const calculateBreakTimes = () => {
         const breakMilestones = [];
         let currentTime = 0;
+        console.log("Total dur - ", worktime)
+        console.log("work segment", breaktime)
+        const maxBreaks = Math.ceil(worktime / breaktime) - 1;
+        console.log(maxBreaks)
     
-        while (currentTime + workTime < totalTime) {
-        currentTime += workTime;
-        const percentage = (currentTime / totalTime) * 100;
-        breakMilestones.push(percentage);
+        for (let i =0; i < maxBreaks; i++) {
+        currentTime += parseFloat(breaktime);
+        console.log("i- ",currentTime)
+        // const percentage = (currentTime / totalTime) * 100;
+        breakMilestones.push(worktime - currentTime);
         }
+        return breakMilestones;
     }
 
     return (
