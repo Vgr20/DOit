@@ -1,13 +1,15 @@
 # GoGetOn
-
-![App Logo](https://github.com/Vgr20/DOit/blob/master/assets/GGOFINAL.png)
+<p align="center">
+<!-- ![App Logo](https://github.com/Vgr20/DOit/blob/master/assets/GGOFINAL.png) -->
+     <img src="https://github.com/Vgr20/DOit/blob/master/assets/GGOFINAL.png"/>
+</p>
 
 In a world where productivity is a constant challenge, meet GoGetOn, your ultimate productivity companion.
 'GoGetOn' isn't just a mobile app; it's a lifestyle. It's the future of productivity at your fingertips. Stay tuned to join us on this journey.
 
 ## Pitch Slide Presentation
 
-You can view the GoGetOn Presentation Pitch for the Idealize 2023 competition from [here].(https://www.canva.com/design/DAFuhPcd8f0/hsN-GSpzrVOnE8CvRpoxnw/view?utm_content=DAFuhPcd8f0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+You can view the GoGetOn Presentation Pitch for the Idealize 2023 competition from [here](https://www.canva.com/design/DAFuhPcd8f0/hsN-GSpzrVOnE8CvRpoxnw/view?utm_content=DAFuhPcd8f0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink).
 
 ## Features
 1. Task Scheduling
@@ -28,7 +30,7 @@ You can download the app from [here](https://play.google.com/store/apps/details?
 
 ## Backend Deployment
 
-The backend is deployed using Heroku at the moment. You can visit the GoGetOn Backend Repo from [here](https://github.com/Amrithshagar/GoGetOn-Backend).
+The backend is deployed using Heroku. You can visit the GoGetOn Backend Repo from [here](https://github.com/Amrithshagar/GoGetOn-Backend).
 
 ## Testing our app
 - clone the attached repository and open it on Visual Studio Code.
