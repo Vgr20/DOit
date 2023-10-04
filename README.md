@@ -39,14 +39,14 @@ The backend is deployed using Heroku. You can visit the GoGetOn Backend Repo fro
 - Install the Expo app on your mobile app.
 - Scan the QR code then you may visualise our mobile app on your mobile device.
 
-- To connect frontend and backend you need to change the ip address in two files :
+<!-- - To connect frontend and backend you need to change the ip address in two files :
     1. App.js
     2. api -> client.js
 
     - How to find your ip address :
     - open CMD -> type command ```ipconfig``` -> ip address will be beside 'IPv4 address:'
 
-    - copy it and replace it on the above two files where the ip address is shown.
+    - copy it and replace it on the above two files where the ip address is shown. -->
  
 ## Team FreshFix 🤝
 - [Saeedha Nazar](https://github.com/Saeedha-N)
